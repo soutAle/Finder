@@ -15,8 +15,7 @@ class User(db.Model):
     is_active = db.Column(db.Boolean, default=False)
     country = db.Column(db.String(20), nullable=True)
 
-    # Relaciones
-    profile_develop = db.relationship("Developer", backref="user", uselist=False)
+    profile_developer = db.relationship("Developer", backref="user", uselist=False)
     profile_company = db.relationship("Company", backref="user", uselist=False)
     candidates = db.relationship("Candidate", backref="user", lazy=True)
 
@@ -33,7 +32,7 @@ class User(db.Model):
             "email": self.email,
             "is_active": self.is_active,
             "country": self.country,
-            "profile_develop": self.profile_develop.serialize() if self.profile_develop else None,
+            "profile_developer": self.profile_developer.serialize() if self.profile_developer else None,
             "profile_company": self.profile_company.serialize() if self.profile_company else None,
             "candidates": [candidate.serialize() for candidate in self.candidates] if self.candidates else None
         }
@@ -47,10 +46,8 @@ class Developer(db.Model):
     description = db.Column(db.String(200), nullable=False)
     location = db.Column(db.String(20), nullable=False)
 
-    # Clave foránea que referencia a User
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    # Relación con proyectos
     projects = db.relationship("Project", backref="developer", lazy=True)
 
     def __repr__(self):
@@ -68,36 +65,45 @@ class Developer(db.Model):
 
 class Project(db.Model):
     __tablename__ = "projects"
-    
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.String(200), nullable=False)
-    technologies = db.Column(db.String(140), nullable=False)
-    category = db.Column(db.String(200), nullable=False)
 
-    # Clave foránea que referencia a Developer
-    developer_id = db.Column(db.Integer, db.ForeignKey('developers.id'), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    description = db.Column(db.String(150), nullable=False)
+    git_url = db.Column(db.String(300))
+    project_link = db.Column(db.String(500))
+    technologies = db.Column(db.String(200), nullable=False)
+
+    developer_id = db.Column(db.Integer, db.ForeignKey("developers.id"), nullable=False)
 
     def __repr__(self):
-        return f'<Project {self.title}>'
+        return f'<Project {self.id} - {self.name}>'
 
     def serialize(self):
         return {
             "id": self.id,
             "title": self.title,
             "description": self.description,
+            "git_url": self.git_url,
+            "project_link": self.project_link,
+            "technologies": self.technologies,
             "developer_id": self.developer_id
         }
+
 
 class Candidate(db.Model):
     __tablename__ = "candidates"
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20), nullable=False)
-    last_name = db.Column(db.String(20), nullable=False)
-    resume = db.Column(db.String(200), nullable=False)
+    name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
+    resume_url = db.Column(db.String(500), nullable=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    offer_id = db.Column(db.Integer, db.ForeignKey('offers.id'), nullable=False)
+    offer = db.relationship('Offer', backref='candidates', lazy=True)
+
+    status = db.Column(db.String(20), nullable=False, default='pendiente') 
+    application_date = db.Column(db.DateTime, default=db.func.current_timestamp())
 
     def __repr__(self):
         return f'<Candidate {self.name} {self.last_name}>'
@@ -107,8 +113,13 @@ class Candidate(db.Model):
             "id": self.id,
             "name": self.name,
             "last_name": self.last_name,
-            "resume": self.resume,
-            "user_id": self.user_id
+            "resume_url": self.resume_url,
+            "user_id": self.user_id,
+            "user_email": self.user.email,
+            "offer_id": self.offer_id,
+            "offer_title": self.offer.title,
+            "status": self.status,
+            "application_date": self.application_date.strftime("%Y-%m-%d")
         }
 
 class Offer(db.Model):
@@ -121,7 +132,6 @@ class Offer(db.Model):
     salary = db.Column(db.Float, nullable=False)
     contract_type = db.Column(db.String(50), nullable=False)
 
-    # Clave foránea que referencia a Company
     company_id = db.Column(db.Integer, db.ForeignKey('companies.id'), nullable=False)
 
     def __repr__(self):
@@ -148,10 +158,8 @@ class Company(db.Model):
     website = db.Column(db.String(120), nullable=True)
     logo = db.Column(db.String(200), nullable=True)
 
-    # Clave foránea que referencia a User
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    # Relación con la tabla 'offers'
     offers = db.relationship("Offer", backref="company", lazy=True)
 
     def __repr__(self):
@@ -174,7 +182,6 @@ class bookmark(db.Model):
     __tablename__ = "bookmarks"
     id = db.Column(db.Integer, primary_key=True)
 
-    # Claves foraneas que representan aa Developer, Company y Offer
     developer_id = db.Column(db.Integer, db.ForeignKey("developers.id"), nullable=True)
     company_id = db.Column(db.Integer, db.ForeignKey("companies.id"), nullable=True)
     offer_id = db.Column(db.Integer, db.ForeignKey("offers.id"), nullable=True)
@@ -184,7 +191,7 @@ class bookmark(db.Model):
 
     def serialize(self):
         return {
-            "developer_id": self.programador_id,
+            "developer_id": self.developer_id,
             "company_id": self.company_id,
             "offer_id": self.offer_id
         }

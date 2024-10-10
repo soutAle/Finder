@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const ProfileDeveloper = props => {
+export const ProfileCompany = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 
@@ -18,7 +18,6 @@ export const ProfileDeveloper = props => {
 	);
 };
 
-ProfileDeveloper.propTypes = {
+ProfileCompany.propTypes = {
 	match: PropTypes.object
 };
-
