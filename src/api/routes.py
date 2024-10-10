@@ -27,7 +27,7 @@ def handle_hello():
 
 @api.route('/signup', methods=['POST'])
 def signup_user():
-    # Campos del body
+
     email = request.json.get('email', None)
     password = request.json.get('password', None)
     name = request.json.get('name', None)
@@ -35,24 +35,19 @@ def signup_user():
     telephone = request.json.get('telephone', None)
     country = request.json.get('country', None)
 
-    # Validar que todos los campos requeridos no estén vacíos
     if not email or not password or not name or not last_name:
         return jsonify({'success': False, 'msg': 'Todos los campos son obligatorios'}), 400
     
-    #Verificar que si el email existe
     email_exist = User.query.filter_by(email=email).first()
     if email_exist:
         return jsonify({'success': False, 'msg':'Ya existe una cuenta registrada con el email '+ email}),400
 
-    # Verificar si el usuario ya existe
     user_exist = User.query.filter_by(email=email).first()
     if user_exist:
         return jsonify({'success': False, 'msg': 'Este usuario ya está registrado'}), 400
 
-    # Encriptar la contraseña antes de guardarla
     hashed_password = generate_password_hash(password).decode('utf-8')
     
-    # Crear un nuevo usuario con todos los campos
     new_user = User(
         email=email,
         password=hashed_password,
@@ -63,11 +58,9 @@ def signup_user():
         is_active=True
     )
 
-    # Agregar a la base de datos
     db.session.add(new_user)
     db.session.commit()
 
-    # Crear un token de acceso
     access_token = create_access_token(identity=new_user.id)
 
     return jsonify({
@@ -90,11 +83,11 @@ def login():
 
         user = User.query.filter_by(email=email).first()
 
-        # Verificar la contraseña encriptada
         if not user or not check_password_hash(user.password, password):
             return jsonify({'success': False, 'msg': 'Usuario o contraseña incorrectos.'}), 401
 
         access_token = create_access_token(identity=user.id)
+
         return jsonify({
             'success': True,
             'msg': 'Inicio de sesión exitoso.',
@@ -130,6 +123,21 @@ def token():
         }), 200
     else:
         return jsonify({"msg": "Usuario no encontrado"}), 404
+    
+@api.route('/users/<int:user_id>', methods=['GET'])
+def get_User(user_id):
+    user = User.query.get(user_id)
+    if user:
+        return jsonify({'user': user.serialize()}),200
+    return jsonify({'msg':'Usuario no encontrado'}),404
+
+@api.route('/Users', methods=['GET'])
+def get_all_Users():
+    users = User.query.all()
+    users=[user.serialize() for user in users]
+    if users:
+        return jsonify({'user': users}),200
+    return jsonify({'msg':'Ningún usuario encontrado'}),404
 
 @api.route('/user/<int:user_id>/bookmarks', methods=['GET'])
 def get_user_bookmark(user_id):
@@ -148,8 +156,8 @@ def get_user_bookmark(user_id):
         else:
             return ({"success": True, "msg": "El usuario no tiene favortios "}), 418
             
-    if user.profile_develop:
-        bookmarks.extend(user.profile_develop.bookmarks)
+    if user.profile_developer:
+        bookmarks.extend(user.profile_developer.bookmarks)
         bookmarks = [loader(bookmark.serialize()) for bookmark in bookmarks]
     if user.profile_company:
         bookmarks.extend(user.profile_company.bookmarks)  
