@@ -5,8 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             user: '',
             message: null,
             isAuthenticated: !!localStorage.getItem('token'),
-            users: [], // Añade un estado para almacenar los usuarios
-            selectedUser: null // Estado para almacenar el usuario seleccionado
+            users: [], 
+            selectedUser: null 
         },
         actions: {
             Signup: async (formData) => {
