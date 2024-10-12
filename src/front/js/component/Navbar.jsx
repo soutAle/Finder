@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "../../styles/navbar.css"; 
+import "../../styles/navbar.css";
 import { IoPersonCircleOutline, IoLogOutOutline } from "react-icons/io5";
 
 export const Navbar = () => {
@@ -105,28 +105,63 @@ export const Navbar = () => {
 
 				<div className="d-none d-md-flex pe-5">
 					<ul className="navbar-nav-text d-flex justify-content-end align-items-end flex-grow-1 pe-5 list-unstyled mb-0">
-						<li className="nav-item">
-							<Link className="nav-link active" aria-current="page" to="/">
-								Inicio
-							</Link>
-						</li>
-						<li className="nav-item">
-							<Link className="nav-link" to={"/"}>
-								Ofertas
-							</Link>
-						</li>
-						<li className="nav-item">
-							<Link className="nav-link active" aria-current="page" to="/">
-								Inicio
-							</Link>
-						</li>
-						<li className="nav-item">
-							<Link className="nav-link" to={"/"}>
-								Link
-							</Link>
-						</li>
+						{!store.user && (
+							<>
+								<li className="nav-item">
+									<Link className="nav-link active" aria-current="page" to="/">
+										Inicio
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link" to={"/offers"}>
+										Ofertas
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link" to={"/login"}>
+										Iniciar sesión
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link" to={"/signup"}>
+										Regitrarse
+									</Link>
+								</li>
+							</>
+						)}
+
+						{store.user?.profile_developer && (
+							<>
+								<li className="nav-item">
+									<Link className="nav-link active" aria-current="page" to="/myoffers">
+										Ofertas guardadas
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link" to="/profildeveloper">
+										Perfil
+									</Link>
+								</li>
+							</>
+						)}
+
+						{store.user?.profile_comapany && (
+							<>
+								<li className="nav-item">
+									<Link className="nav-link" to="/developers">
+										Busca talento
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link" to="/myoffers">
+										Mis Ofertas
+									</Link>
+								</li>
+							</>
+						)}
+
 						<li className="nav-item dropdown">
-							
+
 							<Link
 								className="nav-link mt-2"
 								to={"/"}
@@ -151,10 +186,10 @@ export const Navbar = () => {
 									<hr className="dropdown-divider" />
 								</li>
 								<li>
-									<Link className="dropdown-item" to={"/"} onClick={handleLogOutRedirect}>
+									<button className="dropdown-item" onClick={handleLogOutRedirect}>
 										<IoLogOutOutline />
 										Cerrar Sesión
-									</Link>
+									</button>
 								</li>
 							</ul>
 						</li>
