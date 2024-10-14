@@ -54,6 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
 
             login: async (credentials) => {
+                console.log(credentials)
                 try {
                     const resp = await fetch(`${process.env.BACKEND_URL}/api/login`, {
                         method: 'POST',
@@ -69,9 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         localStorage.setItem('token', data.token);
                         setStore({ token: data.token, user: data.user });
                         return data;
-                    } else {
-                        return false;
-                    }
+                    } 
                 } catch (error) {
                     console.error("Error al conectarse con el backend:", error);
                 }

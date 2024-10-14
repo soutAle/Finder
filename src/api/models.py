@@ -52,7 +52,7 @@ class Company(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     offers = db.relationship("Offer", backref="company", lazy=True)
-    saves = db.relationship("Bookmark", backref="company", lazy=True)
+    bookmarks = db.relationship("Bookmark", backref="company", lazy=True)
 
     def __repr__(self):
         return f'<Company {self.name}>'
@@ -68,7 +68,7 @@ class Company(db.Model):
             "logo": self.logo,
             "user_id": self.user_id,
             "offers": [offer.serialize() for offer in self.offers] if self.offers else None,
-            "saves": [bookmark.serialize() for bookmark in self.bookmarks] if self.bookmarks else None
+            "bookmarks": [bookmark.serialize() for bookmark in self.bookmarks] if self.bookmarks else None
             
         }
 
