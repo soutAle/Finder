@@ -28,6 +28,125 @@ export const Navbar = () => {
 				>
 					<span className="navbar-toggler-icon"></span>
 				</button>
+				
+
+				<div className="d-none d-md-flex pe-5">
+					<ul className="navbar-nav-text d-flex justify-content-end align-items-end flex-grow-1 pe-5 list-unstyled mb-0">
+						<li className="nav-item">
+							<Link className="nav-link active" aria-current="page" to="/">
+								Inicio
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link" to={"/offers"}>
+								Ofertas
+							</Link>
+						</li>
+						
+						{!store.user && (
+							<>
+								<li className="nav-item">
+									<Link className="nav-link" to={"/login"}>
+										Iniciar sesión
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link" to={"/signup"}>
+										Regitrarse
+									</Link>
+								</li>
+							</>
+						)}
+
+						{store.user?.profile_developer && (
+							<>
+								<li className="nav-item">
+									<Link className="nav-link active" aria-current="page" to="/myoffers">
+										Bookmarks
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link active" aria-current="page" to="/myjobapplies">
+										Candidaturas
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link" to="/profildeveloper">
+										Perfil
+									</Link>
+								</li>
+							</>
+						)}
+
+						{store.user?.profile_company && (
+							<>
+								<li className="nav-item">
+									<Link className="nav-link" to="/developers">
+										Busca talento
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link" to="/myoffers">
+										Mis Ofertas
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link" to="/profildeveloper">
+										Perfil
+									</Link>
+								</li>
+							</>
+						)}
+
+						{store.user && (
+							<>
+								<li className="nav-item dropdown">
+									<Link
+										className="nav-link mt-2"
+										to={"/"}
+										role="button"
+										data-bs-toggle="dropdown"
+										aria-expanded={false}
+									>
+										<IoPersonCircleOutline />
+									</Link>
+
+									<ul className="dropdown-menu">
+										<li>
+											<Link className="dropdown-item" to="/">
+												Notificaciones
+											</Link>
+										</li>
+										<li>
+											<Link className="dropdown-item" to="/editprofile">
+												Editar perfil
+											</Link>
+										</li>
+										<li>
+											<Link className="dropdown-item" to="/help">
+												Ayuda
+											</Link>
+										</li>
+										<li>
+											<Link className="dropdown-item" to="/contactus">
+												Contactanos
+											</Link>
+										</li>
+										<li>
+											<hr className="dropdown-divider" />
+										</li>
+										<li>
+											<button className="dropdown-item" onClick={handleLogOutRedirect}>
+												<IoLogOutOutline />
+												Cerrar Sesión
+											</button>
+										</li>
+									</ul>
+								</li>
+							</>
+						)}
+					</ul>
+				</div>
 				<div
 					className="offcanvas offcanvas-end"
 					tabIndex="-1"
@@ -232,118 +351,6 @@ export const Navbar = () => {
 							</button>
 						</form>
 					</div>
-				</div>
-
-				<div className="d-none d-md-flex pe-5">
-					<ul className="navbar-nav-text d-flex justify-content-end align-items-end flex-grow-1 pe-5 list-unstyled mb-0">
-						<li className="nav-item">
-							<Link className="nav-link active" aria-current="page" to="/">
-								Inicio
-							</Link>
-						</li>
-						<li className="nav-item">
-							<Link className="nav-link" to={"/offers"}>
-								Ofertas
-							</Link>
-						</li>
-						{!store.user && (
-							<>
-								<li className="nav-item">
-									<Link className="nav-link" to={"/login"}>
-										Iniciar sesión
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link className="nav-link" to={"/signup"}>
-										Regitrarse
-									</Link>
-								</li>
-							</>
-						)}
-
-						{store.user?.profile_developer && (
-							<>
-								<li className="nav-item">
-									<Link className="nav-link active" aria-current="page" to="/myoffers">
-										Bookmarks
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link className="nav-link active" aria-current="page" to="/myjobapplies">
-										Candidaturas
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link className="nav-link" to="/profildeveloper">
-										Perfil
-									</Link>
-								</li>
-							</>
-						)}
-
-						{store.user?.profile_company && (
-							<>
-								<li className="nav-item">
-									<Link className="nav-link" to="/developers">
-										Busca talento
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link className="nav-link" to="/myoffers">
-										Mis Ofertas
-									</Link>
-								</li>
-							</>
-						)}
-
-						{store.user && (
-							<>
-								<li className="nav-item dropdown">
-									<Link
-										className="nav-link mt-2"
-										to={"/"}
-										role="button"
-										data-bs-toggle="dropdown"
-										aria-expanded={false}
-									>
-										<IoPersonCircleOutline />
-									</Link>
-
-									<ul className="dropdown-menu">
-										<li>
-											<Link className="dropdown-item" to="/">
-												Notificaciones
-											</Link>
-										</li>
-										<li>
-											<Link className="dropdown-item" to="/editprofile">
-												Editar perfil
-											</Link>
-										</li>
-										<li>
-											<Link className="dropdown-item" to="/help">
-												Ayuda
-											</Link>
-										</li>
-										<li>
-											<Link className="dropdown-item" to="/contactus">
-												Contactanos
-											</Link>
-										</li>
-										<li>
-											<hr className="dropdown-divider" />
-										</li>
-										<li>
-											<button className="dropdown-item" onClick={handleLogOutRedirect}>
-												<IoLogOutOutline />
-												Cerrar Sesión
-											</button>
-										</li>
-									</ul>
-								</li>
-							</>
-						)}
-					</ul>
 				</div>
 			</div>
 		</nav>
