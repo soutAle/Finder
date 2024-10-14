@@ -11,7 +11,7 @@ export const SignUpForm = () => {
         password: "",
         telephone: "",
         country: "",
-        userType: ""
+        user_type: "Developer"
     });
     const [error, setError] = useState(null);
     const [successMessage, setSuccessMessage] = useState(null);
@@ -36,7 +36,7 @@ export const SignUpForm = () => {
         actions.signup(formData);
 
         if (store.success) {
-            if (formData.userType === "Empresa") {
+            if (formData.user_type === "Empresa") {
                 navigate("/profilecompany");
             } else{
                 navigate("/profiledeveloper");
@@ -63,22 +63,22 @@ export const SignUpForm = () => {
                                             type="radio"
                                             id="desarrollador"
                                             name="user_type"
-                                            value="desarrollador"
+                                            value="Desarrollador"
                                             onChange={handleChange}
                                             required
                                         />
-                                        <label htmlFor="desarrollador" className="form-label">Desarrollador</label>
+                                        <label htmlFor="desarrollador" className="form-label ms-2">Desarrollador</label>
                                     </div>
                                     <div>
                                         <input
                                             type="radio"
                                             id="empresa"
                                             name="user_type"
-                                            value="empresa"
+                                            value="Empresa"
                                             onChange={handleChange}
                                             required
                                         />
-                                        <label htmlFor="empresa" className="form-label">Empresa</label>
+                                        <label htmlFor="empresa" className="form-label ms-2">Empresa</label>
                                     </div>
                                 </div>
                                 <div className="form-group mb-3">

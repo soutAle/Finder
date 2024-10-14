@@ -44,12 +44,12 @@ class Company(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     # cif = db.Column(db.String(12), unique=True)
-    name = db.Column(db.String(50), nullable=False)
-    description = db.Column(db.String(200), nullable=False)
-    location = db.Column(db.String(50), nullable=False)
-    website = db.Column(db.String(120), nullable=True)
-    logo = db.Column(db.String(200), nullable=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    name = db.Column(db.String(50))
+    description = db.Column(db.String(200))
+    location = db.Column(db.String(50))
+    website = db.Column(db.String(120))
+    logo = db.Column(db.String(200))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     offers = db.relationship("Offer", backref="company", lazy=True)
     saves = db.relationship("Bookmark", backref="company", lazy=True)
@@ -76,10 +76,10 @@ class Developer(db.Model):
     __tablename__ = "developers"
     
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20), nullable=False)
-    last_name = db.Column(db.String(20), nullable=False)
-    description = db.Column(db.String(200), nullable=False)
-    location = db.Column(db.String(20), nullable=False)
+    name = db.Column(db.String(20))
+    last_name = db.Column(db.String(20))
+    description = db.Column(db.String(200))
+    location = db.Column(db.String(20))
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
