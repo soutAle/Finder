@@ -31,18 +31,19 @@ export const SignUpForm = () => {
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        actions.signup(formData);
+        const result = await actions.signup(formData);
 
-        if (store.success) {
+        if (result.success) {
             if (formData.user_type === "Empresa") {
                 navigate("/profilecompany");
-            } else{
+            } else {
                 navigate("/profiledeveloper");
             }
+        } else {
+            setError(result.error);
         }
-
 
     };
 

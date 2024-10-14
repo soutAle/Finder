@@ -42,31 +42,27 @@ class User(db.Model):
 class Company(db.Model):
     __tablename__ = "companies"
     
-    id = db.Column(db.Integer, primary_key=True)
-    # cif = db.Column(db.String(12), unique=True)
-    name = db.Column(db.String(50))
     description = db.Column(db.String(200))
     location = db.Column(db.String(50))
     website = db.Column(db.String(120))
     logo = db.Column(db.String(200))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True, nullable=False)
 
     offers = db.relationship("Offer", backref="company", lazy=True)
     bookmarks = db.relationship("Bookmark", backref="company", lazy=True)
 
     def __repr__(self):
-        return f'<Company {self.name}>'
+        return f'<Company {self.user.name}>'
 
     def serialize(self):
         return {
-            "id": self.id,
-            # "cif": self.cif,
-            "name": self.name,
+            "user_id": self.user_id,
+            "name": self.user.name,
             "description": self.description,
             "location": self.location,
             "website": self.website,
             "logo": self.logo,
-            "user_id": self.user_id,
             "offers": [offer.serialize() for offer in self.offers] if self.offers else None,
             "bookmarks": [bookmark.serialize() for bookmark in self.bookmarks] if self.bookmarks else None
             
@@ -75,25 +71,23 @@ class Company(db.Model):
 class Developer(db.Model):
     __tablename__ = "developers"
     
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20))
-    last_name = db.Column(db.String(20))
     description = db.Column(db.String(200))
     location = db.Column(db.String(20))
+    experience = db.Column(db.String(80))
+    tecnologies = db.Column(db.String(200))
 
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True, nullable=False)
 
     projects = db.relationship("Project", backref="developer", lazy=True)
     bookmarks = db.relationship("Bookmark", backref="developer", lazy=True)
 
     def __repr__(self):
-        return f'<Developer {self.name} {self.last_name}>'
+        return f'<Developer {self.user.name} {self.user.last_name}>'
 
     def serialize(self):
         return {
-            "id": self.id,
-            "name": self.name,
-            "last_name": self.last_name,
+            "user_id": self.user_id,
+            "name": self.user.name,
             "description": self.description,
             "location": self.location,
             "projects": [project.serialize() for project in self.projects] if self.projects else None,
@@ -110,7 +104,7 @@ class Offer(db.Model):
     salary = db.Column(db.Float, nullable=False)
     contract_type = db.Column(db.String(50), nullable=False)
 
-    company_id = db.Column(db.Integer, db.ForeignKey('companies.id'), nullable=False)
+    company_id = db.Column(db.Integer, db.ForeignKey('companies.user_id'), nullable=False)
 
     def __repr__(self):
         return f'<Offer {self.title}>'
@@ -168,7 +162,7 @@ class Project(db.Model):
     project_link = db.Column(db.String(500))
     technologies = db.Column(db.String(200), nullable=False)
 
-    developer_id = db.Column(db.Integer, db.ForeignKey("developers.id"), nullable=False)
+    developer_id = db.Column(db.Integer, db.ForeignKey("developers.user_id"), nullable=False)
 
     def __repr__(self):
         return f'<Project {self.id} - {self.name}>'
@@ -189,8 +183,8 @@ class Bookmark(db.Model):
     __tablename__ = "bookmarks"
     id = db.Column(db.Integer, primary_key=True)
 
-    developer_id = db.Column(db.Integer, db.ForeignKey("developers.id"), nullable=True)
-    company_id = db.Column(db.Integer, db.ForeignKey("companies.id"), nullable=True)
+    developer_id = db.Column(db.Integer, db.ForeignKey("developers.user_id"), nullable=True)
+    company_id = db.Column(db.Integer, db.ForeignKey("companies.user_id"), nullable=True)
     offer_id = db.Column(db.Integer, db.ForeignKey("offers.id"), nullable=True)
 
     def __repr__(self):
