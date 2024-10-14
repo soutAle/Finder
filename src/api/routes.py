@@ -37,7 +37,7 @@ def signup_user():
     telephone = request.json.get('telephone', None)
     country = request.json.get('country', None)
 
-    if not email or not password or not name or not last_name:
+    if not email or not password or not name:
         return jsonify({'success': False, 'msg': 'Todos los campos son obligatorios'}), 400
     
     email_exist = User.query.filter_by(email=email).first()
@@ -74,7 +74,6 @@ def signup_user():
             'token': access_token,
             'developer': developer.serialize()
         }), 201
-    
     elif user_type == 'Empresa':
         company = Company(user_id=new_user.id)
         db.session.add(company)

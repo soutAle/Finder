@@ -61,19 +61,19 @@ export const SignUpForm = () => {
                                     <div>
                                         <input
                                             type="radio"
-                                            id="programador"
-                                            name="userType"
-                                            value="programador"
+                                            id="desarrollador"
+                                            name="user_type"
+                                            value="desarrollador"
                                             onChange={handleChange}
                                             required
                                         />
-                                        <label htmlFor="programador" className="form-label">Desarrollador</label>
+                                        <label htmlFor="desarrollador" className="form-label">Desarrollador</label>
                                     </div>
                                     <div>
                                         <input
                                             type="radio"
                                             id="empresa"
-                                            name="userType"
+                                            name="user_type"
                                             value="empresa"
                                             onChange={handleChange}
                                             required

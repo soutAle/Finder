@@ -7,7 +7,8 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=False)
-    last_name = db.Column(db.String(50), nullable=False)
+    user_type = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=True)
     photo = db.Column(db.String(250), nullable=True)
     telephone = db.Column(db.String(30), unique=True, nullable=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -26,6 +27,7 @@ class User(db.Model):
         return {
             "id": self.id,
             "name": self.name,
+            'user_type': self.user_type,
             "last_name": self.last_name,
             "photo": self.photo,
             "telephone": self.telephone,

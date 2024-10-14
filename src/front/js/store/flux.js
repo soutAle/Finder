@@ -19,22 +19,29 @@ const getState = ({ getStore, getActions, setStore }) => {
                         },
                         body: JSON.stringify(formData),
                     });
-                    
+            
                     if (!resp.ok) {
                         const errorData = await resp.json();
+                        setStore({ error: errorData.message || 'Error desconocido' });
                         console.log('Error en el registro:', errorData);
                         return { success: false, error: errorData.message || 'Error desconocido' };
                     }
-
+            
                     const data = await resp.json();
-                    setStore(data);
+                    setStore({ 
+                        token: data.token,
+                        user: data.user,
+                        isAuthenticated: true
+                    });
                     localStorage.setItem('token', data.token);
                     return data;
-
+            
                 } catch (error) {
                     console.log('Error:', error);
+                    return { success: false, error: 'Error al conectar con el backend.' };
                 }
             },
+            
 
             resetStore: () => {
                 setStore({ msg: "", success: "" });
