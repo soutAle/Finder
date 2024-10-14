@@ -1,11 +1,72 @@
-/*
-    home.css: This website contains selectors only used in home.css
-
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
-
-.home-container{
-    min-height: 70vh;
-}
+/* Estilos generales */
+.home-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Highlights Section */
+  .highlights-section h3 {
+    margin-top: 1rem;
+    font-weight: 700;
+  }
+  
+  .highlights-section p {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  /* Testimonials Section */
+  .testimonials-section .testimonial-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .testimonials-section .testimonial-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .testimonials-section .testimonial-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .testimonials-section h5 {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #343a40;
+  }
+  
+  .testimonials-section p {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  /* CTA Section */
+  .cta-section {
+    background-color: #343a40;
+    padding: 60px 0;
+  }
+  
+  .cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
