@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Developer, Company, Candidate, Project, Offer
+from api.models import db, User, Developer, Company, Candidate, Project, Offer, Bookmark
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 from flask_jwt_extended import get_jwt_identity, create_access_token, jwt_required
@@ -30,7 +30,9 @@ def signup_user():
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)
+    user_type = request.json.get('user_type', None)
     name = request.json.get('name', None)
+    # cif= request.json.get("cif", None)
     last_name = request.json.get('last_name', None)
     telephone = request.json.get('telephone', None)
     country = request.json.get('country', None)
@@ -42,9 +44,6 @@ def signup_user():
     if email_exist:
         return jsonify({'success': False, 'msg':'Ya existe una cuenta registrada con el email '+ email}),400
 
-    user_exist = User.query.filter_by(email=email).first()
-    if user_exist:
-        return jsonify({'success': False, 'msg': 'Este usuario ya está registrado'}), 400
 
     hashed_password = generate_password_hash(password).decode('utf-8')
     
@@ -55,6 +54,7 @@ def signup_user():
         last_name=last_name,
         telephone=telephone,
         country=country,
+        user_type=user_type,
         is_active=True
     )
 
@@ -63,13 +63,28 @@ def signup_user():
 
     access_token = create_access_token(identity=new_user.id)
 
-    return jsonify({
-        'success': True,
-        'msg': 'Ha sido registrado correctamente',
-        'token': access_token,
-        'user': new_user.serialize()  
-    }), 200
-
+    if user_type == 'Desarrollador':
+        developer = Developer(user_id=new_user.id)
+        db.session.add(developer)
+        db.session.commit()
+        return jsonify({
+            'success': True,
+            'msg': 'Desarrollador registrado correctamente',
+            'user': new_user.serialize(),
+            'token': access_token,
+            'developer': developer.serialize()
+        }), 201
+    
+    elif user_type == 'Empresa':
+        company = Company(user_id=new_user.id)
+        db.session.add(company)
+        db.session.commit()
+        return jsonify({
+            'success': True, 
+            'msg':'Usuario registrado correctamente', 
+            'user': new_user.serialize(), 
+            'token': access_token, 
+            'company': company.serialize()}),201
 
 
 @api.route('/login', methods=['POST'])

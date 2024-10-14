@@ -36,6 +36,39 @@ class User(db.Model):
             "profile_company": self.profile_company.serialize() if self.profile_company else None,
             "candidates": [candidate.serialize() for candidate in self.candidates] if self.candidates else None
         }
+    
+class Company(db.Model):
+    __tablename__ = "companies"
+    
+    id = db.Column(db.Integer, primary_key=True)
+    # cif = db.Column(db.String(12), unique=True)
+    name = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+    location = db.Column(db.String(50), nullable=False)
+    website = db.Column(db.String(120), nullable=True)
+    logo = db.Column(db.String(200), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    offers = db.relationship("Offer", backref="company", lazy=True)
+    saves = db.relationship("Bookmark", backref="company", lazy=True)
+
+    def __repr__(self):
+        return f'<Company {self.name}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            # "cif": self.cif,
+            "name": self.name,
+            "description": self.description,
+            "location": self.location,
+            "website": self.website,
+            "logo": self.logo,
+            "user_id": self.user_id,
+            "offers": [offer.serialize() for offer in self.offers] if self.offers else None,
+            "saves": [bookmark.serialize() for bookmark in self.bookmarks] if self.bookmarks else None
+            
+        }
 
 class Developer(db.Model):
     __tablename__ = "developers"
@@ -49,6 +82,7 @@ class Developer(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     projects = db.relationship("Project", backref="developer", lazy=True)
+    bookmarks = db.relationship("Bookmark", backref="developer", lazy=True)
 
     def __repr__(self):
         return f'<Developer {self.name} {self.last_name}>'
@@ -60,7 +94,66 @@ class Developer(db.Model):
             "last_name": self.last_name,
             "description": self.description,
             "location": self.location,
-            "projects": [project.serialize() for project in self.projects] if self.projects else None
+            "projects": [project.serialize() for project in self.projects] if self.projects else None,
+            "bookmarks": [bookmark.serialize() for bookmark in self.bookmarks] if self.bookmarks else None
+        }
+    
+class Offer(db.Model):
+    __tablename__ = "offers"
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+    location = db.Column(db.String(100), nullable=False)
+    salary = db.Column(db.Float, nullable=False)
+    contract_type = db.Column(db.String(50), nullable=False)
+
+    company_id = db.Column(db.Integer, db.ForeignKey('companies.id'), nullable=False)
+
+    def __repr__(self):
+        return f'<Offer {self.title}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "location": self.location,
+            "salary": self.salary,
+            "contract_type": self.contract_type,
+            "company_id": self.company_id
+        }
+    
+class Candidate(db.Model):
+    __tablename__ = "candidates"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
+    resume_url = db.Column(db.String(500), nullable=False)
+    status = db.Column(db.String(20), nullable=False, default='pendiente') 
+    application_date = db.Column(db.DateTime, default=db.func.current_timestamp())
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    offer_id = db.Column(db.Integer, db.ForeignKey('offers.id'), nullable=False)
+
+    offer = db.relationship('Offer', backref='candidates', lazy=True)
+
+    def __repr__(self):
+        return f'<Candidate {self.name} {self.last_name}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "last_name": self.last_name,
+            "resume_url": self.resume_url,
+            "user_id": self.user_id,
+            "user_email": self.user.email,
+            "offer_id": self.offer_id,
+            "offer_title": self.offer.title,
+            "status": self.status,
+            "application_date": self.application_date.strftime("%Y-%m-%d")
         }
 
 class Project(db.Model):
@@ -89,96 +182,8 @@ class Project(db.Model):
             "developer_id": self.developer_id
         }
 
-
-class Candidate(db.Model):
-    __tablename__ = "candidates"
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    last_name = db.Column(db.String(50), nullable=False)
-    resume_url = db.Column(db.String(500), nullable=False)
-
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    offer_id = db.Column(db.Integer, db.ForeignKey('offers.id'), nullable=False)
-    offer = db.relationship('Offer', backref='candidates', lazy=True)
-
-    status = db.Column(db.String(20), nullable=False, default='pendiente') 
-    application_date = db.Column(db.DateTime, default=db.func.current_timestamp())
-
-    def __repr__(self):
-        return f'<Candidate {self.name} {self.last_name}>'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "last_name": self.last_name,
-            "resume_url": self.resume_url,
-            "user_id": self.user_id,
-            "user_email": self.user.email,
-            "offer_id": self.offer_id,
-            "offer_title": self.offer.title,
-            "status": self.status,
-            "application_date": self.application_date.strftime("%Y-%m-%d")
-        }
-
-class Offer(db.Model):
-    __tablename__ = "offers"
-
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.String(200), nullable=False)
-    location = db.Column(db.String(100), nullable=False)
-    salary = db.Column(db.Float, nullable=False)
-    contract_type = db.Column(db.String(50), nullable=False)
-
-    company_id = db.Column(db.Integer, db.ForeignKey('companies.id'), nullable=False)
-
-    def __repr__(self):
-        return f'<Offer {self.title}>'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "title": self.title,
-            "description": self.description,
-            "location": self.location,
-            "salary": self.salary,
-            "contract_type": self.contract_type,
-            "company_id": self.company_id
-        }
-
-class Company(db.Model):
-    __tablename__ = "companies"
     
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    description = db.Column(db.String(200), nullable=False)
-    location = db.Column(db.String(50), nullable=False)
-    website = db.Column(db.String(120), nullable=True)
-    logo = db.Column(db.String(200), nullable=True)
-
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-
-    offers = db.relationship("Offer", backref="company", lazy=True)
-
-    def __repr__(self):
-        return f'<Company {self.name}>'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "description": self.description,
-            "location": self.location,
-            "website": self.website,
-            "logo": self.logo,
-            "user_id": self.user_id,
-            "offers": [offer.serialize() for offer in self.offers] if self.offers else None
-        }
-    
-
-class bookmark(db.Model):
+class Bookmark(db.Model):
     __tablename__ = "bookmarks"
     id = db.Column(db.Integer, primary_key=True)
 

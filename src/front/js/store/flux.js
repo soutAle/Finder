@@ -9,7 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             selectedUser: null 
         },
         actions: {
-            Signup: async (formData) => {
+            signup: async (formData) => {
                 try {
                     console.log('Datos enviados:', formData);
                     const resp = await fetch(`${process.env.BACKEND_URL}/api/signup`, {

@@ -11,9 +11,10 @@ export const SignUpForm = () => {
         password: "",
         telephone: "",
         country: "",
+        userType: ""
     });
     const [error, setError] = useState(null);
-    const [successMessage, setSuccessMessage] = useState(null); 
+    const [successMessage, setSuccessMessage] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -30,20 +31,19 @@ export const SignUpForm = () => {
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        setError(null);
+        actions.signup(formData);
 
-        const result = await actions.Signup(formData);
-
-        if (result.success) {
-            setSuccessMessage("Te has registrado correctamente");
-            setTimeout(() => {
-                navigate("/login");
-            }, 1500);
-        } else {
-            setError(result.error);
+        if (store.success) {
+            if (formData.userType === "Empresa") {
+                navigate("/profilecompany");
+            } else{
+                navigate("/profiledeveloper");
+            }
         }
+
+
     };
 
     return (
@@ -54,6 +54,33 @@ export const SignUpForm = () => {
                         <div className="card-body">
                             {successMessage && <p className="alert alert-success text-success text-center">{successMessage}</p>}
                             <form onSubmit={handleSubmit}>
+                                <div className="form-group mb-3">
+                                    <label htmlFor="user-type" className="form-label">
+                                        ¿Eres empresa o desarrollador?
+                                    </label>
+                                    <div>
+                                        <input
+                                            type="radio"
+                                            id="programador"
+                                            name="userType"
+                                            value="programador"
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                        <label htmlFor="programador" className="form-label">Desarrollador</label>
+                                    </div>
+                                    <div>
+                                        <input
+                                            type="radio"
+                                            id="empresa"
+                                            name="userType"
+                                            value="empresa"
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                        <label htmlFor="empresa" className="form-label">Empresa</label>
+                                    </div>
+                                </div>
                                 <div className="form-group mb-3">
                                     <label htmlFor="name" className="form-label">
                                         Nombre
