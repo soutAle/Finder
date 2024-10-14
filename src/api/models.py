@@ -89,6 +89,7 @@ class Developer(db.Model):
             "user_id": self.user_id,
             "name": self.user.name,
             "description": self.description,
+            "experience": self.experience,
             "location": self.location,
             "projects": [project.serialize() for project in self.projects] if self.projects else None,
             "bookmarks": [bookmark.serialize() for bookmark in self.bookmarks] if self.bookmarks else None
