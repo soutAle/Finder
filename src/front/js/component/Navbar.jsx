@@ -36,7 +36,7 @@ export const Navbar = () => {
 				>
 					<div className="offcanvas-header">
 						<h5 className="offcanvas-title text-white" id="offcanvasDarkNavbarLabel">
-							Finder
+							{!store.user ? "Bienvenido a Finder!" : `Bienvenido, ${store.user.name}`}
 						</h5>
 						<button
 							type="button"
@@ -47,47 +47,178 @@ export const Navbar = () => {
 					</div>
 					<div className="offcanvas-body">
 						<ul className="navbar-nav justify-content-end flex-grow-1 pe-3 mt-3">
-							<li className="nav-item">
-								<Link className="nav-link active" aria-current="page" to="/">
-									Home
-								</Link>
-							</li>
-							<li className="nav-item">
-								<Link className="nav-link" to="/">
-									Link
-								</Link>
-							</li>
-							<li className="nav-item dropdown">
-								<Link
-									className="nav-link dropdown-toggle"
-									to={"/"}
-									role="button"
-									data-bs-toggle="dropdown"
-									aria-expanded={false}
-								>
-									Dropdown
-								</Link>
-								<ul className="dropdown-menu dropdown-menu-dark">
-									<li>
-										<Link className="dropdown-item" to="/profiledeveloper">
-											Perfil
+							{store.user && (
+								<>
+									<li className="nav-item">
+										<Link className="nav-link active" aria-current="page" to="/">
+											Inicio
 										</Link>
 									</li>
-									<li>
-										<Link className="dropdown-item" to="/myoffers">
+									<li className="nav-item">
+										<Link className="nav-link" to="/offers">
+											Ofertas
+										</Link>
+									</li>
+								</>
+							)}
+							{!store.user && (
+								<>
+									<li className="nav-item">
+										<Link className="nav-link active" aria-current="page" to="/">
+											Inicio
+										</Link>
+									</li>
+									<li className="nav-item">
+										<Link className="nav-link" to="/offers">
+											Ofertas
+										</Link>
+									</li>
+									<li className="nav-item">
+										<Link className="nav-link active" aria-current="page" to="/login">
+											Iniciar sesión
+										</Link>
+									</li>
+									<li className="nav-item">
+										<Link className="nav-link active" aria-current="page" to="/signup">
+											¡Registrate!
+										</Link>
+									</li>
+									<li className="nav-item">
+										<Link className="nav-link" to="/About">
+											Sobre Nosotros
+										</Link>
+									</li>
+									<li className="nav-item">
+										<Link className="nav-link" to="/contactus">
+											Contactanos
+										</Link>
+									</li>
+									<li className="nav-item">
+										<Link className="nav-link" to="/faqs">
+											Preguntas frecuentes (FAQ's)
+										</Link>
+									</li>
+								</>
+							)}
+							{store.user?.profile_developer && (
+								<>
+									<li className="nav-item">
+										<Link className="nav-link active" aria-current="page" to="/bookmarks">
+											Bookmarks
+										</Link>
+									</li>
+									<li className="nav-item">
+										<Link className="nav-link active" aria-current="page" to="/myjobapplies">
+											Candidaturas
+										</Link>
+									</li>
+									<li className="nav-item dropdown">
+										<Link
+											className="nav-link dropdown-toggle"
+											to={"/"}
+											role="button"
+											data-bs-toggle="dropdown"
+											aria-expanded={false}
+										>
+											Acciones
+										</Link>
+
+										<ul className="dropdown-menu dropdown-menu-dark">
+											<li>
+												<Link className="dropdown-item" to="/">
+													Notificaciones
+												</Link>
+											</li>
+											<li>
+												<Link className="dropdown-item" to="/editprofile">
+													Editar perfil
+												</Link>
+											</li>
+											<li>
+												<Link className="dropdown-item" to="/help">
+													Ayuda
+												</Link>
+											</li>
+											<li>
+												<Link className="dropdown-item" to="/cantactus">
+													Contactanos
+												</Link>
+											</li>
+											<li>
+												<hr className="dropdown-divider" />
+											</li>
+											<li>
+												<button className="dropdown-item" onClick={handleLogOutRedirect}>
+													<IoLogOutOutline />
+													Cerrar Sesión
+												</button>
+											</li>
+										</ul>
+									</li>
+								</>
+							)}
+							{store.user?.profile_company && (
+								<>
+									<li className="nav-item">
+										<Link className="nav-link active" aria-current="page" to="/developers">
+											Busca talento
+										</Link>
+									</li>
+									<li className="nav-item">
+										<Link className="nav-link active" aria-current="page" to="/myoffers">
 											Mis Ofertas
 										</Link>
 									</li>
-									<li>
-										<hr className="dropdown-divider" />
-									</li>
-									<li>
-										<Link className="dropdown-item" onClick={handleLogOutRedirect} to="/">
-											Cerrar Sesión
+									<li className="nav-item">
+										<Link className="nav-link active" aria-current="page" to="/mycandidates">
+											Lista de postulados
 										</Link>
 									</li>
-								</ul>
-							</li>
+									<li className="nav-item dropdown">
+										<Link
+											className="nav-link dropdown-toggle"
+											to={"/"}
+											role="button"
+											data-bs-toggle="dropdown"
+											aria-expanded={false}
+										>
+											Acciones
+										</Link>
+
+										<ul className="dropdown-menu dropdown-menu-dark">
+											<li>
+												<Link className="dropdown-item" to="/">
+													Notificaciones
+												</Link>
+											</li>
+											<li>
+												<Link className="dropdown-item" to="/editprofile">
+													Editar perfil
+												</Link>
+											</li>
+											<li>
+												<Link className="dropdown-item" to="/help">
+													Ayuda
+												</Link>
+											</li>
+											<li>
+												<Link className="dropdown-item" to="/cantactus">
+													Contactanos
+												</Link>
+											</li>
+											<li>
+												<hr className="dropdown-divider" />
+											</li>
+											<li>
+												<button className="dropdown-item" onClick={handleLogOutRedirect}>
+													<IoLogOutOutline />
+													Cerrar Sesión
+												</button>
+											</li>
+										</ul>
+									</li>
+								</>
+							)}
 						</ul>
 						<form className="d-flex mt-3" role="search">
 							<input
@@ -105,18 +236,18 @@ export const Navbar = () => {
 
 				<div className="d-none d-md-flex pe-5">
 					<ul className="navbar-nav-text d-flex justify-content-end align-items-end flex-grow-1 pe-5 list-unstyled mb-0">
+						<li className="nav-item">
+							<Link className="nav-link active" aria-current="page" to="/">
+								Inicio
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link" to={"/offers"}>
+								Ofertas
+							</Link>
+						</li>
 						{!store.user && (
 							<>
-								<li className="nav-item">
-									<Link className="nav-link active" aria-current="page" to="/">
-										Inicio
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link className="nav-link" to={"/offers"}>
-										Ofertas
-									</Link>
-								</li>
 								<li className="nav-item">
 									<Link className="nav-link" to={"/login"}>
 										Iniciar sesión
@@ -134,7 +265,12 @@ export const Navbar = () => {
 							<>
 								<li className="nav-item">
 									<Link className="nav-link active" aria-current="page" to="/myoffers">
-										Ofertas guardadas
+										Bookmarks
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link active" aria-current="page" to="/myjobapplies">
+										Candidaturas
 									</Link>
 								</li>
 								<li className="nav-item">
@@ -145,7 +281,7 @@ export const Navbar = () => {
 							</>
 						)}
 
-						{store.user?.profile_comapany && (
+						{store.user?.profile_company && (
 							<>
 								<li className="nav-item">
 									<Link className="nav-link" to="/developers">
@@ -160,39 +296,53 @@ export const Navbar = () => {
 							</>
 						)}
 
-						<li className="nav-item dropdown">
+						{store.user && (
+							<>
+								<li className="nav-item dropdown">
+									<Link
+										className="nav-link mt-2"
+										to={"/"}
+										role="button"
+										data-bs-toggle="dropdown"
+										aria-expanded={false}
+									>
+										<IoPersonCircleOutline />
+									</Link>
 
-							<Link
-								className="nav-link mt-2"
-								to={"/"}
-								role="button"
-								data-bs-toggle="dropdown"
-								aria-expanded={false}
-							>
-								<IoPersonCircleOutline />
-							</Link>
-							<ul className="dropdown-menu">
-								<li>
-									<Link className="dropdown-item" to="/">
-										Perfil
-									</Link>
+									<ul className="dropdown-menu">
+										<li>
+											<Link className="dropdown-item" to="/">
+												Notificaciones
+											</Link>
+										</li>
+										<li>
+											<Link className="dropdown-item" to="/editprofile">
+												Editar perfil
+											</Link>
+										</li>
+										<li>
+											<Link className="dropdown-item" to="/help">
+												Ayuda
+											</Link>
+										</li>
+										<li>
+											<Link className="dropdown-item" to="/contactus">
+												Contactanos
+											</Link>
+										</li>
+										<li>
+											<hr className="dropdown-divider" />
+										</li>
+										<li>
+											<button className="dropdown-item" onClick={handleLogOutRedirect}>
+												<IoLogOutOutline />
+												Cerrar Sesión
+											</button>
+										</li>
+									</ul>
 								</li>
-								<li>
-									<Link className="dropdown-item" to="/">
-										Mis Ofertas
-									</Link>
-								</li>
-								<li>
-									<hr className="dropdown-divider" />
-								</li>
-								<li>
-									<button className="dropdown-item" onClick={handleLogOutRedirect}>
-										<IoLogOutOutline />
-										Cerrar Sesión
-									</button>
-								</li>
-							</ul>
-						</li>
+							</>
+						)}
 					</ul>
 				</div>
 			</div>
