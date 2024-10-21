@@ -22,13 +22,8 @@ export const LogIn = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         const result = await actions.login(credentials);
-        if (result.token) {
-            console.log("Inicio de sesión correcto");
-            navigate("/");
-        } else {
-            console.log("Error al iniciar sesión");
-            setError("Error al iniciar sesión. Por favor, verifica tus credenciales.");
-        }
+        result.token ? navigate("/") : setError("Error al iniciar sesión. Por favor, verifica tus credenciales.");
+
     };
 
     return (
@@ -71,7 +66,7 @@ export const LogIn = () => {
                                 {error && <p className="text-danger text-center">{error}</p>}
                                 <div className="d-grid">
                                     <button type="submit" className="btn btn-primary">
-                                        Iniciar sesión 
+                                        Iniciar sesión
                                     </button>
                                 </div>
                             </form>

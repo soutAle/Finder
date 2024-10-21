@@ -63,7 +63,6 @@ class Company(db.Model):
             "description": self.description,
             "location": self.location,
             "website": self.website,
-            "logo": self.logo,
             "offers": [offer.serialize() for offer in self.offers] if self.offers else None,
             "bookmarks": [bookmark.serialize() for bookmark in self.bookmarks] if self.bookmarks else None
             
