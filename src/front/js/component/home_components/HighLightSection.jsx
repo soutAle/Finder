@@ -6,7 +6,7 @@ export const HighlightSection = () => {
 
 
     return (
-        <section className="highlights-section py-5">
+        <section className="highlights-section py-5 my-5">
             <div className="container">
                 <div className="row text-center">
                     <div className="col-md-4">

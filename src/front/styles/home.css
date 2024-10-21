@@ -36,8 +36,8 @@
   }
   
   .testimonials-section .testimonial-img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 50%;
   }
@@ -56,7 +56,7 @@
   
   /* CTA Section */
   .cta-section {
-    background-color: #343a40;
+    background-color: #063869;
     padding: 60px 0;
   }
   

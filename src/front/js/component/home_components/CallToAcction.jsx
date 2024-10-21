@@ -5,7 +5,7 @@ export const CallToAcction = () => {
 
 
     return (
-        <section className="cta-section py-5 bg-dark text-white text-center">
+        <section className="cta-section py-5 text-white text-center my-5">
             <h2 className="fw-bold">¿Listo para comenzar?</h2>
             <p>Regístrate hoy mismo y conecta con las mejores empresas y desarrolladores del sector.</p>
             <Link to="/signup" className="btn btn-primary btn-lg">

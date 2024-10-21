@@ -8,13 +8,14 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=False)
     user_type = db.Column(db.String(50), nullable=False)
-    last_name = db.Column(db.String(50), nullable=True)
-    photo = db.Column(db.String(250), nullable=True)
-    telephone = db.Column(db.String(30), unique=True, nullable=True)
+    last_name = db.Column(db.String(50))
+    testimony = db.Column(db.String(250))
+    image = db.Column(db.String(250))
+    telephone = db.Column(db.String(30), unique=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(180), nullable=False)
     is_active = db.Column(db.Boolean, default=False)
-    country = db.Column(db.String(20), nullable=True)
+    country = db.Column(db.String(20))
 
     profile_developer = db.relationship("Developer", backref="user", uselist=False)
     profile_company = db.relationship("Company", backref="user", uselist=False)
@@ -29,6 +30,7 @@ class User(db.Model):
             "name": self.name,
             'user_type': self.user_type,
             "last_name": self.last_name,
+            "testimony": self.testimony,
             "photo": self.photo,
             "telephone": self.telephone,
             "email": self.email,
@@ -45,7 +47,6 @@ class Company(db.Model):
     description = db.Column(db.String(200))
     location = db.Column(db.String(50))
     website = db.Column(db.String(120))
-    logo = db.Column(db.String(200))
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True, nullable=False)
 
@@ -72,7 +73,8 @@ class Developer(db.Model):
     __tablename__ = "developers"
     
     description = db.Column(db.String(200))
-    location = db.Column(db.String(20))
+    role = db.Column(db.String(80))
+    location = db.Column(db.String(80))
     experience = db.Column(db.String(80))
     tecnologies = db.Column(db.String(200))
 
@@ -88,6 +90,7 @@ class Developer(db.Model):
         return {
             "user_id": self.user_id,
             "name": self.user.name,
+            "role": self.role,
             "description": self.description,
             "experience": self.experience,
             "location": self.location,
