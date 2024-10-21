@@ -31,7 +31,7 @@ class User(db.Model):
             'user_type': self.user_type,
             "last_name": self.last_name,
             "testimony": self.testimony,
-            "photo": self.photo,
+            "image": self.image,
             "telephone": self.telephone,
             "email": self.email,
             "is_active": self.is_active,
