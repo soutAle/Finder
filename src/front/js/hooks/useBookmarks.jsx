@@ -3,29 +3,29 @@ import { Context } from "../store/appContext.js";
 
 export const useBookmarks = (offer_id, user) => {
     const { actions, store } = useContext(Context);
-    const [isFavorite, setIsFavorite] = useState(false);
+    const [isSaved, setIsSaved] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const favorite = store.favorites?.some((fav) => fav.offer_id === offer_id);
-        setIsFavorite(favorite);
+        setIsSaved(favorite);
     }, [store.favorites, offer_id]);
 
     const toggleBookmark = async () => {
         const developer_id = user.profile_developer?.id || null;
         const company_id = user.profile_company?.id || null;
-        const offer_id = offer_id;
 
         try {
-            if (isFavorite) {
-                await actions.removeFavorite(developer_id, company_id, offer_id);
+            if (isSaved) {
+                await actions.removeBookmark(developer_id, company_id, offer_id);
             } else {
-                await actions.addFavorite(developer_id, company_id, offer_id);
+                await actions.addBookmark(developer_id, company_id, offer_id);
             }
-            setIsFavorite(!isFavorite);
+            setIsSaved((prev) => !prev);
         } catch (error) {
-            // Manejo de errores
+            console.error(error);
+            setError("Error al guardar la oferta");
         }
     };
-
-    return { isFavorite, toggleFavorite };
+    return { isSaved: isSaved, toggleBookmark, error };
 };

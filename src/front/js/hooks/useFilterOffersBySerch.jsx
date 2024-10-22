@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 
-// Hook para filtrar ofertas por término de búsqueda
 export const useFilterOffersBySearchTerm = (offers, searchTerm) => {
     const lowerCasedSearchTerm = searchTerm ? searchTerm.toLowerCase() : "";
 
