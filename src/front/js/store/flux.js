@@ -161,7 +161,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
-            createJobOffer: async (offerData) => {
+            createJobOffer: async (formData) => {
+                console.log(formData);
                 try {
                     const token = localStorage.getItem('token');
                     const resp = await fetch(`${process.env.BACKEND_URL}/api/createOffer`, {
@@ -170,11 +171,12 @@ const getState = ({ getStore, getActions, setStore }) => {
                             "Content-Type": 'application/json',
                             Authorization: `Bearer ${token}`
                         },
-                        body: JSON.stringify(offerData)
+                        body: JSON.stringify(formData)
                     });
 
                     if (resp.ok) {
                         const data = await resp.json();
+                        console.log(data)
                         const store = getStore();
                         setStore({ offers: [...store.offers, data.offer] });
                         return data;

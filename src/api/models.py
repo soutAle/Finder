@@ -112,13 +112,13 @@ class Offer(db.Model):
     salary = db.Column(db.String(7))
     contract_type = db.Column(db.String(50))
     modality = db.Column(db.String(250))
-    lenguages = db.Column(db.String(20))
+    languages = db.Column(db.String(20))
     posted_date = db.Column(db.Date)
     education_level = db.Column(db.String(70))
     minimun_experience = db.Column(db.String(120))
     minimum_requirements = db.Column(db.String(120))
 
-    company_id = db.Column(db.Integer, db.ForeignKey('companies.user_id'), nullable=False)
+    company_id = db.Column(db.Integer, db.ForeignKey('companies.user_id'))
 
     def __repr__(self):
         return f'<Offer {self.title}>'
@@ -131,7 +131,7 @@ class Offer(db.Model):
             "location": self.location,
             "salary": self.salary,
             "contract_type": self.contract_type,
-            "lenguages": self.lenguages,
+            "languages": self.languages,
             "modality": self.modality,
             "posted_date": self.posted_date,
             "education_level": self.education_level,
