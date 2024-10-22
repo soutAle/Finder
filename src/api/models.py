@@ -116,7 +116,7 @@ class Offer(db.Model):
     posted_date = db.Column(db.Date)
     education_level = db.Column(db.String(70))
     minimun_experience = db.Column(db.String(120))
-    minimum_requirements = db.Column(db.String(120))
+    minimun_requirements = db.Column(db.String(120))
 
     company_id = db.Column(db.Integer, db.ForeignKey('companies.user_id'))
 
