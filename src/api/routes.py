@@ -199,7 +199,7 @@ def create_offer():
     modality = request.json.get("modality")
     education_level = request.json.get("education_level")
     minimun_requirements = request.json.get("minimun_requirements")
-    lenguages = request.json.get("lenguages")
+    languages = request.json.get("lenguages")
     minimun_experience = request.json.get("minimun_experience")
     posted_date = request.json.get("posted_date")
 
@@ -213,8 +213,7 @@ def create_offer():
             posted_date = datetime.strptime(posted_date, "%Y-%m-%d")
         except ValueError:
             return jsonify({"success": False, "msg": "Fecha de publicación no válida"}), 400
-    else:
-        posted_date = datetime.utcnow()
+    
 
     new_offer = Offer(
         title=title,
@@ -223,12 +222,12 @@ def create_offer():
         location=location,
         contract_type=contract_type,
         modality=modality,
-        lenguages=lenguages,
+        languages=languages,
         education_level=education_level,
         minimun_experience=minimun_experience,
         posted_date=posted_date,
         minimun_requirements=minimun_requirements,
-        company_id=company.id
+        company_id=company.user_id
     )
     
     try:

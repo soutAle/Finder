@@ -136,7 +136,7 @@ class Offer(db.Model):
             "posted_date": self.posted_date,
             "education_level": self.education_level,
             "minimun_experience": self.minimun_experience,
-            "minimun_requirements": self.minimum_requirements,
+            "minimun_requirements": self.minimun_requirements,
             "company_id": self.company_id
         }
     
