@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useOffers } from "../hooks/useOffers";
-import { OfferCardPremiumLogic } from "./OfferCardPremiumLogic";
+import { OfferCardPremiumLogic } from "./OfferCardPremiumLogic.jsx";
 import { Context } from "../store/appContext.js";
 import "../../styles/CardListOffer.css";
 
