@@ -1,6 +1,7 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
+import datetime
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Developer, Company, Candidate, Project, Offer, Bookmark
 from api.utils import generate_sitemap, APIException
@@ -176,3 +177,80 @@ def get_user_bookmark(user_id):
     if user.profile_company:
         bookmarks.extend(user.profile_company.bookmarks)  
     return jsonify({"success": True, "bookmarks": [result.serialize() for result in results]}), 200
+
+@api.route('/createOffer', methods=['POST'])
+@jwt_required()
+def create_offer():
+    User = get_jwt_identity()
+
+    company = Company.query.filter_by(user_id=User.id).first()
+    if not company:
+        return jsonify({"success": False, "msg": "El usuario no es un empleador"}), 400
+
+    title = request.json.get("title")
+    description = request.json.get("description")
+    salary = request.json.get("salary")
+    location = request.json.get("location")
+    contract_type = request.json.get("tipo_contrato")
+    modality = request.json.get("modality")
+    education_level = request.json.get("education_level")
+    minimun_requirements = request.json.get("minimun_requirements")
+    lenguages = request.json.get("lenguages")
+    minimun_experience = request.json.get("minimun_experience")
+    posted_date = db.Column(db.DateTime, default=datetime.utcnow)
+
+    
+    if not title or not description or not location:
+        return jsonify({"success": False, "msg": "Algunos campos son requeridos"}), 400
+
+    try:
+        posted_date = datetime.strptime(posted_date, "%Y-%m-%d")
+        print(posted_date)
+    except ValueError:
+        return jsonify({"success": False, "msg": "Fecha de publicación no válida"}), 400
+
+    new_offer = Offer(
+        title=title,
+        description=description,
+        salary=salary,
+        localion=location,
+        contract_type=contract_type,
+        modality=modality,
+        lenguages=lenguages,
+        education_level=education_level,
+        minimun_experience=minimun_experience,
+        posted_date=posted_date,
+        minimun_requirements=minimun_requirements,
+        company_id=company.id
+    )
+    
+    try:
+        db.session.add(new_offer)
+        db.session.commit()
+        return jsonify({"success": True, "msg": "Oferta creada exitosamente", "oferta": new_offer.serialize()}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"success": False, "msg": f"Error al crear la oferta: {str(e)}"}), 500
+    
+@api.route('/offers', methods=['GET'])
+def get_all_offers():
+    try:
+        offers = Offer.query.all()
+        if offers:
+            return jsonify({"success": True, "offers": [offers.serialize() for offer in offers]}), 200
+        return jsonify({"success": False, "msg": "No hay ofertas disponibles"}), 404
+    except Exception as e:
+        return jsonify({"success": False, "msg": f"Error al obtener las ofertas: {str(e)}"}), 500
+
+
+@api.route('/offer/<int:id>', methods=['GET'])
+def get_offer(id):
+    try:
+        offer = Offer.query.get(id)
+
+        if not offer:
+            return jsonify({"success": False, "msg": "Oferta no encontrada"}), 404
+        return jsonify({"success": True,"msg": 'Oferta encontrada', "offer": offer.serialize()}), 200
+
+    except Exception as e:
+        return jsonify({"success": False, "msg": f"Error al obtener la oferta: {str(e)}"}), 500

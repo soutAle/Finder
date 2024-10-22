@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+import enum
 
 db = SQLAlchemy()
 
@@ -47,6 +48,7 @@ class Company(db.Model):
     description = db.Column(db.String(200))
     location = db.Column(db.String(50))
     website = db.Column(db.String(120))
+    premium = db.Column(db.Boolean ,default=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True, nullable=False)
 
@@ -63,6 +65,7 @@ class Company(db.Model):
             "description": self.description,
             "location": self.location,
             "website": self.website,
+            "premium": self.premium,
             "offers": [offer.serialize() for offer in self.offers] if self.offers else None,
             "bookmarks": [bookmark.serialize() for bookmark in self.bookmarks] if self.bookmarks else None
             
@@ -74,6 +77,7 @@ class Developer(db.Model):
     description = db.Column(db.String(200))
     role = db.Column(db.String(80))
     location = db.Column(db.String(80))
+    premium = db.Column(db.Boolean ,default=False)
     experience = db.Column(db.String(80))
     tecnologies = db.Column(db.String(200))
 
@@ -92,11 +96,12 @@ class Developer(db.Model):
             "role": self.role,
             "description": self.description,
             "experience": self.experience,
+            "premium": self.premium,
             "location": self.location,
             "projects": [project.serialize() for project in self.projects] if self.projects else None,
             "bookmarks": [bookmark.serialize() for bookmark in self.bookmarks] if self.bookmarks else None
         }
-    
+   
 class Offer(db.Model):
     __tablename__ = "offers"
 
@@ -104,8 +109,13 @@ class Offer(db.Model):
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.String(200), nullable=False)
     location = db.Column(db.String(100), nullable=False)
-    salary = db.Column(db.Float, nullable=False)
-    contract_type = db.Column(db.String(50), nullable=False)
+    salary = db.Column(db.String(7))
+    contract_type = db.Column(db.String(50))
+    modality = db.Column(db.String(250))
+    posted_date = db.Column(db.Date)
+    education_level = db.Column(db.String(70))
+    minimun_experience = db.Column(db.String(120))
+    minimum_requirements = db.Column(db.String(120))
 
     company_id = db.Column(db.Integer, db.ForeignKey('companies.user_id'), nullable=False)
 
@@ -120,6 +130,11 @@ class Offer(db.Model):
             "location": self.location,
             "salary": self.salary,
             "contract_type": self.contract_type,
+            "modality": self.modality,
+            "posted_date": self.posted_date,
+            "education_level": self.education_level,
+            "minimun_experience": self.minimun_experience,
+            "minimun_requirements": self.minimum_requirements,
             "company_id": self.company_id
         }
     
