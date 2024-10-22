@@ -201,23 +201,26 @@ def create_offer():
     minimun_requirements = request.json.get("minimun_requirements")
     lenguages = request.json.get("lenguages")
     minimun_experience = request.json.get("minimun_experience")
-    posted_date = db.Column(db.DateTime, default=datetime.utcnow)
+    posted_date = request.json.get("posted_date")
 
     
     if not title or not description or not location:
         return jsonify({"success": False, "msg": "Algunos campos son requeridos"}), 400
 
-    try:
-        posted_date = datetime.strptime(posted_date, "%Y-%m-%d")
-        print(posted_date)
-    except ValueError:
-        return jsonify({"success": False, "msg": "Fecha de publicación no válida"}), 400
+    posted_date = request.json.get("posted_date")
+    if posted_date:
+        try:
+            posted_date = datetime.strptime(posted_date, "%Y-%m-%d")
+        except ValueError:
+            return jsonify({"success": False, "msg": "Fecha de publicación no válida"}), 400
+    else:
+        posted_date = datetime.utcnow()
 
     new_offer = Offer(
         title=title,
         description=description,
         salary=salary,
-        localion=location,
+        location=location,
         contract_type=contract_type,
         modality=modality,
         lenguages=lenguages,

@@ -33,12 +33,10 @@ export const FormOffer = () => {
         if (!name || !description || !location) {
             setError('Por favor, completa los campos requeridos.');
         } else {
-            const offerDate = new Date().toISOString();
             const updatedFormData = {
                 ...formData,
-                posted_date: offerDate.slice(0, 10),
-                modality: formData.modality?.toLowerCase(),
-                minimun_experience: formData.experiencia_minima?.toUpperCase()
+                modality: formData.modality,
+                minimun_experience: formData.minimun_experience,
 
             };
 
@@ -149,11 +147,11 @@ export const FormOffer = () => {
                         </div>
                         <div className="row my-3">
                             <div className="col-4">
-                                <label htmlFor="lenguges" className="form-label text-secondary fw-bold my-3">Idiomas</label>
+                                <label htmlFor="lenguages" className="form-label text-secondary fw-bold my-3">Idiomas</label>
                                 <input
                                     type="text"
-                                    name="lenguges"
-                                    id="lenguges"
+                                    name="lenguages"
+                                    id="lenguages"
                                     className="form-control"
                                     placeholder="Ingles - Nivel intermedio..."
                                     onChange={handleChange}

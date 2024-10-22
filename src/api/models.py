@@ -112,6 +112,7 @@ class Offer(db.Model):
     salary = db.Column(db.String(7))
     contract_type = db.Column(db.String(50))
     modality = db.Column(db.String(250))
+    lenguages = db.Column(db.String(20))
     posted_date = db.Column(db.Date)
     education_level = db.Column(db.String(70))
     minimun_experience = db.Column(db.String(120))
@@ -130,6 +131,7 @@ class Offer(db.Model):
             "location": self.location,
             "salary": self.salary,
             "contract_type": self.contract_type,
+            "lenguages": self.lenguages,
             "modality": self.modality,
             "posted_date": self.posted_date,
             "education_level": self.education_level,
