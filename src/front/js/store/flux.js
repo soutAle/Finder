@@ -161,7 +161,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             createJobOffer: async (offerData) => {
                 try {
                     const token = localStorage.getItem('token');
-                    const resp = await fetch(`${process.env.BACKEND_URL}/api/crearOferta`, {
+                    const resp = await fetch(`${process.env.BACKEND_URL}/api/createOffer`, {
                         method: 'POST',
                         headers: {
                             "Content-Type": 'application/json',
@@ -173,7 +173,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     if (resp.ok) {
                         const data = await resp.json();
                         const store = getStore();
-                        setStore({ jobOffers: [...store.jobOffers, data.oferta] });
+                        setStore({ offers: [...store.offers, data.offer] });
                         return data;
                     } else {
                         const errorData = await resp.json();
@@ -202,6 +202,73 @@ const getState = ({ getStore, getActions, setStore }) => {
                     }
                 } catch (error) {
                     console.error("Error en la solicitud de ofertas:", error);
+                }
+            },
+
+            applyToJobOffer: async (offer_id) => {
+                const store = getStore();
+                const token = store.token;
+
+                if (!token) {
+                    return { msg: "Usuario no autenticado: registrate o inicia sesión", type: 'error' }
+                }
+
+                try {
+                    const resp = await fetch(`${process.env.BACKEND_URL}/api/candidate`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`
+                        },
+                        body: JSON.stringify({ offer_id })
+                    });
+
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        console.log('inscripcion exitosa', data);
+                        return { msg: "Inscripcion realizada con exito.", type: "success" };
+                    } else {
+                        const errorData = await resp.json();
+                        console.log("Error al inscribirse: ", errorData.msg);
+                        return { msg: errorData.msg, type: 'warning' };
+
+                    }
+                } catch (error) {
+                    console.log("Error en la solitud de inscripcion.");
+                    return { msg: "Error en la solicitud de inscripcion.", type: "error" }
+
+                }
+            },
+
+            unapplyFromJobOffer: async (offer_id) => {
+                const store = getStore();
+                const token = store.token;
+
+                if (!token) {
+                    return { msg: "Usuario no autenticado: regístrate o inicia sesión", type: 'error' };
+                }
+
+                try {
+                    const resp = await fetch(`${process.env.BACKEND_URL}/api/candidates/${offer_id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
+                    });
+
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        console.log('Desinscripción exitosa', data);
+                        return { msg: "Desinscripción realizada con éxito.", type: "success" };
+                    } else {
+                        const errorData = await resp.json();
+                        console.log("Error al desinscribirse: ", errorData.msg);
+                        return { msg: errorData.msg, type: 'warning' };
+                    }
+                } catch (error) {
+                    console.log("Error en la solicitud de desinscripción.");
+                    return { msg: "Error en la solicitud de desinscripción.", type: "error" };
                 }
             },
         }
