@@ -7,7 +7,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             isAuthenticated: !!localStorage.getItem('token'),
             users: [],
             selectedUser: null,
-            bookmarks: []
+            bookmarks: [],
+            offers: [],
+            selectedoffer: null,
         },
         actions: {
             signup: async (formData) => {
@@ -196,8 +198,9 @@ const getState = ({ getStore, getActions, setStore }) => {
                     });
 
                     if (resp.ok) {
+                        console.log('resp loadAllOffers: ', resp)
                         const data = await resp.json();
-                        setStore({ jobOffers: data.ofertas });
+                        setStore({ offers: data.offers });
                     } else {
                         console.error("Error al cargar ofertas");
                     }

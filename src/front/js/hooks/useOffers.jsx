@@ -1,14 +1,13 @@
 import { useContext } from "react";
 import { Context } from "../store/appContext.js";
-import { useLoadOffers } from "./useLoadOffers";
-import { useFilterOffersByCompany } from "./useFilterOffersByCompany.jsx";
+import { useLoadOffers } from "./useLoadOffers.jsx";
+// import { useFilterOffersByCompany } from "./useFilterOffersByCompany.jsx";
+// import { useFilterOffersBySearch } from "./useFilterOffersBySearch.jsx";
 
 // Hook principal para cargar y filtrar ofertas
 export const useOffers = (searchTerm, company_id) => {
-    const { store, actions } = useContext(Context);
-    const loading = useLoadOffers(actions.loadAllJobOffers);
-    const filteredByCompany = useFilterOffersByCompany(store.jobOffers || [], company_id);
-    const offers = useFilterOffersBySearchTerm(filteredByCompany, searchTerm);
+    const { actions } = useContext(Context);
+    const loading = useLoadOffers(actions.loadAllOffers);
 
-    return { offers, loading };
+    return { loading };
 };

@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext.js";
 
 // Hook para cargar ofertas
-export const useLoadOffers = (loadOffers) => {
+export const useLoadOffers = () => {
     const { actions } = useContext(Context);
     const [loading, setLoading] = useState(true);
 
@@ -13,7 +14,7 @@ export const useLoadOffers = (loadOffers) => {
         };
 
         load();
-    }, [loadOffers]);
+    }, []);
 
     return loading;
 };
