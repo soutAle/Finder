@@ -8,35 +8,39 @@ export const FormOffer = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
     const [formData, setFormData] = useState({
-        name: "",
+        title: "",
         description: "",
-        salary: "",
         location: "",
+        modality: "",
+        salary: "",
         minimun_requirements: "",
         education_level: "",
         contract_type: "",
-        lenguages: "",
-        modality: "",
+        languages: "",
         minimun_experience: "",
-        posted_date: null,
     });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
-
+    console.log('formData fomoffer:' + formData)
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { name, description, location } = formData;
+        const { title, description, location } = formData;
 
-        if (!name || !description || !location) {
+        if (!title || !description || !location) {
             setError('Por favor, completa los campos requeridos.');
         } else {
             const updatedFormData = {
                 ...formData,
                 modality: formData.modality,
+                salary: formData.salary,
+                minimun_requirements: formData.minimun_requirements,
+                education_level: formData.education_level,
+                contract_type: formData.contract_type,
                 minimun_experience: formData.minimun_experience,
+                languages: formData.languages
 
             };
 
@@ -48,8 +52,6 @@ export const FormOffer = () => {
                 console.log(error)
                 setError('Ocurrió un error al crear la oferta.');
             }
-
-
         }
     };
 
@@ -73,16 +75,16 @@ export const FormOffer = () => {
                         {error && <div className="alert alert-danger">{error}</div>}
                         <div className="row my-3 text-secondary fw-bold">
                             <div className="col-6 d-flex flex-column">
-                                <label htmlFor="name" className="form-label my-3">Titulo de la oferta</label>
+                                <label htmlFor="title" className="form-label my-3">Titulo de la oferta</label>
                                 <input
                                     type="text"
                                     className="form-control"
-                                    name="name"
-                                    id="name"
+                                    name="title"
+                                    id="title"
                                     placeholder="Software ing full-stack"
                                     maxLength="30"
                                     onChange={handleChange}
-                                    value={formData.name}
+                                    value={formData.title}
                                     required
                                 />
                             </div>
@@ -147,15 +149,15 @@ export const FormOffer = () => {
                         </div>
                         <div className="row my-3">
                             <div className="col-4">
-                                <label htmlFor="lenguages" className="form-label text-secondary fw-bold my-3">Idiomas</label>
+                                <label htmlFor="languages" className="form-label text-secondary fw-bold my-3">Idiomas</label>
                                 <input
                                     type="text"
-                                    name="lenguages"
-                                    id="lenguages"
+                                    name="languages"
+                                    id="languages"
                                     className="form-control"
                                     placeholder="Ingles - Nivel intermedio..."
                                     onChange={handleChange}
-                                    value={formData.lenguages}
+                                    value={formData.languages}
                                 />
                             </div>
                             <div className="col-4">
