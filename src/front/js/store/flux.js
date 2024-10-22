@@ -1,12 +1,12 @@
 const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
-            token: localStorage.getItem('token') || null, 
+            token: localStorage.getItem('token') || null,
             user: '',
             message: null,
             isAuthenticated: !!localStorage.getItem('token'),
-            users: [], 
-            selectedUser: null 
+            users: [],
+            selectedUser: null
         },
         actions: {
             signup: async (formData) => {
@@ -19,29 +19,29 @@ const getState = ({ getStore, getActions, setStore }) => {
                         },
                         body: JSON.stringify(formData),
                     });
-            
+
                     if (!resp.ok) {
                         const errorData = await resp.json();
                         setStore({ error: errorData.message || 'Error desconocido' });
                         console.log('Error en el registro:', errorData);
                         return { success: false, error: errorData.message || 'Error desconocido' };
                     }
-            
+
                     const data = await resp.json();
-                    setStore({ 
+                    setStore({
                         token: data.token,
                         user: data.user,
                         isAuthenticated: true
                     });
                     localStorage.setItem('token', data.token);
                     return data;
-            
+
                 } catch (error) {
                     console.log('Error:', error);
                     return { success: false, error: 'Error al conectar con el backend.' };
                 }
             },
-            
+
 
             resetStore: () => {
                 setStore({ msg: "", success: "" });
@@ -70,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         localStorage.setItem('token', data.token);
                         setStore({ token: data.token, user: data.user });
                         return data;
-                    } 
+                    }
                 } catch (error) {
                     console.error("Error al conectarse con el backend:", error);
                 }
@@ -147,7 +147,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                     if (resp.ok) {
                         const data = await resp.json();
-                        setStore({ users: data.user }); 
+                        setStore({ users: data.user });
                         return data;
                     } else {
                         console.error('Error al obtener todos los usuarios:', resp.statusText);
@@ -155,6 +155,53 @@ const getState = ({ getStore, getActions, setStore }) => {
                     }
                 } catch (error) {
                     console.error("Error al conectarse con el backend:", error);
+                }
+            },
+
+            createJobOffer: async (offerData) => {
+                try {
+                    const token = localStorage.getItem('token');
+                    const resp = await fetch(`${process.env.BACKEND_URL}/api/crearOferta`, {
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": 'application/json',
+                            Authorization: `Bearer ${token}`
+                        },
+                        body: JSON.stringify(offerData)
+                    });
+
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        const store = getStore();
+                        setStore({ jobOffers: [...store.jobOffers, data.oferta] });
+                        return data;
+                    } else {
+                        const errorData = await resp.json();
+                        console.error("Error al crear la oferta:", errorData.msg);
+                        return errorData;
+                    }
+                } catch (error) {
+                    console.error("Error al conectarse con el backend:", error);
+                }
+            },
+
+            loadAllOffers: async () => {
+                try {
+                    const resp = await fetch(`${process.env.BACKEND_URL}/api/offers`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    });
+
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        setStore({ jobOffers: data.ofertas });
+                    } else {
+                        console.error("Error al cargar ofertas");
+                    }
+                } catch (error) {
+                    console.error("Error en la solicitud de ofertas:", error);
                 }
             },
         }
