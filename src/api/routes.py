@@ -181,9 +181,13 @@ def get_user_bookmark(user_id):
 @api.route('/createOffer', methods=['POST'])
 @jwt_required()
 def create_offer():
-    User = get_jwt_identity()
+    user_id = get_jwt_identity()  
+    user = User.query.get(user_id)  
 
-    company = Company.query.filter_by(user_id=User.id).first()
+    if not user:
+        return jsonify({"success": False, "msg": "Usuario no encontrado"}), 400
+
+    company = Company.query.filter_by(user_id=user.id).first()
     if not company:
         return jsonify({"success": False, "msg": "El usuario no es un empleador"}), 400
 
