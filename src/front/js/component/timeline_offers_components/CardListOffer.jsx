@@ -1,11 +1,8 @@
 import React, { useContext } from "react";
-import { useOffers } from "../hooks/useOffers";
-import { OfferCardPremiumLogic } from "./OfferCardPremiumLogic.jsx";
-import { Context } from "../store/appContext.js";
-import "../../styles/CardListOffer.css";
+import { useOffers } from "../../hooks/useOffers.jsx";
+import { OfferCardPremiumLogic } from "../card_offer_components/OfferCardPremiumLogic.jsx";
 
 export const CardListOffers = ({ searchTerm, company_id }) => {
-    const { store } = useContext(Context);
     const { offers, loading } = useOffers(searchTerm, company_id);
 
     return (

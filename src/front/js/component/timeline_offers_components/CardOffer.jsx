@@ -1,29 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useJobApplication } from "../hooks/useJobApplication";
-import { useFavorite } from "../hooks/useFavorite";
+import { useJobApplication } from "../../hooks/useJobApplication.jsx";
+import { useBookmarks } from "../../hooks/useBookmarks.jsx";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
-import { formatDate } from "../helpers/dateHelper";
-import { CardOfferImage, CardOfferDetails } from "./CardOfferComponents";
-import { ActionButtons } from "./ActionButtons";
-import "../../styles/CardOffer.css";
+// import { formatDate } from "../helpers/dateHelper";
+import { CardOfferImage } from "../card_offer_components/CardOfferImage.jsx";
+import { CardOfferDetails } from "../card_offer_components/CardOfferDetails.jsx"
+import { ActionButtons } from "../card_offer_components/ActionButtons.jsx";
+import "../../../styles/card-offer.css";
 
 export const CardOffer = ({ id }) => {
     const navigate = useNavigate();
     const { isSubscribed, applyToJob, unapplyFromJob } = useJobApplication(id);
-    const { isFavorite, toggleFavorite } = useFavorite(id);
+    const { isSaved, toggleBookmark } = useBookmarks(id);
 
-    const handleApplyClick = async () => {
-        if (isSubscribed) {
-            await unapplyFromJob();
-        } else {
-            await applyToJob();
-        }
-    };
-
-    const handleFavoriteClick = async () => {
-
-    };
 
     const handleViewDetails = () => {
         navigate(`/singleoffer/${id}`);
@@ -58,7 +48,7 @@ export const CardOffer = ({ id }) => {
                 onUnapply={handleApplyClick}
                 onViewDetails={handleViewDetails}
             />
-            <div onClick={handleFavoriteClick} className="heart-icon" style={{ cursor: "pointer" }}>
+            <div onClick={handleSavedClick} className="heart-icon" style={{ cursor: "pointer" }}>
                 {isFavorite ? <FaHeart /> : <FaRegHeart />}
             </div>
         </div>
