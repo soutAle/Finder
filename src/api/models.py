@@ -109,14 +109,14 @@ class Offer(db.Model):
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.String(500), nullable=False)
     location = db.Column(db.String(100), nullable=False)
-    salary = db.Column(db.String(7))
+    salary = db.Column(db.String(20))
     contract_type = db.Column(db.String(50))
     modality = db.Column(db.String(250))
     languages = db.Column(db.String(20))
     posted_date = db.Column(db.Date)
     education_level = db.Column(db.String(70))
     minimun_experience = db.Column(db.String(500))
-    minimun_requirements = db.Column(db.String(120))
+    minimun_requirements = db.Column(db.String(500))
 
     company_id = db.Column(db.Integer, db.ForeignKey('companies.user_id'))
 
