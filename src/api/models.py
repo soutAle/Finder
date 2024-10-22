@@ -107,7 +107,7 @@ class Offer(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
-    description = db.Column(db.String(200), nullable=False)
+    description = db.Column(db.String(), nullable=False)
     location = db.Column(db.String(100), nullable=False)
     salary = db.Column(db.String(7))
     contract_type = db.Column(db.String(50))
