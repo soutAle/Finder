@@ -254,3 +254,52 @@ def get_offer(id):
 
     except Exception as e:
         return jsonify({"success": False, "msg": f"Error al obtener la oferta: {str(e)}"}), 500
+
+@api.route('/candidates', methods=['POST'])
+@jwt_required
+def apply_to_offer():
+    user_id = get_jwt_identity
+
+    user = User.query.get(user_id)
+    if not user: 
+        return jsonify({"msg": "Usuario no permitido"}), 401
+    
+    if not user.profile_developer:
+        return jsonify({"msg": "Solo pueden inscribirse perfiles de desarrollador"})
+    
+    offer_id = request.json.get("offer_id")
+    offer = Offer.query.get(offer_id)
+    if not offer:
+        return jsonify({"msg": "Oferta no encontrada"}), 404
+    
+    candidate_exist = Candidate.query.filter_by(user_id=user.id, offer_id=offer.id).first()
+    if candidate_exist:
+        return jsonify({"msg": "Ya estás inscrito en esta oferta"}), 409
+
+    new_candidate = Candidate(user_id=user.id, offer_id=offer.id)
+    db.session.add(new_candidate)
+    db.session.commit()
+    
+    return jsonify({"msg": "Inscripcion realizada con éxito."}),200
+
+@api.route('/candidates/<int:offer_id>', methods=['DELETE'])
+@jwt_required()
+def unapply_from_offer(offer_id):
+    user_id = get_jwt_identity()  
+
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"msg": "Usuario no permitido"}), 401
+
+    offer = Offer.query.get(offer_id)
+    if not offer:
+        return jsonify({"msg": "Oferta no encontrada o ID inválido"}), 404
+
+    candidate = Candidate.query.filter_by(user_id=user.id, offer_id=offer.id).first()
+    if not candidate:
+        return jsonify({"msg": "No estás inscrito en esta oferta"}), 404
+
+    db.session.delete(candidate)
+    db.session.commit()
+
+    return jsonify({"msg": "Desinscripción realizada con éxito."}), 200
