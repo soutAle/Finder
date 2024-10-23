@@ -14,7 +14,7 @@ export const HighlightSection = () => {
                                 <img src="https://unitedstates.corriculo.co.uk/wp-content/uploads/2022/01/Software-Developer-Recruitment-Agency.jpg" alt="Para Desarrolladores" className="card-img-top" />
                             </div>
                             <div className="card-body">
-                                <h3 className="mt-3 fw-bold">Para Desarrolladores</h3>
+                                <h3 className="mt-3">Para Desarrolladores</h3>
                                 <p>Encuentra oportunidades laborales, colabora en proyectos desafiantes y desarrolla tu carrera.</p>
                             </div>
                         </div>

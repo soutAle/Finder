@@ -14,7 +14,7 @@ export const HeroSection = () => {
                     </>
                 )}
                 <h1 className="display-4">Conecta Desarrolladores con Empresas</h1>
-                <p className="lead">Encuentra tu próximo proyecto o el talento ideal para tu equipo</p>
+                <h2 className="lead">Encuentra tu próximo proyecto o el talento ideal para tu equipo</h2>
                 <Link to="/signup" className="btn btn-hero btn-lg mt-3 rounded-pill">
                     ¡Comienza Ahora!
                 </Link>
