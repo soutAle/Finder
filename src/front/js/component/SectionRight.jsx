@@ -2,21 +2,21 @@ import React, { useContext, useEffect } from "react";
 import "../../styles/section-right.css";
 import { Context } from "../store/appContext.js";
 import { CardOffer } from "./timeline_offers_components/CardOffer.jsx";
+import { useLoadOffers } from "../hooks/useLoadOffers.jsx";
 
 export const SectionRight = React.memo(() => {
-    const { actions, store } = useContext(Context);
+    const { store } = useContext(Context);
+    const loading = useLoadOffers();
 
-    useEffect(() => {
-        const fetchoffers = async () => {
-            await actions.loadAllOffers();
-        };
+    if (loading) {
+        return <p>Cargando ofertas...</p>;
+    }
 
-        fetchoffers();
-    }, []);
-
-    const topRatingOffers = store.offers
-        .filter(offer => offer.rating > 4)
-        .sort((a, b) => b.rating - a.rating);
+    const topRatingOffers = Array.isArray(store.offers)
+        ? store.offers
+            .filter(offer => offer && offer.rating !== undefined && offer.rating > 4)
+            .sort((a, b) => b.rating - a.rating)
+        : [];
 
     return (
         <div className="container section-box d-flex flex-column justify-content-center">

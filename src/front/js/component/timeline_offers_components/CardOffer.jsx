@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useJobApplication } from "../../hooks/useJobApplication.jsx";
 import { useBookmarks } from "../../hooks/useBookmarks.jsx";
@@ -7,9 +7,11 @@ import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { CardOfferImage } from "../card_offer_components/CardOfferImage.jsx";
 import { CardOfferDetails } from "../card_offer_components/CardOfferDetails.jsx"
 import { ActionButtons } from "../card_offer_components/ActionButtons.jsx";
+import { Context } from "../../store/appContext.js";
 import "../../../styles/card-offer.css";
 
 export const CardOffer = ({ id }) => {
+    const { store, actions } = useContext(Context);
     const navigate = useNavigate();
     const { isSubscribed, applyToJob, unapplyFromJob } = useJobApplication(id);
     const { isSaved, toggleBookmark } = useBookmarks(id);
@@ -23,7 +25,7 @@ export const CardOffer = ({ id }) => {
         navigate(`/companyprofile/${id}`);
     };
 
-    const offer = store.jobOffers.find((offer) => offer.id === id);
+    const offer = store.offers.find((offer) => offer.id === id);
     if (!offer) return <div>Oferta no encontrada</div>;
 
     return (
@@ -34,22 +36,20 @@ export const CardOffer = ({ id }) => {
             />
             <CardOfferDetails
                 name={offer.name}
-                empresa={offer.nombre_empresa}
-                localidad={offer.localidad}
-                descripcion={offer.descripcion}
-                fecha={formatDate(offer.fecha_publicacion)}
-                modalidad={offer.modalidad}
-                salario={offer.salario}
-                experiencia={offer.experiencia_minima}
+                location={offer.location}
+                description={offer.description}
+                modlity={offer.modality}
+                salary={offer.salary}
+                minimun_experience={offer.minimun_experience}
             />
             <ActionButtons
                 isSubscribed={isSubscribed}
-                onApply={handleApplyClick}
-                onUnapply={handleApplyClick}
+                onApply={applyToJob}
+                onUnapply={unapplyFromJob}
                 onViewDetails={handleViewDetails}
             />
-            <div onClick={handleSavedClick} className="heart-icon" style={{ cursor: "pointer" }}>
-                {isFavorite ? <FaHeart /> : <FaRegHeart />}
+            <div onClick={toggleBookmark} className="heart-icon" style={{ cursor: "pointer" }}>
+                {isSaved ? <FaHeart /> : <FaRegHeart />}
             </div>
         </div>
     );
