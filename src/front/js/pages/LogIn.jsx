@@ -22,9 +22,9 @@ export const LogIn = () => {
     };
 
     return (
-        <div className="mt-5 login-view-container">
-            <div className="row">
-                <div className="col-md-6">
+        <div className="container-fluid mt-5 login-view-container">
+            <div className="row ms-5">
+                <div className="col-6 col-md-8 col-sm-12">
                     <div className="card shadow">
                         <div className="card-body card-login">
                             <LoginForm
