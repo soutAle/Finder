@@ -2,10 +2,10 @@ import React from "react";
 
 
 
-export const About = () =>{
+export const About = () => {
 
 
-    return(
+    return (
         <div className="container">
             <div className="row">
                 <div className="col-12">
@@ -14,6 +14,7 @@ export const About = () =>{
                     </h1>
                 </div>
             </div>
+
         </div>
     );
 };

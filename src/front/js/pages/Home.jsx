@@ -5,6 +5,7 @@ import { HeroSection } from "../component/home_components/HeroSection.jsx";
 import { HighlightSection } from "../component/home_components/HighLightSection.jsx";
 import { TestimonialSection } from "../component/home_components/TestimonialSection.jsx";
 import { CallToAcction } from "../component/home_components/CallToAcction.jsx";
+import { AboutUsSection } from "../component/home_components/AboutUsSection.jsx";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -13,6 +14,7 @@ export const Home = () => {
 		<div className="home-container">
 			<HeroSection />
 			<HighlightSection />
+			<AboutUsSection />
 			<TestimonialSection />
 			<CallToAcction />
 		</div>
