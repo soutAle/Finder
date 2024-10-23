@@ -13,9 +13,9 @@ export const HeroSection = () => {
                         <h1 className="greeting-user-home my-4">Bienvenido de nuevo {store?.user?.name}</h1>
                     </>
                 )}
-                <h1 className="display-4 fw-bold">Conecta Desarrolladores con Empresas</h1>
+                <h1 className="display-4">Conecta Desarrolladores con Empresas</h1>
                 <p className="lead">Encuentra tu próximo proyecto o el talento ideal para tu equipo</p>
-                <Link to="/signup" className="btn btn-primary btn-lg mt-3">
+                <Link to="/signup" className="btn btn-hero btn-lg mt-3 rounded-pill">
                     ¡Comienza Ahora!
                 </Link>
             </div>
