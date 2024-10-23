@@ -3,18 +3,18 @@ import { Context } from "../store/appContext.js";
 
 // Hook para cargar ofertas
 export const useLoadOffers = () => {
-    const { store, actions } = useContext(Context); // Extraer 'store' para acceder a las ofertas
+    const { store, actions } = useContext(Context);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const load = async () => {
             setLoading(true);
-            await actions.loadAllOffers(); // Asume que esta acción llena 'store.offers'
+            await actions.loadAllOffers();
             setLoading(false);
         };
 
         load();
     }, []);
 
-    return { offers: store.offers, loading }; // Devolver las ofertas y el estado de carga
+    return { offers: store.offers, loading };
 };
