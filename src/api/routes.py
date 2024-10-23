@@ -243,7 +243,7 @@ def get_all_offers():
     try:
         offers = Offer.query.all()
         if offers:
-            return jsonify({"success": True, "offers": [offers.serialize() for offer in offers]}), 200
+            return jsonify({"success": True, "offers": [offer.serialize() for offer in offers]}), 200
         return jsonify({"success": False, "msg": "No hay ofertas disponibles"}), 404
     except Exception as e:
         return jsonify({"success": False, "msg": f"Error al obtener las ofertas: {str(e)}"}), 500

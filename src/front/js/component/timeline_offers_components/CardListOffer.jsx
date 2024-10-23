@@ -1,16 +1,16 @@
-import React, { useContext } from "react";
-import { useOffers } from "../../hooks/useOffers.jsx";
+import React from "react";
+import { useLoadOffers } from "../../hooks/useLoadOffers.jsx";
 import { OfferCardPremiumLogic } from "../card_offer_components/OfferCardPremiumLogic.jsx";
 
 export const CardListOffers = ({ searchTerm, company_id }) => {
-    const { offers, loading } = useOffers(searchTerm, company_id);
+    const { offers = [], loading } = useLoadOffers(); // Usamos el hook actualizado
 
     return (
         <div className="list-offer-container mt-3 m-auto">
             <div className="row d-flex flex-column text-start g-2">
                 {loading ? (
                     <p className="loading-section text-center">Cargando ofertas...</p>
-                ) : offers.length > 0 ? (
+                ) : Array.isArray(offers) && offers.length > 0 ? (
                     offers.map((offer) => (
                         <div className="col list-offer-box" key={offer.id}>
                             <OfferCardPremiumLogic offer={offer} />
