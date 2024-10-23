@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../../styles/home.css"
 
 export const CallToAcction = () => {
 
 
     return (
         <section className="cta-section py-5 text-white text-center my-5">
-            <h2 className="fw-bold">¿Listo para comenzar?</h2>
+            <h2 className="display-4">¿Listo para impulsar tu carrera?</h2>
             <p>Regístrate hoy mismo y conecta con las mejores empresas y desarrolladores del sector.</p>
-            <Link to="/signup" className="btn btn-primary btn-lg">
+            <Link to="/signup" className="btn btn-call-to btn-lg rounded-pill">
                 ¡Regístrate Ahora!
             </Link>
         </section>

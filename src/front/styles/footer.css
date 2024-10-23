@@ -1,6 +1,6 @@
 .footer {
     color: white;
-    background-color: rgb(2, 47, 92);
+    background-color: #002237e2;
 }
 
 .text-footer {
@@ -20,6 +20,7 @@
 .footer-icons li a {
     color: inherit; 
     transition: color 0.3s;
+    font-size: 1.5rem;
 }
 
 .footer-icons li a:hover {

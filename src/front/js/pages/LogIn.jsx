@@ -24,7 +24,7 @@ export const LogIn = () => {
     return (
         <div className="container-fluid mt-5 login-view-container">
             <div className="row ms-5">
-                <div className="col-6 col-md-8 col-sm-12">
+                <div className="col-md-4">
                     <div className="card shadow">
                         <div className="card-body card-login">
                             <LoginForm
