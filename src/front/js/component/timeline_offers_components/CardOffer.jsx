@@ -2,16 +2,15 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useJobApplication } from "../../hooks/useJobApplication.jsx";
 import { useBookmarks } from "../../hooks/useBookmarks.jsx";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
-// import { formatDate } from "../helpers/dateHelper";
-import { CardOfferImage } from "../card_offer_components/CardOfferImage.jsx";
+import { FaRegHeart, FaHeart, FaRegBookmark } from "react-icons/fa";
 import { CardOfferDetails } from "../card_offer_components/CardOfferDetails.jsx"
 import { ActionButtons } from "../card_offer_components/ActionButtons.jsx";
 import { Context } from "../../store/appContext.js";
 import "../../../styles/card-offer.css";
+import { FaBookBookmark } from "react-icons/fa6";
 
 export const CardOffer = ({ id }) => {
-    const { store, actions } = useContext(Context);
+    const { store } = useContext(Context);
     const navigate = useNavigate();
     const { isSubscribed, applyToJob, unapplyFromJob } = useJobApplication(id);
     const { isSaved, toggleBookmark } = useBookmarks(id);
@@ -29,11 +28,10 @@ export const CardOffer = ({ id }) => {
     if (!offer) return <div>Oferta no encontrada</div>;
 
     return (
-        <div className="card-offer mt-2" onClick={handleViewCompany}>
-            <CardOfferImage
-                src="https://img.freepik.com/vector-premium/concepto-pequena-empresa-fachada-cafeteria-tiendas-ventas_654623-1161.jpg"
-                alt="Company Logo"
-            />
+        <div className="card-offer m-2" onClick={handleViewCompany}>
+            <div onClick={toggleBookmark} className="bookmark-icon" style={{ cursor: "pointer" }}>
+                {isSaved ? <FaRegBookmark /> : <FaRegBookmark />}
+            </div>
             <CardOfferDetails
                 name={offer.name}
                 location={offer.location}
@@ -48,9 +46,7 @@ export const CardOffer = ({ id }) => {
                 onUnapply={unapplyFromJob}
                 onViewDetails={handleViewDetails}
             />
-            <div onClick={toggleBookmark} className="heart-icon" style={{ cursor: "pointer" }}>
-                {isSaved ? <FaHeart /> : <FaRegHeart />}
-            </div>
+
         </div>
     );
 };

@@ -4,13 +4,19 @@ import "../../../styles/home.css"
 
 export const AboutUsSection = () => {
     return (
-        <div className="promote-community text-center my-5">
-            <div className="row">
-                <div className="col mt-5">
+        <div className="promote-community text-center pt-5 my-5">
+            <div className="row justify-content-center">
+                <div className="col-md-8 col-lg-6 my-5">
                     <h2 className="fw-bold fs-1">¡Únete a nuestra comunidad!</h2>
-                    <p>Queremos escuchar tu experiencia. Comparte tu testimonio y ayuda a otros a encontrar su camino en el desarrollo.</p>
+                    <div>
+                        <p className="text-break">
+                            Conecta con el mejor talento tecnológico o encuentra la
+                            oportunidad ideal para ti. En Finder, unimos desarrolladores y empresas para crear el futuro.
+                            ¡Descubre más sobre nosotros y únete a la comunidad!
+                        </p>
+                    </div>
                     <Link to="/About" className="btn btn-no-testimonial btn-lg rounded-pill">
-                        ¡Conocenos!
+                        ¡Conócenos!
                     </Link>
                 </div>
             </div>

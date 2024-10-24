@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useJobApplication } from "../../hooks/useJobApplication.jsx";
 import { useBookmarks } from "../../hooks/useBookmarks.jsx";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
-import { CardOfferImage } from "../card_offer_components/CardOfferImage.jsx";
 import { CardOfferDetails } from "../card_offer_components/CardOfferDetails.jsx"
 import { ActionButtons } from "../card_offer_components/ActionButtons.jsx";
 import { Context } from "../../store/appContext.js";
@@ -30,10 +29,6 @@ export const CardOfferPremium = ({ id }) => {
 
     return (
         <div className="card-offer mt-2" onClick={handleViewCompany}>
-            <CardOfferImage
-                src="https://img.freepik.com/vector-premium/concepto-pequena-empresa-fachada-cafeteria-tiendas-ventas_654623-1161.jpg"
-                alt="Company Logo"
-            />
             <CardOfferDetails
                 name={offer.name}
                 title={offer.title}
