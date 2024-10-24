@@ -18,13 +18,13 @@ export const TestimonialCardList = () => {
             testimony: "El proceso de trabajo en equipo ha sido increíble y he aprendido muchísimo en cada proyecto."
         },
         {
-            image: "https://via.placeholder.com/100",
+            image: "https://media.licdn.com/dms/image/v2/D4E12AQFYgwDhv6-BZQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1704587612317?e=2147483647&v=beta&t=e3vBVOpBXXWtlqlsrr79wWpVCQCuQN89RpmhcnzAtHE",
             name: "Pedro Martínez",
             role: "Diseñador UX/UI",
             testimony: "Colaborar con este equipo ha llevado mis habilidades a un nuevo nivel. ¡Altamente recomendable!"
         },
         {
-            image: "https://via.placeholder.com/100",
+            image: "https://img.freepik.com/fotos-premium/sonriente-joven-mujer-profesional-mujer-negocios-gerente-banco-usando-tab-pad-computadora-oficina_709689-1325.jpg",
             name: "Ana Torres",
             role: "Product Owner",
             testimony: "El enfoque en la calidad y la atención al detalle son impresionantes. Estoy muy satisfecha con los resultados."

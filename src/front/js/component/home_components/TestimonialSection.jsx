@@ -7,7 +7,7 @@ export const TestimonialSection = () => {
     const { store, actions } = useContext(Context);
 
     return (
-        <section className="testimonials-section py-5 my-5">
+        <section className="testimonials-section my-5">
             <TestimonialCardList />
         </section>
     )
