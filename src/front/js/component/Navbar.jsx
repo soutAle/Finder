@@ -71,7 +71,7 @@ export const Navbar = () => {
 									</Link>
 								</li>
 								<li className="nav-item">
-									<Link className="nav-link" to="/profildeveloper">
+									<Link className="nav-link" to="/profiledeveloper">
 										Perfil
 									</Link>
 								</li>

@@ -1,9 +1,9 @@
 import React from "react";
 import { useLoadOffers } from "../../hooks/useLoadOffers.jsx";
-import { OfferCardPremiumLogic } from "../card_offer_components/OfferCardPremiumLogic.jsx";
+import { OfferCardPremiumLogic } from "./card_offer_components/LogicPremiumCard.jsx";
 
 export const CardListOffers = ({ searchTerm, company_id }) => {
-    const { offers = [], loading } = useLoadOffers(); // Usamos el hook actualizado
+    const { offers = [], loading } = useLoadOffers();
 
     return (
         <div className="list-offer-container mt-3 m-auto">

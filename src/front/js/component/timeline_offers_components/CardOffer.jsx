@@ -2,11 +2,11 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useJobApplication } from "../../hooks/useJobApplication.jsx";
 import { useBookmarks } from "../../hooks/useBookmarks.jsx";
-import { FaRegHeart, FaHeart, FaRegBookmark } from "react-icons/fa";
-import { CardOfferDetails } from "../card_offer_components/CardOfferDetails.jsx"
-import { ActionButtons } from "../card_offer_components/ActionButtons.jsx";
+import { FaRegBookmark } from "react-icons/fa";
+import { CardOfferDetails } from "../timeline_offers_components/card_offer_components/CardOfferDetails.jsx"
+import { ActionButtons } from "../../component/timeline_offers_components/card_offer_components/ActionButtons.jsx";
 import { Context } from "../../store/appContext.js";
-import "../../../styles/card-offer.css";
+import "../../../styles/card-offer.css"
 import { FaBookBookmark } from "react-icons/fa6";
 
 export const CardOffer = ({ id }) => {

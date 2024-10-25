@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useJobApplication } from "../../hooks/useJobApplication.jsx";
 import { useBookmarks } from "../../hooks/useBookmarks.jsx";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
-import { CardOfferDetails } from "../card_offer_components/CardOfferDetails.jsx"
-import { ActionButtons } from "../card_offer_components/ActionButtons.jsx";
+import { CardOfferDetails } from "../../component/timeline_offers_components/card_offer_components/CardOfferDetails.jsx"
+import { ActionButtons } from "../../component/timeline_offers_components/card_offer_components/ActionButtons.jsx";
 import { Context } from "../../store/appContext.js";
 import "../../../styles/card-offerpremium.css";
 

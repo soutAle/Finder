@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../../styles/card-offer.css"
+import "../../../../styles/card-offer.css"
 
 export const CardOfferDetails = ({ title, name, location, description, modality, salary, minimun_experience }) => {
     return (
