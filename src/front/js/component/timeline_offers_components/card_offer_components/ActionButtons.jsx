@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActionButton } from '../card_offer_components/ActionButton.jsx';
-import "../../../styles/card-offer.css"
+import "../../../../styles/card-offer.css"
 
 export const ActionButtons = ({ isSubscribed, onApply, onUnapply, onViewDetails }) => {
     return (
