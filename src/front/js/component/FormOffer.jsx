@@ -128,9 +128,9 @@ export const FormOffer = () => {
                                     required
                                 >
                                     <option value="">Seleccione una opción</option>
-                                    <option value="teletrabajo">Teletrabajo</option>
-                                    <option value="presencial">Presencial</option>
-                                    <option value="hybrido">Hybrido</option>
+                                    <option value="Teletrabajo">Teletrabajo</option>
+                                    <option value="Presencial">Presencial</option>
+                                    <option value="Híbrido">Híbrido</option>
                                 </select>
                             </div>
                             <div className="col-4 d-flex flex-column">
@@ -192,7 +192,6 @@ export const FormOffer = () => {
                                     onChange={handleChange}
                                     value={formData.contract_type}
                                 />
-
                             </div>
                         </div>
                         <div className=" row mt-3">

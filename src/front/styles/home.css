@@ -16,7 +16,6 @@
   /* Highlights Section */
   .highlight-cards {
     width: 25rem;
-    height: auto;
     border-radius: 5px;
     transition: transform 0.5s, box-shadow 0.3s, color 0.3s;
     overflow: hidden;
@@ -27,7 +26,7 @@
     cursor: pointer;
 }
 
-.card-img-top {
+.card-img-top-highlight {
     width: 100%;
     height: 180px;
     object-fit: cover;
@@ -35,7 +34,7 @@
     transition: transform 0.5s ease;
 }
 
-.highlight-cards:hover .card-img-top {
+.highlight-cards:hover .card-img-top-highlight {
   transform: scale(1.08);
 }
 
@@ -43,7 +42,7 @@
   overflow: hidden;
 }
 
-.card-body {
+.card-body-highlight {
     padding: 1rem;
 }
 

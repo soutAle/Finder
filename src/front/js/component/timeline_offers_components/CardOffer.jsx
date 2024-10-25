@@ -33,7 +33,8 @@ export const CardOffer = ({ id }) => {
                 {isSaved ? <FaRegBookmark /> : <FaRegBookmark />}
             </div>
             <CardOfferDetails
-                name={offer.name}
+                image={offer.image}
+                name={offer.title}
                 location={offer.location}
                 description={offer.description}
                 modlity={offer.modality}
