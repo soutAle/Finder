@@ -29,7 +29,6 @@ export const Navbar = () => {
 					<span className="navbar-toggler-icon"></span>
 				</button>
 
-
 				<div className="d-none d-md-flex pe-5">
 					<ul className="navbar-nav-text d-flex justify-content-end align-items-end flex-grow-1 pe-5 list-unstyled mb-0">
 						<li className="nav-item">
@@ -62,7 +61,7 @@ export const Navbar = () => {
 							<>
 								<li className="nav-item">
 									<Link className="nav-link active" aria-current="page" to="/myoffers">
-										Bookmarks
+										Ofertas Guardadas
 									</Link>
 								</li>
 								<li className="nav-item">
