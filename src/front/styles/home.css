@@ -1,37 +1,37 @@
 /* Estilos generales */
 .home-container {
-    width: 100%;
-    margin: 0 auto;
-    
-  }
-  
-  /* Hero Section */
-  .hero-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  /* Highlights Section */
-  .highlight-cards {
-    width: 25rem;
-    border-radius: 5px;
-    transition: transform 0.5s, box-shadow 0.3s, color 0.3s;
-    overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Highlights Section */
+.highlight-cards {
+  width: 25rem;
+  border-radius: 5px;
+  transition: transform 0.5s, box-shadow 0.3s, color 0.3s;
+  overflow: hidden;
 }
 
 .highlight-cards:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.304);
-    cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.304);
+  cursor: pointer;
 }
 
 .card-img-top-highlight {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-bottom: 1px solid rgba(138, 138, 138, 0.5); 
-    transition: transform 0.5s ease;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(138, 138, 138, 0.5);
+  transition: transform 0.5s ease;
 }
 
 .highlight-cards:hover .card-img-top-highlight {
@@ -43,42 +43,48 @@
 }
 
 .card-body-highlight {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .highlights-section h3 {
-    margin-top: 1rem;
-    font-size: 1.5rem;
-    color: inherit;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: inherit;
 }
 
 .highlights-section p {
-    font-size: 1rem;
-    color: inherit;
+  font-size: 1rem;
+  color: inherit;
 }
 
-  /* Testimonials Section */
-  .testimonial-card {
-    max-width: 540px; 
-    min-height: 250px;
-    border: none; 
-    border-radius: 10px; 
-    overflow: hidden; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    background-color: #ffffff; 
+/* AboutUs Section */
+.promote-community {
+  color: white;
+  background-color: #002a446f;
+}
+
+/* Testimonials Section */
+.testimonial-card {
+  max-width: 540px;
+  min-height: 250px;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff;
 }
 
 .testimonial-card:hover {
-    transform: translateY(-10px); 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); 
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .testimonial-img-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .testimonial-img {
@@ -88,63 +94,64 @@
 }
 
 .testimonial-content {
-    padding: 20px;
+  padding: 20px;
 }
 
 .card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #002237;
-    margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #002237;
+  margin-bottom: 0.5rem;
 }
 
 .card-role {
-    font-size: 1rem;
-    color: #555; 
-    margin-bottom: 1rem; 
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
 }
 
 .card-text {
-    font-size: 1rem;
-    color: #333;
-    font-style: italic; 
+  font-size: 1rem;
+  color: #333;
+  font-style: italic;
 }
 
 .card-role:hover {
-    color: #002237;
-    cursor: pointer; 
-}
-
-  
-  /* CTA Section */
-  .cta-section {
-    box-shadow: 1px 13px 70px 0px #434343;
-    background-color: #002a446f;
-    padding: 60px 0;
-  }
-  
-  .cta-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .cta-section p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-  }
-
-  .btn-call-to, .btn-no-testimonial, .btn-hero {
-    color: rgb(255, 255, 255);
-    background-color: #002237e2;
-    border: 1px solid rgb(71, 71, 71);
-    transition: transform 0.6s, box-shadow 0.3s, color 0.3s;
-}
-
-.btn-call-to:hover, .btn-no-testimonial:hover, .btn-hero:hover {
-    color: rgb(255, 255, 255);
-    box-shadow: 0px 4px 8px rgba(40, 40, 40, 0.562);
-    transform: translateY(-2px);
+  color: #002237;
+  cursor: pointer;
 }
 
 
-  
+/* CTA Section */
+.cta-section {
+  box-shadow: 1px 13px 70px 0px #434343;
+  background-color: #002a446f;
+  padding: 60px 0;
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn-call-to,
+.btn-no-testimonial,
+.btn-hero {
+  color: rgb(255, 255, 255);
+  background-color: #002237e2;
+  border: 1px solid rgb(71, 71, 71);
+  transition: transform 0.6s, box-shadow 0.3s, color 0.3s;
+}
+
+.btn-call-to:hover,
+.btn-no-testimonial:hover,
+.btn-hero:hover {
+  color: rgb(255, 255, 255);
+  box-shadow: 0px 4px 8px rgba(40, 40, 40, 0.562);
+  transform: translateY(-2px);
+}
