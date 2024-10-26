@@ -57,7 +57,7 @@ export const SignUpForm = () => {
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group mb-3">
                                     <label htmlFor="user-type" className="form-label">
-                                        ¿Eres empresa o desarrollador?
+                                        ¿Buscas oportunidades o talento?
                                     </label>
                                     <div>
                                         <input
@@ -68,7 +68,7 @@ export const SignUpForm = () => {
                                             onChange={handleChange}
                                             required
                                         />
-                                        <label htmlFor="desarrollador" className="form-label ms-2">Desarrollador</label>
+                                        <label htmlFor="desarrollador" className="form-label ms-2">Oportunidades</label>
                                     </div>
                                     <div>
                                         <input
@@ -79,7 +79,7 @@ export const SignUpForm = () => {
                                             onChange={handleChange}
                                             required
                                         />
-                                        <label htmlFor="empresa" className="form-label ms-2">Empresa</label>
+                                        <label htmlFor="empresa" className="form-label ms-2">Talento</label>
                                     </div>
                                 </div>
                                 <div className="form-group mb-3">

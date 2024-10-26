@@ -1,6 +1,6 @@
 import React from "react";
-import { useLoadOffers } from "../../hooks/useLoadOffers.jsx";
-import { OfferCardPremiumLogic } from "./card_offer_components/LogicPremiumCard.jsx";
+import { useLoadOffers } from "../../../hooks/useLoadOffers.jsx";
+import { OfferCardPremiumLogic } from "./LogicPremiumCard.jsx";
 
 export const CardListOffers = ({ searchTerm, company_id }) => {
     const { offers = [], loading } = useLoadOffers();
@@ -12,7 +12,7 @@ export const CardListOffers = ({ searchTerm, company_id }) => {
                     <p className="loading-section text-center">Cargando ofertas...</p>
                 ) : Array.isArray(offers) && offers.length > 0 ? (
                     offers.map((offer) => (
-                        <div key={offer.id}>
+                        <div className="col list-offer-box" key={offer.id}>
                             <OfferCardPremiumLogic offer={offer} />
                         </div>
                     ))
