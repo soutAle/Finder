@@ -4,10 +4,10 @@ import "../../../styles/home.css"
 
 export const AboutUsSection = () => {
     return (
-        <div className="promote-community text-center pt-5 my-5">
-            <div className="row justify-content-center">
+        <div className="text-center pt-5 my-5">
+            <div className="promote-community row justify-content-center">
                 <div className="col-md-8 col-lg-6 my-5">
-                    <h2 className="fw-bold fs-1">¡Únete a nuestra comunidad!</h2>
+                    <h2 className="display-4">¡Únete a nuestra comunidad!</h2>
                     <div>
                         <p className="text-break">
                             Conecta con el mejor talento tecnológico o encuentra la
