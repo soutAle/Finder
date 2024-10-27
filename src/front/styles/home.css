@@ -151,7 +151,7 @@
 .btn-call-to:hover,
 .btn-no-testimonial:hover,
 .btn-hero:hover {
-  color: rgb(255, 255, 255);
+  color: #1877F2;
   box-shadow: 0px 4px 8px rgba(40, 40, 40, 0.562);
   transform: translateY(-2px);
 }
