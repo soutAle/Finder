@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 export const CardOfferDetails = ({ title, description, location, modality, salary, minimun_experience, id }) => {
     const { isSubscribed, applyToJob, unapplyFromJob } = useJobApplication(id);
-    const { isSaved, toggleBookmark } = useBookmarks(id);
     const navigate = useNavigate();
 
     const handleViewDetails = () => {
@@ -28,9 +27,9 @@ export const CardOfferDetails = ({ title, description, location, modality, salar
                     <p>{description}</p>
                 </div>
                 <ul className="list-unstyled d-flex justify-content-start m-0 details-list">
-                    <li className="mx-2 details-list-item">{modality}</li>
-                    <li className="mx-2 details-list-item">{salary}</li>
-                    <li className='mx-2 details-list-item'>{minimun_experience}</li>
+                    <li className="mx-2 details-list">{modality}</li>
+                    <li className="mx-2 details-list">{salary}</li>
+                    <li className='mx-2 details-list'>{minimun_experience}</li>
                 </ul>
                 <ActionButtons
                     isSubscribed={isSubscribed}

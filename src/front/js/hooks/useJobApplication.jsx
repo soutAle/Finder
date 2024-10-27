@@ -1,24 +1,24 @@
 import { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext.js";
 
-export const useJobApplication = (offerId) => {
+export const useJobApplication = (companyId) => {
     const { actions, store } = useContext(Context);
     const [isSubscribed, setIsSubscribed] = useState(false);
 
     useEffect(() => {
         if (store.user && store.user.profile_developer) {
-            const subscribed = store.user.inscribedOffers?.includes(offerId);
+            const subscribed = store.user.inscribedOffers?.includes(companyId);
             setIsSubscribed(subscribed);
         }
 
-    }, [store.user, offerId]);
+    }, [store.user, companyId]);
 
     const applyToJob = async () => {
         if (!store.user?.profile_developer) {
             throw new Error("Solo los programadores pueden inscribirse.");
         }
 
-        const result = await actions.applyToJobOffer(offerId);
+        const result = await actions.applyToJobOffer(companyId);
         if (result?.msg) {
             setIsSubscribed(true);
         } else {
@@ -27,7 +27,7 @@ export const useJobApplication = (offerId) => {
     };
 
     const unapplyFromJob = async () => {
-        const result = await actions.unapplyFromJobOffer(offerId);
+        const result = await actions.unapplyFromJobOffer(companyId);
         if (result?.msg) {
             setIsSubscribed(false);
         } else {

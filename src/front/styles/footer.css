@@ -1,6 +1,7 @@
 .footer {
     color: white;
-    background-color: #002237e2;
+    background-color: #0022377e;
+    height: 90px;
 }
 
 .text-footer {
@@ -18,19 +19,19 @@
 }
 
 .footer-icons li a {
-    color: inherit; 
+    color: inherit;
     transition: color 0.3s;
     font-size: 1.5rem;
 }
 
 .footer-icons li a:hover {
-    color: #1877F2; 
+    color: #1877F2;
 }
 
 .footer-icons li:nth-child(2) a:hover {
-    color: #C13584; 
+    color: #C13584;
 }
 
 .footer-icons li:nth-child(3) a:hover {
-    color: #1DA1F2; 
+    color: #1DA1F2;
 }
