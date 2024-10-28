@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  border: 1px solid gray;
 }
 
 /* Highlights Section */
@@ -60,7 +61,7 @@
 /* AboutUs Section */
 .promote-community {
   color: white;
-  background-color: #002a446f;
+  background-color: #002237e2;
 }
 
 /* Testimonials Section */
@@ -125,7 +126,7 @@
 /* CTA Section */
 .cta-section {
   box-shadow: 1px 13px 70px 0px #434343;
-  background-color: #002a446f;
+  background-color: #002237e2;
   padding: 60px 0;
 }
 
@@ -143,7 +144,7 @@
 .btn-no-testimonial,
 .btn-hero {
   color: rgb(255, 255, 255);
-  background-color: #002237e2;
+  background-color: #3b7ca4e2;
   border: 1px solid rgb(71, 71, 71);
   transition: transform 0.6s, box-shadow 0.3s, color 0.3s;
 }
@@ -151,7 +152,7 @@
 .btn-call-to:hover,
 .btn-no-testimonial:hover,
 .btn-hero:hover {
-  color: #1877F2;
+  color: #000000;
   box-shadow: 0px 4px 8px rgba(40, 40, 40, 0.562);
   transform: translateY(-2px);
 }

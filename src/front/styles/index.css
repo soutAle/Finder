@@ -2,6 +2,5 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 body {
-    min-height: 80vh;
     background-color: rgba(158, 158, 158, 0.352);
 }
