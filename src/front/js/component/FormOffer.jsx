@@ -47,7 +47,7 @@ export const FormOffer = () => {
             try {
                 const resp = await actions.createJobOffer(updatedFormData);
                 console.log(resp);
-                navigate('/timeline');
+                navigate('/offers');
             } catch (error) {
                 console.log(error)
                 setError('Ocurrió un error al crear la oferta.');

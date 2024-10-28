@@ -220,7 +220,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
 
                 try {
-                    const resp = await fetch(`${process.env.BACKEND_URL}/api/candidate`, {
+                    const resp = await fetch(`${process.env.BACKEND_URL}/api/candidates`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
