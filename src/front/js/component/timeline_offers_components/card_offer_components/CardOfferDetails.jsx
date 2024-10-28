@@ -2,7 +2,6 @@ import React from 'react';
 import '../../../../styles/card-offer.css';
 import { ActionButtons } from "../card_offer_components/ActionButtons.jsx";
 import { useJobApplication } from "../../../hooks/useJobApplication.jsx";
-import { useBookmarks } from "../../../hooks/useBookmarks.jsx";
 import { useNavigate } from "react-router-dom";
 
 export const CardOfferDetails = ({ title, description, location, modality, salary, minimun_experience, id }) => {

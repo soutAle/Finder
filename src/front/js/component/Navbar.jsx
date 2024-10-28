@@ -7,10 +7,12 @@ import { IoPersonCircleOutline, IoLogOutOutline } from "react-icons/io5";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	const navigate = useNavigate();
+
 	const handleLogOutRedirect = () => {
 		actions.logOut();
 		navigate("/");
 	};
+
 
 	return (
 		<nav className="navbar custom-navbar">
