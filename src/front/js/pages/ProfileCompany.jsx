@@ -9,7 +9,7 @@ export const ProfileCompany = props => {
 
 	return (
 		<div className="container">
-
+			<h1>Profile Company</h1>
 		</div>
 	);
 };

@@ -267,11 +267,9 @@ def apply_to_offer():
     user_id = get_jwt_identity
 
     user = User.query.get(user_id)
-    if not user: 
-        return jsonify({"msg": "Usuario no permitido"}), 401
     
     if not user.profile_developer:
-        return jsonify({"msg": "Solo pueden inscribirse perfiles de desarrollador"})
+        return jsonify({"msg": "Solo pueden inscribirse desarrolladores"})
     
     offer_id = request.json.get("offer_id")
     offer = Offer.query.get(offer_id)

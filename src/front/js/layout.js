@@ -4,7 +4,6 @@ import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/Home.jsx";
-import { ProfileDeveloper } from "./pages/ProfileDeveloper.jsx"
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/Navbar.jsx";
 import { Footer } from "./component/Footer.jsx";
@@ -14,6 +13,8 @@ import { Contact } from "./pages/Contact.jsx";
 import { SignUp } from "./pages/SignUp.jsx";
 import { LogIn } from "./pages/LogIn.jsx";
 import { CreateOffer } from "./pages/CreateOffer.jsx";
+import { ProfileDeveloper } from "./pages/ProfileDeveloper.jsx"
+import { ProfileCompany } from "./pages/ProfileCompany.jsx";
 
 
 
@@ -34,6 +35,9 @@ const Layout = () => {
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<ProfileDeveloper />} path="/profiledeveloper" />
+                        <Route element={<ProfileDeveloper />} path="/profiledeveloper/:id" />
+                        <Route element={<ProfileDeveloper />} path="/profilecompany" />
+                        <Route element={<ProfileCompany />} path="/profilecompany/:id" />
                         <Route element={<Offers />} path="/offers" />
                         <Route element={<About />} path="/about" />
                         <Route element={<Contact />} path="/contact" />
