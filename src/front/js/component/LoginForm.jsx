@@ -32,6 +32,7 @@ export const LoginForm = ({ onSubmit, handleChange, credentials, error }) => {
                     value={credentials.password}
                     onChange={handleChange}
                     placeholder="Ingresa tu contraseña"
+                    autocomplete="current-password"
                     required
                 />
             </div>

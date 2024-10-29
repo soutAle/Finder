@@ -5,14 +5,6 @@
 
 }
 
-/* Hero Section */
-.hero-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border: 1px solid gray;
-}
 
 /* Highlights Section */
 .highlight-cards {
