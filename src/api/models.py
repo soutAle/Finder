@@ -45,8 +45,8 @@ class User(db.Model):
 class Company(db.Model):
     __tablename__ = "companies"
     
-    description = db.Column(db.String(200))
-    location = db.Column(db.String(50))
+    description = db.Column(db.String(500))
+    location = db.Column(db.String(120))
     website = db.Column(db.String(120))
     premium = db.Column(db.Boolean ,default=False)
 
@@ -74,11 +74,11 @@ class Company(db.Model):
 class Developer(db.Model):
     __tablename__ = "developers"
     
-    resume_url = db.Column(db.String(500), nullable=False)
+    resume_url = db.Column(db.String(500))
     status = db.Column(db.String(20), nullable=False, default='pendiente') 
-    description = db.Column(db.String(200))
+    description = db.Column(db.String(500))
     role = db.Column(db.String(80))
-    location = db.Column(db.String(80))
+    location = db.Column(db.String(120))
     premium = db.Column(db.Boolean ,default=False)
     experience = db.Column(db.String(180))
     tecnologies = db.Column(db.String(200))
@@ -111,9 +111,9 @@ class Offer(db.Model):
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.String(500), nullable=False)
     location = db.Column(db.String(100), nullable=False)
-    salary = db.Column(db.String(20))
-    contract_type = db.Column(db.String(50))
-    modality = db.Column(db.String(250))
+    salary = db.Column(db.String(40))
+    contract_type = db.Column(db.String(120))
+    modality = db.Column(db.String(120))
     languages = db.Column(db.String(20))
     posted_date = db.Column(db.Date, nullable=False)
     education_level = db.Column(db.String(70))
