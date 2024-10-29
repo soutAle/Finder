@@ -74,7 +74,7 @@ class Company(db.Model):
 class Developer(db.Model):
     __tablename__ = "developers"
     
-    resume_url = db.Column(db.String(500))
+    resume = db.Column(db.String(450))
     status = db.Column(db.String(20), nullable=False, default='pendiente') 
     description = db.Column(db.String(500))
     role = db.Column(db.String(80))
