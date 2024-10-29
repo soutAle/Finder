@@ -74,11 +74,13 @@ class Company(db.Model):
 class Developer(db.Model):
     __tablename__ = "developers"
     
+    resume_url = db.Column(db.String(500), nullable=False)
+    status = db.Column(db.String(20), nullable=False, default='pendiente') 
     description = db.Column(db.String(200))
     role = db.Column(db.String(80))
     location = db.Column(db.String(80))
     premium = db.Column(db.Boolean ,default=False)
-    experience = db.Column(db.String(80))
+    experience = db.Column(db.String(180))
     tecnologies = db.Column(db.String(200))
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True, nullable=False)
@@ -113,7 +115,7 @@ class Offer(db.Model):
     contract_type = db.Column(db.String(50))
     modality = db.Column(db.String(250))
     languages = db.Column(db.String(20))
-    posted_date = db.Column(db.Date)
+    posted_date = db.Column(db.Date, nullable=False)
     education_level = db.Column(db.String(70))
     minimun_experience = db.Column(db.String(500))
     minimun_requirements = db.Column(db.String(500))
@@ -135,6 +137,7 @@ class Offer(db.Model):
             "modality": self.modality,
             "posted_date": self.posted_date,
             "education_level": self.education_level,
+            "posted_date": self.posted_date,
             "minimun_experience": self.minimun_experience,
             "minimun_requirements": self.minimun_requirements,
             "company_id": self.company_id
@@ -144,32 +147,21 @@ class Candidate(db.Model):
     __tablename__ = "candidates"
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    last_name = db.Column(db.String(50), nullable=False)
-    resume_url = db.Column(db.String(500), nullable=False)
-    status = db.Column(db.String(20), nullable=False, default='pendiente') 
-    application_date = db.Column(db.DateTime, default=db.func.current_timestamp())
-
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     offer_id = db.Column(db.Integer, db.ForeignKey('offers.id'), nullable=False)
-
     offer = db.relationship('Offer', backref='candidates', lazy=True)
 
     def __repr__(self):
         return f'<Candidate {self.name} {self.last_name}>'
 
     def serialize(self):
+        user = User.query.get(self.user_id)
         return {
             "id": self.id,
-            "name": self.name,
-            "last_name": self.last_name,
-            "resume_url": self.resume_url,
             "user_id": self.user_id,
-            "user_email": self.user.email,
             "offer_id": self.offer_id,
-            "offer_title": self.offer.title,
-            "status": self.status,
-            "application_date": self.application_date.strftime("%Y-%m-%d")
+            "email": user.email,
+            "name": user.name
         }
 
 class Project(db.Model):

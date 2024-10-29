@@ -5,9 +5,9 @@ import "../../../styles/home.css"
 
 export const HighlightSection = () => {
     return (
-        <section className="highlights-section mt-5">
+        <section className="highlights-section d-flex justify-content-center">
             <div className="row text-center">
-                <div className="col-lg-4 col-md-6 col-sm-12 my-5">
+                <div className="col-lg-4 col-md-4 col-sm-12 mb-5">
                     <div className="card highlight-cards">
                         <div className="card-img-container">
                             <img src="https://unitedstates.corriculo.co.uk/wp-content/uploads/2022/01/Software-Developer-Recruitment-Agency.jpg" alt="Para Desarrolladores" className="card-img-top-highlight" />
@@ -18,7 +18,7 @@ export const HighlightSection = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 my-5">
+                <div className="col-lg-4 col-md-4 col-sm-12 mb-5">
                     <div className="card highlight-cards">
                         <div className="card-img-container">
                             <img src="https://www.isdi.education/es/wp-content/uploads/2024/03/4367-direccion20de20empresas.jpg" alt="Para Empresas" className="card-img-top-highlight" />
@@ -29,7 +29,7 @@ export const HighlightSection = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 my-5">
+                <div className="col-lg-4 col-md-4 col-sm-12 mb-5">
                     <div className="card highlight-cards">
                         <div className="card-img-container">
                             <img src="https://cloudoffice.com.vn/assetmanager/liveEditer/t%C3%ADnh%20t%C6%B0%C6%A1ng%20t%C3%A1c%20v%C3%A0%20k%E1%BB%B7%20lu%E1%BA%ADt.png" alt="Colabora Globalmente" className="card-img-top-highlight" />

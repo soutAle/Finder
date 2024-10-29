@@ -5,11 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             user: '',
             message: null,
             isAuthenticated: !!localStorage.getItem('token'),
-            users: [],
-            selectedUser: null,
             bookmarks: [],
             offers: [],
-            selectedoffer: null,
         },
         actions: {
             signup: async (formData) => {
@@ -176,7 +173,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                     if (resp.ok) {
                         const data = await resp.json();
-                        console.log(data)
                         const store = getStore();
                         setStore({ offers: [...store.offers, data.offer] });
                         return data;
@@ -231,18 +227,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                     if (resp.ok) {
                         const data = await resp.json();
-                        console.log('inscripcion exitosa', data);
                         return { msg: "Inscripcion realizada con exito.", type: "success" };
                     } else {
                         const errorData = await resp.json();
-                        console.log("Error al inscribirse: ", errorData.msg);
                         return { msg: errorData.msg, type: 'warning' };
-
                     }
                 } catch (error) {
-                    console.log("Error en la solitud de inscripcion.");
-                    return { msg: "Error en la solicitud de inscripcion.", type: "error" }
-
+                    return { msg: "Error en la solicitud de inscripción.", type: "error" };
                 }
             },
 

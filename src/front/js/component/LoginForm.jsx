@@ -25,6 +25,7 @@ export const LoginForm = ({ onSubmit, handleChange, credentials, error }) => {
                     Contraseña
                 </label>
                 <input
+                    autocomplete="current-password"
                     type="password"
                     className="form-control"
                     id="password"
