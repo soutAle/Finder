@@ -75,11 +75,11 @@ class Developer(db.Model):
     __tablename__ = "developers"
     
     resume = db.Column(db.String(450))
-    status = db.Column(db.String(20), nullable=False, default='pendiente') 
+    status = db.Column(db.String(20), default='pendiente') 
     description = db.Column(db.String(500))
     role = db.Column(db.String(80))
     location = db.Column(db.String(120))
-    premium = db.Column(db.Boolean ,default=False)
+    premium = db.Column(db.Boolean, default=False)
     experience = db.Column(db.String(180))
     tecnologies = db.Column(db.String(200))
 
@@ -95,6 +95,8 @@ class Developer(db.Model):
         return {
             "user_id": self.user_id,
             "name": self.user.name,
+            "status": self.status,
+            "resume": self.resume,
             "role": self.role,
             "description": self.description,
             "experience": self.experience,

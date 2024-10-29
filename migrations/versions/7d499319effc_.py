@@ -26,7 +26,7 @@ def upgrade():
         batch_op.drop_column('resume_url')
 
     with op.batch_alter_table('developers', schema=None) as batch_op:
-        batch_op.add_column(sa.Column('resume_url', sa.String(length=500), nullable=False))
+        batch_op.add_column(sa.Column('resume_url', sa.String(length=500)))
         batch_op.add_column(sa.Column('status', sa.String(length=20), nullable=False))
         batch_op.alter_column('experience',
                existing_type=sa.VARCHAR(length=80),
