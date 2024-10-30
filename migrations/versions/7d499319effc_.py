@@ -23,10 +23,10 @@ def upgrade():
         batch_op.drop_column('application_date')
         batch_op.drop_column('last_name')
         batch_op.drop_column('status')
-        batch_op.drop_column('resume_url')
+        batch_op.drop_column('resume')
 
     with op.batch_alter_table('developers', schema=None) as batch_op:
-        batch_op.add_column(sa.Column('resume_url', sa.String(length=500)))
+        batch_op.add_column(sa.Column('resume', sa.String(length=450)))
         batch_op.add_column(sa.Column('status', sa.String(length=20), default='Pendiente'))
         batch_op.alter_column('experience',
                existing_type=sa.VARCHAR(length=80),
@@ -53,11 +53,11 @@ def downgrade():
                type_=sa.VARCHAR(length=80),
                existing_nullable=True)
         batch_op.drop_column('status')
-        batch_op.drop_column('resume_url')
+        batch_op.drop_column('resume')
 
     with op.batch_alter_table('candidates', schema=None) as batch_op:
-        batch_op.add_column(sa.Column('resume_url', sa.VARCHAR(length=500), autoincrement=False, nullable=False))
-        batch_op.add_column(sa.Column('status', sa.VARCHAR(length=20), autoincrement=False, nullable=False))
+        batch_op.add_column(sa.Column('resume', sa.VARCHAR(length=450), autoincrement=False,))
+        batch_op.add_column(sa.Column('status', sa.VARCHAR(length=20), autoincrement=False, default='Pendiente'))
         batch_op.add_column(sa.Column('last_name', sa.VARCHAR(length=50), autoincrement=False, nullable=False))
         batch_op.add_column(sa.Column('application_date', postgresql.TIMESTAMP(), autoincrement=False, nullable=True))
         batch_op.add_column(sa.Column('name', sa.VARCHAR(length=50), autoincrement=False, nullable=False))
