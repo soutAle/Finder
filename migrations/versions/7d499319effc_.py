@@ -27,7 +27,7 @@ def upgrade():
 
     with op.batch_alter_table('developers', schema=None) as batch_op:
         batch_op.add_column(sa.Column('resume_url', sa.String(length=500)))
-        batch_op.add_column(sa.Column('status', sa.String(length=20), nullable=False))
+        batch_op.add_column(sa.Column('status', sa.String(length=20), default='Pendiente'))
         batch_op.alter_column('experience',
                existing_type=sa.VARCHAR(length=80),
                type_=sa.String(length=180),
@@ -35,8 +35,7 @@ def upgrade():
 
     with op.batch_alter_table('offers', schema=None) as batch_op:
         batch_op.alter_column('posted_date',
-               existing_type=sa.DATE(),
-               nullable=False)
+               existing_type=sa.DATE())
 
     # ### end Alembic commands ###
 
