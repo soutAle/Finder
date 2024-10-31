@@ -21,7 +21,6 @@ export const CardOffer = ({ id }) => {
                 salary={offer.salary}
                 minimun_experience={offer.minimun_experience}
             />
-
         </div>
     );
 };
