@@ -34,9 +34,7 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route element={<Home />} path="/" />
-                        <Route element={<ProfileDeveloper />} path="/profiledeveloper" />
                         <Route element={<ProfileDeveloper />} path="/profiledeveloper/:id" />
-                        <Route element={<ProfileDeveloper />} path="/profilecompany" />
                         <Route element={<ProfileCompany />} path="/profilecompany/:id" />
                         <Route element={<Offers />} path="/offers" />
                         <Route element={<About />} path="/about" />
