@@ -8,8 +8,6 @@ export const ActionButtons = ({ offerId }) => {
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [isSaved, setIsSaved] = useState(false);
 
-    const offer = store.Offers.find((offer) => offer.id === offerId);
-
     useEffect(() => {
         if (store.user?.profile_developer) {
             setIsSubscribed(store.user.inscribedOffers?.includes(offerId));
