@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             isAuthenticated: !!localStorage.getItem('token'),
             bookmarks: [],
             offers: [],
+            candidates: []
         },
         actions: {
             signup: async (formData) => {
@@ -227,13 +228,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                     if (resp.ok) {
                         const data = await resp.json();
+                        console.log('inscripcion exitosa', data);
+                        console.log('data caandidates', candidates)
                         return { msg: "Inscripcion realizada con exito.", type: "success" };
                     } else {
                         const errorData = await resp.json();
-                        return { msg: errorData.msg, type: 'warning' };
+                        return { msg: errorData.msg, success: false };
                     }
                 } catch (error) {
-                    return { msg: "Error en la solicitud de inscripción.", type: "error" };
+                    return { msg: "Error en la solicitud de inscripción.", type: 'error' };
                 }
             },
 
@@ -265,28 +268,29 @@ const getState = ({ getStore, getActions, setStore }) => {
                     }
                 } catch (error) {
                     console.log("Error en la solicitud de desinscripción.");
-                    return { msg: "Error en la solicitud de desinscripción.", type: "error" };
+                    return { msg: "Error en la solicitud de desinscripción.", type: 'error' };
                 }
             },
 
-            addBookmark: async (programador_id, empleador_id, oferta_id) => {
+            addBookmark: async (developer_id, company_id, offer_id) => {
                 try {
-                    const response = await fetch(`${process.env.BACKEND_URL}/api/favoritos`, {
+                    const response = await fetch(`${process.env.BACKEND_URL}/api/bookmarks`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
-                            programador_id: programador_id,
-                            empleador_id: empleador_id,
-                            oferta_id: oferta_id,
+                            developer_id: developer_id,
+                            company_id: company_id,
+                            offer_id: offer_id,
                         }),
                     });
 
                     if (!response.ok) {
                         throw new Error('Error al agregar favorito');
                     }
-                    getActions().getBookmark()
+
+                    getActions().getFavorites()
                     return true;
 
                 } catch (error) {
@@ -312,12 +316,13 @@ const getState = ({ getStore, getActions, setStore }) => {
                         const { bookmarks } = await response.json();
                         setStore({ bookmarks: bookmarks });
                     } else {
-                        console.error('Error al obtener los favoritos');
+                        console.error('Error al obtener los bookmarks');
                     }
                 } catch (error) {
-                    console.error('Error en la solicitud de favoritos:', error);
+                    console.error('Error en la solicitud de bookmars:', error);
                 }
             },
+
             removeBookmark: async (developer_id, company_id, offer_id) => {
                 try {
                     const response = await fetch(`${process.env.BACKEND_URL}/api/bookmarks`, {
@@ -327,25 +332,26 @@ const getState = ({ getStore, getActions, setStore }) => {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
                         },
                         body: JSON.stringify({
-                            developer_id: developer_id || null,
-                            empleador_id: company_id || null,
-                            offer_id: offer_id
-                        })
+                            developer_id: developer_id,
+                            company_id: company_id,
+                            offer_id: offer_id,
+                        }),
                     });
 
                     if (!response.ok) {
-                        throw new Error("Error al eliminar favorito.");
+                        throw new Error("Error al eliminar bookmark.");
                     }
 
                     const data = await response.json();
 
                     if (data.success) {
+
                         setStore({
-                            bookmarks: getStore().bookmarks.filter(
+                            favorites: getStore().favorites.filter(
                                 (fav) => fav.id !== offer_id || fav.developer_id !== developer_id || fav.company_id !== company_id
                             )
                         });
-                        getActions().getBookmarks()
+                        getActions().getFavorites()
                         return true;
                     } else {
                         return { success: false, msg: data.msg || "Error desconocido." };
@@ -355,6 +361,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     return { success: false, msg: error.message };
                 }
             },
+
         }
     };
 };

@@ -262,16 +262,20 @@ def get_offer(id):
         return jsonify({"success": False, "msg": f"Error al obtener la oferta: {str(e)}"}), 500
 
 @api.route('/candidates', methods=['POST'])
-@jwt_required
+@jwt_required()
 def apply_to_offer():
-    user_id = get_jwt_identity
+    user_id = get_jwt_identity()
 
     user = User.query.get(user_id)
     
     if not user.profile_developer:
-        return jsonify({"msg": "Solo pueden inscribirse desarrolladores"})
+        return jsonify({"msg": "Solo pueden inscribirse desarrolladores"}),403
     
-    offer_id = request.json.get("offer_id")
+    data = request.get_json()
+    if not data or not data.get("id"):
+        return jsonify({"msg": "ID de oferta no proporcionado"}), 400
+
+    offer_id = request.json.get("id")
     offer = Offer.query.get(offer_id)
     if not offer:
         return jsonify({"msg": "Oferta no encontrada"}), 404
@@ -307,3 +311,76 @@ def unapply_from_offer(offer_id):
     db.session.commit()
 
     return jsonify({"msg": "Desinscripción realizada con éxito."}), 200
+
+
+@api.route('/bookmarks', methods=['POST'])
+def add_bookmark():
+    data = request.json
+
+    if not data.get('developer_id') and not data.get('developer_id') and not data.get('offer_id'):
+        return jsonify({'msg': 'Debe proporcionar al menos un ID de programador, empleador o oferta'}), 400
+    
+    new_bookmark = Bookmark(
+        developer_id=data.get('developer_id'),
+        company_id=data.get('company_id'),
+        offer_id=data.get('offer_id')
+    )
+    
+    db.session.add(new_bookmark)
+    db.session.commit()
+
+    return jsonify({"success": True, "data": new_bookmark.serialize()}), 20
+
+@api.route('/user/<int:user_id>/bookmarks', methods=['GET'])
+def get_user_bookmarks(user_id):
+    user = User.query.get(user_id)
+    
+    if not user:
+        return jsonify({"success": False, 'msg': 'Usuario no encontrado'}), 404
+    
+    bookmarks = []
+    results = []
+    def loader(el):        
+        if el['offer_id'] is not None:
+            results.append(Offer.query.get(el['oferta_id']))
+        elif el['company_id'] is not None:
+            results.append(Company.query.get(el['company_id']))
+        else:
+            return ({"success": True, "msg": "El usuario no tiene favortios "}), 418
+            
+    if user.developer:
+        bookmarks.extend(user.profile_developer.favoritos)
+        bookmarks = [loader(bookmark.serialize()) for bookmark in bookmarks]
+    if user.profile_empleador:
+        bookmarks.extend(user.profile_company.favoritos)  
+    return jsonify({"success": True, "bookmarks": [result.serialize() for result in results]}), 200
+
+
+@api.route('/bookmarks', methods=['DELETE'])
+def remove_bookmark():
+    data = request.json
+
+    
+    if not data or not all(key in data for key in ('develoepr_id', 'company_id', 'offer_id')):
+        return jsonify({"success": False, "msg": "Faltan campos obligatorios"}), 400
+
+    try:
+        bookmark = Bookmark.query.filter_by(
+            developer_id=data['developer_id'],
+            company_id=data['compay_id'],
+            offer_id=data['offer_id']
+        ).first()
+
+        
+        if not bookmark:
+            return jsonify({"success": False, "msg": "Favorito no encontrado"}), 404
+
+     
+        db.session.delete(bookmark)
+        db.session.commit()
+
+        return jsonify({"success": True, "msg": "Favorito eliminado exitosamente"}), 200
+
+    except Exception as e:
+        
+        return jsonify({"success": False, "msg": "Ocurrió un error al eliminar el favorito", "error": str(e)}), 500
