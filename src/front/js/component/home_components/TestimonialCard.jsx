@@ -2,7 +2,7 @@ import React from "react";
 
 export const TestimonialCard = ({ image, name, role, testimony, onClick }) => {
     return (
-        <div className="card mb-3 testimonial-card my-5 d-flex" onClick={onClick}>
+        <div className="card testimonial-card my-5 d-flex" onClick={onClick}>
             <div className="row g-0">
                 <div className="col-md-4 testimonial-img-container">
                     <img

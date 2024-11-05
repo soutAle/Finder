@@ -7,7 +7,6 @@ export const CardListOffers = () => {
 
     return (
         <div className="list-offer-container mt-3 m-auto">
-
             {loading ? (
                 <p className="loading-section text-center">Cargando ofertas...</p>
             ) : Array.isArray(offers) && offers.length > 0 ? (
@@ -21,7 +20,6 @@ export const CardListOffers = () => {
                     No hay ofertas disponibles
                 </p>
             )}
-
         </div>
     );
 };
