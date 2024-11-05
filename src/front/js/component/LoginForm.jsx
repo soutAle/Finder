@@ -18,6 +18,7 @@ export const LoginForm = ({ onSubmit, handleChange, credentials, error }) => {
                     onChange={handleChange}
                     placeholder="Ingresa tu correo electrónico"
                     required
+                    autoComplete="username"
                 />
             </div>
             <div className="form-group mb-3">
@@ -25,7 +26,6 @@ export const LoginForm = ({ onSubmit, handleChange, credentials, error }) => {
                     Contraseña
                 </label>
                 <input
-                    autocomplete="current-password"
                     type="password"
                     className="form-control"
                     id="password"
@@ -34,6 +34,7 @@ export const LoginForm = ({ onSubmit, handleChange, credentials, error }) => {
                     onChange={handleChange}
                     placeholder="Ingresa tu contraseña"
                     required
+                    autoComplete="current-password"
                 />
             </div>
             {error && <p className="text-danger text-center">{error}</p>}
