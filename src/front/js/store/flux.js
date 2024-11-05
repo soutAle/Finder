@@ -290,7 +290,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         throw new Error('Error al agregar favorito');
                     }
 
-                    getActions().getFavorites()
+                    getActions().getBookmark()
                     return true;
 
                 } catch (error) {
@@ -347,17 +347,17 @@ const getState = ({ getStore, getActions, setStore }) => {
                     if (data.success) {
 
                         setStore({
-                            favorites: getStore().favorites.filter(
-                                (fav) => fav.id !== offer_id || fav.developer_id !== developer_id || fav.company_id !== company_id
+                            bookmarks: getStore().bookmarks.filter(
+                                (book) => book.id !== offer_id || book.developer_id !== developer_id || book.company_id !== company_id
                             )
                         });
-                        getActions().getFavorites()
+                        getActions().getBookmark()
                         return true;
                     } else {
                         return { success: false, msg: data.msg || "Error desconocido." };
                     }
                 } catch (error) {
-                    console.error("Error en removeFavorite:", error);
+                    console.error("Error en removeBookmark:", error);
                     return { success: false, msg: error.message };
                 }
             },

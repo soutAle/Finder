@@ -272,10 +272,10 @@ def apply_to_offer():
         return jsonify({"msg": "Solo pueden inscribirse desarrolladores"}),403
     
     data = request.get_json()
-    if not data or not data.get("id"):
+    if not data or not data.get("offer_id"):
         return jsonify({"msg": "ID de oferta no proporcionado"}), 400
 
-    offer_id = request.json.get("id")
+    offer_id = request.json.get("offer_id")
     offer = Offer.query.get(offer_id)
     if not offer:
         return jsonify({"msg": "Oferta no encontrada"}), 404
@@ -317,7 +317,7 @@ def unapply_from_offer(offer_id):
 def add_bookmark():
     data = request.json
 
-    if not data.get('developer_id') and not data.get('developer_id') and not data.get('offer_id'):
+    if not data.get('developer_id') and not data.get('company_id') and not data.get('offer_id'):
         return jsonify({'msg': 'Debe proporcionar al menos un ID de programador, empleador o oferta'}), 400
     
     new_bookmark = Bookmark(
@@ -361,7 +361,7 @@ def remove_bookmark():
     data = request.json
 
     
-    if not data or not all(key in data for key in ('develoepr_id', 'company_id', 'offer_id')):
+    if not data or not all(key in data for key in ('developer_id', 'company_id', 'offer_id')):
         return jsonify({"success": False, "msg": "Faltan campos obligatorios"}), 400
 
     try:
