@@ -29,6 +29,11 @@ export const ProfileOptionLinks = () => {
                         <Link className="nav-link active" to="/myoffers">Mis Ofertas</Link>
                     </li>
                     <li className="nav-item">
+                        <Link className="nav-link active" aria-current="page" to="/createoffer">
+                            Publicar Oferta
+                        </Link>
+                    </li>
+                    <li className="nav-item">
                         <Link className="nav-link active" to="/profilecompany">Perfil</Link>
                     </li>
                 </>

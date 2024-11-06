@@ -6,7 +6,13 @@
     border: 1px solid #9393939e;
     border-radius: 5px;
     backdrop-filter: blur(10px);
+    cursor: pointer;
 
+}
+
+.card-offer-container:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.304);
+    transition: 0.0s;
 }
 
 .img-offer {
@@ -27,7 +33,6 @@
 
 
 .details-list {
-    width: 50%;
     font-size: 0.7rem;
 }
 

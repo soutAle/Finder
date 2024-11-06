@@ -1,0 +1,43 @@
+.single-offer-box {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 15px;
+    border: 1px solid gray;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff56;
+}
+
+.single-offer-title {
+    font-size: 1.9rem;
+    margin: 0;
+}
+
+.single-offer-details {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.single-offer-details li {
+    background-color: #ffffff9a;
+    border: 1px solid rgb(224, 224, 224);
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.requirements-minimun,
+.offer-description,
+.single-offer-candidates,
+.single-offer-namelocation,
+.single-offer-date {
+    font-size: 0.9rem;
+}
+
+.single-offer-minimun-req,
+.single-description-title {
+    font-size: 1.5rem;
+}

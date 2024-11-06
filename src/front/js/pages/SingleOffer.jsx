@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import "../../styles/single-offer.css"
 
 
 export const SingleOffer = () => {
@@ -20,26 +21,21 @@ export const SingleOffer = () => {
                                 alt="Company Logo"
                                 className="img-fluid rounded-circle"
                             />
-                            <div className="text-muted mt-2">
-                                <span className="num-postulados">15</span> Inscritos
+                            <div className="text-muted mt-2 d-flex justify-content-center">
+                                <span className="single-offer-candidates">15 Inscritos</span>
                             </div>
                         </div>
                         <div className="col-9">
-                            <h2 className="single-offer-title">{offer.title}</h2>
-                            <p className="company-info">
-                                {offer.name} - {offer.location}
+                            <h2 className="single-offer-title display-4">{offer.title}</h2>
+                            <p className="single-offer-namelocation">
+                                { } - {offer.location}
                             </p>
-                            <p className="date-posted">Publicado el </p>
-                            {store.user?.profile_developer && (
-                                <button className="btn btn-apply mt-2">
-                                    {isSubscribed ? "Desinscribirse" : "Inscribirse"}
-                                </button>
-                            )}
+                            <p className="single-offer-date">Publicado el </p>
                         </div>
                     </div>
                     <div className="row mt-3">
                         <div className="col-12">
-                            <ul className="offer-details">
+                            <ul className="single-offer-details">
                                 <li>{offer.languages}</li>
                                 <li>{offer.salary}</li>
                                 <li>{offer.education_level}</li>
@@ -52,18 +48,11 @@ export const SingleOffer = () => {
                     <div className="row mt-3">
                         <div className="col-12">
                             <hr />
-                            <h3>Requisitos Mínimos</h3>
-                            <p className="requisitos-minimos">{offer.minimun_requirements}</p>
+                            <h3 className="single-offer-minimun-req display-2">Requisitos Mínimos</h3>
+                            <p className="requirements-minimun">{offer.minimun_requirements}</p>
                             <hr />
-                            <h3>Descripción</h3>
+                            <h3 className="single-description-title display-2 fw-4">Descripción</h3>
                             <p className="offer-description">{offer.description}</p>
-                            {store.user?.profile_developer && (
-                                <div className="text-end mt-3">
-                                    <button className="btn btn-apply btn-lg">
-                                        {isSubscribed ? "Desinscribirse" : "Inscribirse"}
-                                    </button>
-                                </div>
-                            )}
                         </div>
                     </div>
                 </div>
