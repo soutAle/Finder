@@ -229,7 +229,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     if (resp.ok) {
                         const data = await resp.json();
                         console.log('inscripcion exitosa', data);
-                        console.log('data caandidates', candidates)
+                        console.log('data candidates', candidates)
                         return { msg: "Inscripcion realizada con exito.", type: "success" };
                     } else {
                         const errorData = await resp.json();
@@ -273,11 +273,16 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
 
             addBookmark: async (developer_id, company_id, offer_id) => {
+                const store = getStore();
+                const token = store.token;
+
                 try {
                     const response = await fetch(`${process.env.BACKEND_URL}/api/bookmarks`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+
                         },
                         body: JSON.stringify({
                             developer_id: developer_id,
@@ -287,7 +292,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     });
 
                     if (!response.ok) {
-                        throw new Error('Error al agregar favorito');
+                        throw new Error('Error al agregar Bookmark');
                     }
 
                     getActions().getBookmark()

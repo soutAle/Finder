@@ -342,17 +342,17 @@ def get_user_bookmarks(user_id):
     results = []
     def loader(el):        
         if el['offer_id'] is not None:
-            results.append(Offer.query.get(el['oferta_id']))
+            results.append(Offer.query.get(el['offer_id']))
         elif el['company_id'] is not None:
             results.append(Company.query.get(el['company_id']))
         else:
             return ({"success": True, "msg": "El usuario no tiene favortios "}), 418
             
     if user.developer:
-        bookmarks.extend(user.profile_developer.favoritos)
+        bookmarks.extend(user.profile_developer.bookmarks)
         bookmarks = [loader(bookmark.serialize()) for bookmark in bookmarks]
     if user.profile_empleador:
-        bookmarks.extend(user.profile_company.favoritos)  
+        bookmarks.extend(user.profile_company.bookmarks)  
     return jsonify({"success": True, "bookmarks": [result.serialize() for result in results]}), 200
 
 
