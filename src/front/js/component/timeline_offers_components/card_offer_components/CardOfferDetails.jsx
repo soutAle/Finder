@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import '../../../../styles/card-offer.css';
 import { ActionButtons } from './ActionButtons.jsx';
-export const CardOfferDetails = ({ title, description, location, modality, salary, minimun_experience }) => {
+export const CardOfferDetails = ({ title, description, location, modality, salary, minimun_experience, id }) => {
 
     return (
         <div className="d-flex">
@@ -22,7 +22,7 @@ export const CardOfferDetails = ({ title, description, location, modality, salar
                         <li className="mx-2 details-list">{salary}</li>
                         <li className='mx-2 details-list'>{minimun_experience}</li>
                     </ul>
-                    <ActionButtons />
+                    <ActionButtons offer_id={id} />
                 </div>
             </div>
         </div>

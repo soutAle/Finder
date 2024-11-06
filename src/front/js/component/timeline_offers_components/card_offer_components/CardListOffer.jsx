@@ -2,9 +2,8 @@ import React from "react";
 import { useLoadOffers } from "../../../hooks/useLoadOffers.jsx";
 import { OfferCardPremiumLogic } from "./LogicPremiumCard.jsx";
 
-export const CardListOffers = ({ searchTerm, company_id }) => {
+export const CardListOffers = () => {
     const { offers = [], loading } = useLoadOffers();
-
     return (
         <div className="list-offer-container mt-3 m-auto">
             {loading ? (
