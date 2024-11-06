@@ -187,7 +187,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
-            loadAllOffers: async () => {
+            getAllOffers: async () => {
                 try {
                     const resp = await fetch(`${process.env.BACKEND_URL}/api/offers`, {
                         method: 'GET',
@@ -205,6 +205,22 @@ const getState = ({ getStore, getActions, setStore }) => {
                     }
                 } catch (error) {
                     console.error("Error en la solicitud de ofertas:", error);
+                }
+            },
+
+            getOfferById: async (offer_id) => {
+                try {
+                    const response = await fetch(`${process.env.BACKEND_URL}/api/offers/${offer_id}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        return data;
+                    } else {
+                        console.error("Error", response.statusText);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    return null;
                 }
             },
 

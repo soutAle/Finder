@@ -8,7 +8,7 @@ export const useLoadOffers = () => {
     useEffect(() => {
         const load = async () => {
             setLoading(true);
-            await actions.loadAllOffers();
+            await actions.getAllOffers();
             setLoading(false);
         };
 

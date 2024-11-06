@@ -13,7 +13,6 @@ export const CardOffer = ({ id }) => {
         <div className="card-offer-container mt-4">
             <CardOfferDetails
                 image={offer.image}
-                name={store.user.name}
                 title={offer.title}
                 location={offer.location}
                 description={offer.description}

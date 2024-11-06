@@ -8,20 +8,6 @@ import "../../../styles/card-offerpremium.css";
 export const CardOfferPremium = ({ id }) => {
     const { store } = useContext(Context);
     const navigate = useNavigate();
-    const { isSubscribed, applyToJob, unapplyFromJob } = useJobApplication(id);
-    const { isSaved, toggleBookmark } = useBookmarks(id);
-
-    const offer = store.offers.find((offer) => offer.id === id);
-
-    if (!offer) return <div>Oferta no encontrada</div>;
-
-    const handleViewDetails = () => {
-        navigate(`/singleoffer/${id}`);
-    };
-
-    const handleViewCompany = () => {
-        navigate(`/Companyview/${id}`);
-    };
 
     return (
         <div className="card-offer mt-2" onClick={handleViewCompany}>
@@ -34,11 +20,8 @@ export const CardOfferPremium = ({ id }) => {
                 salary={offer.salary}
                 minimun_experience={offer.minimun_experience}
             />
-            <ActionButtons
+            <ActionButtons offer_id={id}
             />
-            <div onClick={toggleBookmark} className="heart-icon" style={{ cursor: "pointer" }}>
-                {isSaved ? <FaHeart /> : <FaRegHeart />}
-            </div>
         </div>
     );
 };

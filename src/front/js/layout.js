@@ -15,6 +15,7 @@ import { LogIn } from "./pages/LogIn.jsx";
 import { CreateOffer } from "./pages/CreateOffer.jsx";
 import { ProfileDeveloper } from "./pages/ProfileDeveloper.jsx"
 import { ProfileCompany } from "./pages/ProfileCompany.jsx";
+import { SingleOffer } from "./pages/SingleOffer.jsx";
 
 
 
@@ -39,7 +40,7 @@ const Layout = () => {
                         <Route element={<ProfileDeveloper />} path="/profiledeveloper/:id" />
                         <Route element={<ProfileCompany />} path="/profilecompany/:id" />
                         <Route element={<Offers />} path="/offers" />
-                        <Route element={<Offers />} path="/offer/:id" />
+                        <Route element={<SingleOffer />} path="/singleoffer/:id" />
                         <Route element={<About />} path="/about" />
                         <Route element={<Contact />} path="/contact" />
                         <Route element={<SignUp />} path="/signup" />
