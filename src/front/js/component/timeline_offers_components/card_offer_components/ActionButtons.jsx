@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 export const ActionButtons = ({ offer_id }) => {
     const { store, actions } = useContext(Context);
     const [isSubscribed, setIsSubscribed] = useState(false);
-    // const [isSaved, setIsSaved] = useState(false);
 
     useEffect(() => {
         const checkSubscription = store.user?.candidates?.map((candidate) => candidate.id === offer_id);
@@ -29,20 +28,11 @@ export const ActionButtons = ({ offer_id }) => {
         }
     };
 
-    // const handleBookmark = async (offer_id) => {
-    //     const developer = store.user?.profile_developer.id;
-    //     const result = isSaved
-    //         ? await actions.removeBookmark(developer, null, offer_id)
-    //         : await actions.addBookmark(developer, null, offer_id);
-
-    //     if (result?.msg) setIsSaved(!isSaved);
-    // };
-
     return (
         <div className="card-offer-actions d-flex justify-content-end mx-4 d-grid gap-2 d-md-flex">
             <ul className="list-unstyled d-flex">
                 <li>
-                    <Link to={`/offers/${offer_id}`} className="btn btn-view-offer">
+                    <Link to={`/singleoffer/${offer_id}`} className="btn btn-view-offer">
                         Ver Oferta
                     </Link>
                 </li>
@@ -56,14 +46,6 @@ export const ActionButtons = ({ offer_id }) => {
                                 {isSubscribed ? 'Desinscribirse' : 'Inscribirse'}
                             </button>
                         </li>
-                        {/* <li>
-                            <button
-                                onClick={handleBookmark}
-                                className={`btn ${isSaved ? 'btn-saved' : 'btn-unsaved'}`}
-                            >
-                                {isSaved ? 'Oferta Guardada' : 'Guardar oferta'}
-                            </button>
-                        </li> */}
                     </>
                 )}
             </ul>

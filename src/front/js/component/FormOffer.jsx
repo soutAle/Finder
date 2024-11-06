@@ -24,7 +24,7 @@ export const FormOffer = () => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
-    console.log('formData fomoffer:' + formData)
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { title, description, location } = formData;
@@ -46,7 +46,6 @@ export const FormOffer = () => {
 
             try {
                 const resp = await actions.createJobOffer(updatedFormData);
-                console.log(resp);
                 navigate('/offers');
             } catch (error) {
                 console.log(error)
@@ -98,9 +97,9 @@ export const FormOffer = () => {
                                     value={formData.minimun_experience}
                                 >
                                     <option value="">Seleccione una opción</option>
-                                    <option value="JUNIOR">JUNIOR</option>
-                                    <option value="MID">MID</option>
-                                    <option value="SENIOR">SENIOR</option>
+                                    <option value="0-6 meses">0-6 meses</option>
+                                    <option value="1-3 años">1-3 años</option>
+                                    <option value="+5 años">+5 años</option>
                                 </select>
                             </div>
                         </div>
@@ -110,7 +109,7 @@ export const FormOffer = () => {
                                 <input
                                     type="text"
                                     className="form-control"
-                                    placeholder="30.000 - 45.000 brutos/año"
+                                    placeholder="40k-50k"
                                     name="salary"
                                     id="salary"
                                     onChange={handleChange}
@@ -140,7 +139,7 @@ export const FormOffer = () => {
                                     className="form-control"
                                     name="location"
                                     id="location"
-                                    placeholder="España, Italia, Alcorcón..."
+                                    placeholder="Barcelona, Madrid, Sevilla..."
                                     maxLength="30"
                                     onChange={handleChange}
                                     value={formData.location}

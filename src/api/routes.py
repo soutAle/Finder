@@ -195,11 +195,11 @@ def create_offer():
     description = request.json.get("description")
     salary = request.json.get("salary")
     location = request.json.get("location")
-    contract_type = request.json.get("tipo_contrato")
+    contract_type = request.json.get("contract_type")
     modality = request.json.get("modality")
     education_level = request.json.get("education_level")
     minimun_requirements = request.json.get("minimun_requirements")
-    languages = request.json.get("lenguages")
+    languages = request.json.get("languages")
     minimun_experience = request.json.get("minimun_experience")
     posted_date = request.json.get("posted_date")
 
