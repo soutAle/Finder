@@ -146,7 +146,7 @@ def get_User(user_id):
         return jsonify({'user': user.serialize()}),200
     return jsonify({'msg':'Usuario no encontrado'}),404
 
-@api.route('/Users', methods=['GET'])
+@api.route('/users', methods=['GET'])
 def get_all_Users():
     users = User.query.all()
     users=[user.serialize() for user in users]
