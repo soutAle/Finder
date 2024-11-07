@@ -149,7 +149,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     if (resp.ok) {
                         const store = getStore();
                         const data = await resp.json();
-                        setStore({ users: [...store.users, data.user] });
+                        setStore({ users: data.user });
                         return data;
                     } else {
                         console.error('Error al obtener todos los usuarios:', resp.statusText);
