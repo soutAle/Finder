@@ -20,8 +20,6 @@ export const CardOfferPremium = ({ id }) => {
                 salary={offer.salary}
                 minimun_experience={offer.minimun_experience}
             />
-            <ActionButtons offer_id={id}
-            />
         </div>
     );
 };

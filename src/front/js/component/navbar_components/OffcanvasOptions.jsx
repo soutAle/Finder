@@ -89,7 +89,7 @@ export const OffcanvasOptions = () => {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link active" aria-current="page" to="/developers">
+                        <Link className="nav-link active" aria-current="page" to="/users">
                             Busca talento
                         </Link>
                     </li>

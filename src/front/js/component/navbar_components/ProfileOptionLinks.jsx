@@ -23,7 +23,7 @@ export const ProfileOptionLinks = () => {
             {store.user?.profile_company && (
                 <>
                     <li className="nav-item">
-                        <Link className="nav-link active" to="/developers">Busca talento</Link>
+                        <Link className="nav-link active" to="/users">Busca talento</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link active" to="/myoffers">Mis Ofertas</Link>
