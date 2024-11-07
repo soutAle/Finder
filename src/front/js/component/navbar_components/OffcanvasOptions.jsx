@@ -17,6 +17,11 @@ export const OffcanvasOptions = () => {
             {store.user?.profile_developer && (
                 <>
                     <li className="nav-item">
+                        <Link className="nav-link active" aria-current="page" to="/profiledeveloper">
+                            Perfil
+                        </Link>
+                    </li>
+                    <li className="nav-item">
                         <Link className="nav-link active" aria-current="page" to="/myoffers">
                             Tus Ofertas
                         </Link>
