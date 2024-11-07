@@ -7,7 +7,7 @@ export const CardListUser = () => {
     const { users = [], loading } = useLoadUsers();
 
     return (
-        <div className="list-user-container mt-3 m-auto">
+        <div className="list-user-container d-flex">
             {loading ? (
                 <p className="loading-section text-center">Cargando ofertas...</p>
             ) : Array.isArray(users) && users.length > 0 ? (
