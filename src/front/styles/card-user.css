@@ -1,0 +1,23 @@
+.card-user-container {
+    width: 100%;
+    border: 1px solid rgb(148, 148, 148);
+    border-radius: 10px;
+    background-color: rgba(240, 248, 255, 0.462);
+
+}
+
+.card-user-container:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.304);
+}
+
+.card-user-title {
+    font-size: 1rem;
+}
+
+.card-user-telephone {
+    font-size: 0.8rem;
+}
+
+.card-user-country {
+    font-size: 0.8rem;
+}

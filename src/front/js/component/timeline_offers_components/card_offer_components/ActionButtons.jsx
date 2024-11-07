@@ -38,14 +38,12 @@ export const ActionButtons = ({ offer_id }) => {
 
             {store.user?.profile_developer && (
                 <>
-
                     <button
                         className={`btn ${isSubscribed ? 'btn-applied' : 'btn-unapplied'}`}
                         onClick={handleSubscription}
                     >
                         {isSubscribed ? 'Desinscribirse' : 'Inscribirse'}
                     </button>
-
                 </>
             )}
         </div>

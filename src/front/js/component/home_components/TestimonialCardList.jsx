@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Context } from "../../store/appContext";
 import { TestimonialCard } from "./TestimonialCard.jsx";
+import { useLoadUsers } from "../../hooks/useLoadUsers.jsx";
 
 export const TestimonialCardList = () => {
-    const navigate = useNavigate();
+    const { store } = useContext(Context);
+    const { users, loading } = useLoadUsers();
 
-    const handleClick = () => {
-        navigate('/profiledeveloper');
-    };
+    // const usersTestimony = users.filter((users) => users.testimony != null);
 
     const testimonials = [
         {
@@ -35,14 +35,13 @@ export const TestimonialCardList = () => {
     return (
         <div className="container text-center">
             <div className="row">
-                {testimonials.map((testimonial, index) => (
+                {testimonials.map((usersTestimony, index) => (
                     <div className="col-md-4" key={index}>
                         <TestimonialCard
-                            image={testimonial.image}
-                            name={testimonial.name}
-                            role={testimonial.role}
-                            testimony={testimonial.testimony}
-                            onClick={handleClick}
+                            image={usersTestimony.image}
+                            name={usersTestimony.name}
+                            role={usersTestimony.role}
+                            testimony={usersTestimony.testimony}
                         />
                     </div>
                 ))}
