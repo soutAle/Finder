@@ -94,6 +94,11 @@ export const OffcanvasOptions = () => {
                         </Link>
                     </li>
                     <li className="nav-item">
+                        <Link className="nav-link active" aria-current="page" to="/createoffer">
+                            Publicar Oferta
+                        </Link>
+                    </li>
+                    <li className="nav-item">
                         <Link className="nav-link active" aria-current="page" to="/mycandidates">
                             Lista de postulados
                         </Link>

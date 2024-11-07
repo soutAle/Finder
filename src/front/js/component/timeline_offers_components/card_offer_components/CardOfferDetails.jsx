@@ -16,13 +16,15 @@ export const CardOfferDetails = ({ title, description, location, modality, salar
                 <div className="card-details-description">
                     <p>{description}</p>
                 </div>
-                <div className="card-footer-list d-flex justify-content-between">
+                <div className="card-footer-list d-flex justify-content-between align-items-end">
                     <ul className="list-unstyled d-flex justify-content-start m-0 details-list">
                         <li className="mx-2 details-list">{modality}</li>
                         <li className="mx-2 details-list">{salary}</li>
                         <li className='mx-2 details-list'>{minimun_experience}</li>
                     </ul>
+
                     <ActionButtons offer_id={id} />
+
                 </div>
             </div>
         </div>

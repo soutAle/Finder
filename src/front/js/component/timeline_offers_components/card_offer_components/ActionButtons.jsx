@@ -29,26 +29,26 @@ export const ActionButtons = ({ offer_id }) => {
     };
 
     return (
-        <div className="card-offer-actions d-flex justify-content-end mx-4 d-grid gap-2 d-md-flex">
-            <ul className="list-unstyled d-flex">
-                <li>
-                    <Link to={`/singleoffer/${offer_id}`} className="btn btn-view-offer">
-                        Ver Oferta
-                    </Link>
-                </li>
-                {store.user?.profile_developer && (
-                    <>
-                        <li>
-                            <button
-                                className={`btn ${isSubscribed ? 'btn-applied' : 'btn-unapplied'}`}
-                                onClick={handleSubscription}
-                            >
-                                {isSubscribed ? 'Desinscribirse' : 'Inscribirse'}
-                            </button>
-                        </li>
-                    </>
-                )}
-            </ul>
+
+        <div className="list-unstyled d-flex">
+
+            <Link to={`/singleoffer/${offer_id}`} className="btn btn-view-offer">
+                Ver Oferta
+            </Link>
+
+            {store.user?.profile_developer && (
+                <>
+
+                    <button
+                        className={`btn ${isSubscribed ? 'btn-applied' : 'btn-unapplied'}`}
+                        onClick={handleSubscription}
+                    >
+                        {isSubscribed ? 'Desinscribirse' : 'Inscribirse'}
+                    </button>
+
+                </>
+            )}
         </div>
+
     );
 };

@@ -3,11 +3,13 @@ const getState = ({ getStore, getActions, setStore }) => {
         store: {
             token: localStorage.getItem('token') || null,
             user: '',
+            selectedUser: '',
             message: null,
             isAuthenticated: !!localStorage.getItem('token'),
             bookmarks: [],
             offers: [],
-            candidates: []
+            candidates: [],
+            users: [],
         },
         actions: {
             signup: async (formData) => {
@@ -32,6 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     setStore({
                         token: data.token,
                         user: data.user,
+                        users: data.user,
                         isAuthenticated: true
                     });
                     localStorage.setItem('token', data.token);
@@ -42,7 +45,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                     return { success: false, error: 'Error al conectar con el backend.' };
                 }
             },
-
 
             resetStore: () => {
                 setStore({ msg: "", success: "" });
@@ -67,7 +69,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                     if (resp.ok) {
                         const data = await resp.json();
-                        console.log(data);
                         localStorage.setItem('token', data.token);
                         setStore({ token: data.token, user: data.user });
                         return data;
@@ -142,13 +143,13 @@ const getState = ({ getStore, getActions, setStore }) => {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${getStore().token}`
                         }
                     });
 
                     if (resp.ok) {
+                        const store = getStore();
                         const data = await resp.json();
-                        setStore({ users: data.user });
+                        setStore({ users: [...store.users, data.user] });
                         return data;
                     } else {
                         console.error('Error al obtener todos los usuarios:', resp.statusText);
