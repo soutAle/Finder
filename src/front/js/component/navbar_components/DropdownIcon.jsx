@@ -1,7 +1,11 @@
 import React, { useContext } from "react";
 import { Context } from "../../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
-import { IoPersonCircleOutline, IoLogOutOutline } from "react-icons/io5";
+import { IoPersonCircleOutline, IoLogOutOutline, IoHelpBuoyOutline } from "react-icons/io5";
+import { BsBell } from "react-icons/bs";
+import { LiaUserEditSolid } from "react-icons/lia";
+import { SlCallIn } from "react-icons/sl";
+import "../../../styles/navbar.css"
 
 export const DropdownIcon = () => {
     const { store, actions } = useContext(Context);
@@ -23,28 +27,28 @@ export const DropdownIcon = () => {
                         data-bs-toggle="dropdown"
                         aria-expanded={false}
                     >
-                        <IoPersonCircleOutline />
+                        <IoPersonCircleOutline className="icon-person" />
                     </Link>
 
                     <ul className="dropdown-menu">
                         <li>
                             <Link className="dropdown-item" to="/">
-                                Notificaciones
+                                <BsBell />Notificaciones
                             </Link>
                         </li>
                         <li>
                             <Link className="dropdown-item" to="/editprofile">
-                                Editar perfil
+                                <LiaUserEditSolid />Editar perfil
                             </Link>
                         </li>
                         <li>
                             <Link className="dropdown-item" to="/help">
-                                Ayuda
+                                <IoHelpBuoyOutline />Ayuda
                             </Link>
                         </li>
                         <li>
                             <Link className="dropdown-item" to="/contactus">
-                                Contactanos
+                                <SlCallIn />Contactanos
                             </Link>
                         </li>
                         <li>

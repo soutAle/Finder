@@ -2,6 +2,7 @@
     background-color: #002841;
     box-shadow: 1px 13px 41px 0px #454444;
     height: 90px;
+    font-size: 0.9rem;
 }
 
 .offcanvas,
@@ -19,19 +20,21 @@
 
 .navbar-nav-text li:last-child svg {
     color: white;
+
+}
+
+.icon-person {
     font-size: 2rem;
 }
 
 .navbar-nav-text li:last-child svg:hover {
     color: rgb(107, 177, 252);
-    font-size: 2rem;
 }
 
 .dropdown-menu {
     margin-right: 50px;
     color: white;
     background-color: rgb(107, 177, 252);
-    ;
     border: none;
 }
 
@@ -41,8 +44,10 @@
     transition: background-color 0.2s ease;
 }
 
+
 .dropdown-item svg {
-    font-size: 0.8rem;
+    margin-right: 10px;
+    margin-bottom: 3px;
 }
 
 .navbar-toggler {

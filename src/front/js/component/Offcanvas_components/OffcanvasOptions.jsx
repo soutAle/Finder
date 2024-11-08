@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../store/appContext";
-import { IoLogOutOutline } from "react-icons/io5";
+import { IoLogOutOutline, IoHelpBuoyOutline } from "react-icons/io5";
+import { BsBell } from "react-icons/bs";
+import { LiaUserEditSolid } from "react-icons/lia";
+import { SlCallIn } from "react-icons/sl";
 
 export const OffcanvasOptions = () => {
     const { store, actions } = useContext(Context);
@@ -50,22 +53,22 @@ export const OffcanvasOptions = () => {
                         <ul className="dropdown-menu dropdown-menu-dark">
                             <li>
                                 <Link className="dropdown-item" to="/">
-                                    Notificaciones
+                                    <BsBell />Notificaciones
                                 </Link>
                             </li>
                             <li>
                                 <Link className="dropdown-item" to="/editprofile">
-                                    Editar perfil
+                                    <LiaUserEditSolid />Editar perfil
                                 </Link>
                             </li>
                             <li>
                                 <Link className="dropdown-item" to="/help">
-                                    Ayuda
+                                    <IoHelpBuoyOutline />Ayuda
                                 </Link>
                             </li>
                             <li>
                                 <Link className="dropdown-item" to="/cantactus">
-                                    Contactanos
+                                    <SlCallIn />Contactanos
                                 </Link>
                             </li>
                             <li>
