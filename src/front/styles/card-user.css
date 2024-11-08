@@ -25,15 +25,19 @@
     font-size: 1.2rem;
 }
 
-.card-user-telephone,
 .card-user-country {
     font-size: 0.9rem;
 }
 
+.card-user-email {
+    position: relative;
+    bottom: 10px;
+    font-size: 0.9rem;
+}
 
 
 .list-group {
     position: relative;
-    bottom: 15px;
+    bottom: 10px;
     font-size: 0.8rem;
 }

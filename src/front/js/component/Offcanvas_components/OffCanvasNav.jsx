@@ -3,7 +3,6 @@ import { Context } from "../../store/appContext.js";
 import { OffcanvasUserLinks } from "./OffcanvasUserLinks.jsx";
 import { OffcanvasOptions } from "./OffcanvasOptions.jsx";
 import { GiHamburger } from "react-icons/gi";
-import { MdOutlineScreenSearchDesktop } from "react-icons/md";
 import { GoSearch } from "react-icons/go";
 
 

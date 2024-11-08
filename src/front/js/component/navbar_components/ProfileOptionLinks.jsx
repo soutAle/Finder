@@ -10,6 +10,9 @@ export const ProfileOptionLinks = () => {
             {store.user?.profile_developer && (
                 <>
                     <li className="nav-item">
+                        <Link className="nav-link active" to="/users">Explora</Link>
+                    </li>
+                    <li className="nav-item">
                         <Link className="nav-link active" to="/bookmarks">Bookmarks</Link>
                     </li>
                     <li className="nav-item">
