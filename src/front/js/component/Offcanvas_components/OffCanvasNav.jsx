@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
-import { Context } from "../../store/appContext";
-import { OffcanvasUserLinks } from "../Offcanvas_components/OffcanvasUserLinks.jsx";
+import { Context } from "../../store/appContext.js";
+import { OffcanvasUserLinks } from "./OffcanvasUserLinks.jsx";
 import { OffcanvasOptions } from "./OffcanvasOptions.jsx";
 import { GiHamburger } from "react-icons/gi";
+import { MdOutlineScreenSearchDesktop } from "react-icons/md";
+import { GoSearch } from "react-icons/go";
+
 
 
 export const OffCanvasNav = () => {
@@ -18,7 +21,7 @@ export const OffCanvasNav = () => {
                 aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation"
             >
-                <span className="navbar-toggler-icon"><GiHamburger /></span>
+                <span className="navbar-toggler-icon"><GoSearch /></span>
             </button>
             <div
                 className="offcanvas offcanvas-end"
