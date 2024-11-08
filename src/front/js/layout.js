@@ -17,6 +17,9 @@ import { ProfileDeveloper } from "./pages/ProfileDeveloper.jsx"
 import { ProfileCompany } from "./pages/ProfileCompany.jsx";
 import { SingleOffer } from "./pages/SingleOffer.jsx";
 import { Users } from "./pages/Users.jsx"
+import { MyJobApplies } from "./pages/MyJobApplies.jsx";
+import { Bookmarks } from "./pages/Bookmarks.jsx";
+import { MyOffersPosted } from "./pages/MyOffersPosted.jsx";
 
 
 
@@ -48,6 +51,9 @@ const Layout = () => {
                         <Route element={<SignUp />} path="/signup" />
                         <Route element={<LogIn />} path="/login" />
                         <Route element={<CreateOffer />} path="/createoffer" />
+                        <Route element={<MyJobApplies />} path="/myjobapplies" />
+                        <Route element={<Bookmarks />} path="/bookmarks" />
+                        <Route element={<MyOffersPosted />} path="/myoffers" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
