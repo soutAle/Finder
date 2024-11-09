@@ -1,5 +1,6 @@
 .card-user-container {
-    width: 100%;
+    width: 90%;
+    max-width: 300px;
     border: 1px solid rgb(148, 148, 148);
     border-radius: 10px;
     background-color: rgba(240, 248, 255, 0.462);
@@ -14,6 +15,7 @@
 }
 
 .card-img-top-user {
+    height: 150px;
     transition: transform 0.5s ease;
 }
 
@@ -22,17 +24,17 @@
 }
 
 .card-user-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .card-user-country {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .card-user-email {
     position: relative;
     bottom: 10px;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
 
 

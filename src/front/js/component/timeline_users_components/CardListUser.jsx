@@ -21,7 +21,7 @@ export const CardListUser = () => {
                     </svg>
                 </div>
             ) : Array.isArray(users) && users.length > 0 ? (
-                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-3">
                     {users.map((user) => (
                         <div className="col d-flex" key={user.id}>
                             <div className="w-100">

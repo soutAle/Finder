@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { Context } from "../../store/appContext";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 export const CardUserPremium = ({ img, name, role, country, description, id }) => {
