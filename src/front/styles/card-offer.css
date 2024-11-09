@@ -1,11 +1,8 @@
 .card-offer-container {
-    position: relative;
-    max-width: 60%;
-    height: 200px;
-    background-color: rgba(255, 255, 255, 0);
-    border: 1px solid #9393939e;
+    height: 240px;
+    background-color: rgba(255, 255, 255, 0.777);
+    border: 1px solid #939393df;
     border-radius: 5px;
-    backdrop-filter: blur(10px);
     cursor: pointer;
 
 }
@@ -13,12 +10,6 @@
 .card-offer-container:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.304);
 }
-
-.img-offer {
-    width: 180px;
-    height: 200px;
-}
-
 
 .card-details-description {
     color: #4f4f4f;

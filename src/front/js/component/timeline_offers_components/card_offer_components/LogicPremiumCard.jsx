@@ -1,6 +1,6 @@
 import React from "react";
 import { CardOfferPremium } from "../CardOfferPremium.jsx";
-import { CardOffer } from "../CardOffer.jsx"
+import { CardOffer } from "../../timeline_offers_components/CardOffer.jsx"
 
 export const OfferCardPremiumLogic = ({ offer }) => {
     return offer.premium ? (
