@@ -9,7 +9,7 @@ import { MdAlternateEmail } from "react-icons/md";
 export const CardUser = ({ user }) => {
     const { store } = useContext(Context);
     return (
-        <div className="card card-user-container">
+        <div className="card-user-container">
             <img src="https://media.istockphoto.com/id/1152447561/es/foto/empresario-sentado-en-su-escritorio-y-el-uso-de-la-computadora-port%C3%A1til-en-la-oficina.jpg?s=612x612&w=0&k=20&c=yupSG4Xwurwy65tkuDpUOttlz2AOH4kA6SMWts_bIBE=" className="card-img-top-user" alt="profile image" />
             <div className="card-user-body p-2">
                 <h5 className="card-user-title">{user.name}</h5>

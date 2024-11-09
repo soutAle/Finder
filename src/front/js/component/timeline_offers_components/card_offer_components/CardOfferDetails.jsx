@@ -1,32 +1,38 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import '../../../../styles/card-offer.css';
 import { ActionButtons } from './ActionButtons.jsx';
-export const CardOfferDetails = ({ title, description, location, modality, salary, minimun_experience, id }) => {
 
+export const CardOfferDetails = ({ title, description, location, modality, salary, minimun_experience, id }) => {
     return (
-        <div className="d-flex">
-            <div className="img-offer-container">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfiwNZOWWU_5snwjBWULhLyjSjuVLyJw1SQg&s" className='img-offer' alt="" />
+
+        <div className="row g-0">
+            <div className="col-md-4 img-offer-container">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfiwNZOWWU_5snwjBWULhLyjSjuVLyJw1SQg&s"
+                    className="img-fluid rounded-start img-offer"
+                    alt={title}
+                />
             </div>
-            <div className="card-body">
-                <div className="row row-header">
-                    <h4 className="card-details-title">{title}</h4>
-                    <span className='card-details-location'>{location}</span>
-                </div>
-                <div className="card-details-description">
-                    <p>{description}</p>
+            <div className="col-md-8">
+                <div className="card-body">
+                    <div className="row row-header">
+                        <h4 className="card-details-title">{title}</h4>
+                        <span className="card-details-location">{location}</span>
+                    </div>
+                    <div className="card-details-description">
+                        <p>{description}</p>
+                    </div>
                 </div>
                 <div className="card-footer-list d-flex justify-content-between align-items-end">
-                    <ul className="list-unstyled d-flex justify-content-start m-0 details-list">
+                    <ul className="list-unstyled d-flex justify-content-start align-items-end m-0 details-list">
                         <li className="mx-2 details-list">{modality}</li>
                         <li className="mx-2 details-list">{salary}</li>
-                        <li className='mx-2 details-list'>{minimun_experience}</li>
+                        <li className="mx-2 details-list">{minimun_experience}</li>
                     </ul>
-
                     <ActionButtons offer_id={id} />
-
                 </div>
             </div>
+
         </div>
     );
 };
