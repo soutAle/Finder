@@ -1,0 +1,21 @@
+.image-dev {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.header-wrapper {
+    border-radius: 10px;
+}
+
+.dev-profile-header h2 {
+    font-size: 1.8rem;
+}
+
+.dev-profile-header h3 {
+    font-size: 1.2rem;
+}
+
+.dev-profile-header p {
+    font-size: 1rem;
+}

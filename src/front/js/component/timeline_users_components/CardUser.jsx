@@ -6,8 +6,6 @@ import { CiLocationOn } from "react-icons/ci";
 import { MdAlternateEmail } from "react-icons/md";
 
 
-
-
 export const CardUser = ({ user }) => {
     const { store } = useContext(Context);
     return (
