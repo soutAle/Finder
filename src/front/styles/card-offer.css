@@ -1,5 +1,5 @@
 .card-offer-container {
-    height: 240px;
+    max-width: 50rem;
     background-color: rgba(255, 255, 255, 0.777);
     border: 1px solid #939393df;
     border-radius: 5px;
