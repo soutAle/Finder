@@ -8,7 +8,7 @@ export const ActionButtons = ({ offer_id }) => {
     const [isSubscribed, setIsSubscribed] = useState(false);
 
     useEffect(() => {
-        const checkSubscription = store.user?.candidates?.map((candidate) => candidate.id === offer_id);
+        const checkSubscription = store.user?.candidates?.some((candidate) => candidate.id === offer_id);
         setIsSubscribed(checkSubscription);
     }, [offer_id, store.user?.candidates]);
 
@@ -16,22 +16,19 @@ export const ActionButtons = ({ offer_id }) => {
         if (!isSubscribed) {
             const result = await actions.applyToJobOffer(offer_id);
             if (result.type === 'success') {
-                setIsSubscribed(true);
                 alert(result.msg);
             }
         } else {
             const result = await actions.unapplyFromJobOffer(offer_id);
             if (result.type === 'success') {
-                setIsSubscribed(false);
                 alert(result.msg);
             }
         }
+        setIsSubscribed(!isSubscribed);
     };
 
     return (
-
         <div className="list-unstyled d-flex">
-
             <Link to={`/singleoffer/${offer_id}`} className="btn btn-view-offer">
                 Ver Oferta
             </Link>
@@ -47,6 +44,5 @@ export const ActionButtons = ({ offer_id }) => {
                 </>
             )}
         </div>
-
     );
 };
