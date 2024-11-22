@@ -229,7 +229,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 const token = store.token;
 
                 if (!token) {
-                    return { msg: "Usuario no autenticado: registrate o inicia sesión", type: 'error' }
+                    return { msg: "Usuario no autenticado: regístrate o inicia sesión", type: 'error' };
                 }
 
                 try {
@@ -244,12 +244,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                     if (resp.ok) {
                         const data = await resp.json();
-                        console.log('inscripcion exitosa', data);
-                        console.log('data candidates', candidates)
-                        return { msg: "Inscripcion realizada con exito.", type: "success" };
+
+                        setStore({
+                            user: {
+                                ...store.user,
+                                candidates: [...store.user.candidates, { id: offer_id }]
+                            }
+                        });
+
+                        console.log('Inscripción exitosa', data);
+                        return { msg: "Inscripción realizada con éxito.", type: "success" };
                     } else {
                         const errorData = await resp.json();
-                        return { msg: errorData.msg, success: false };
+                        return { msg: errorData.msg, type: "error" };
                     }
                 } catch (error) {
                     return { msg: "Error en la solicitud de inscripción.", type: 'error' };
@@ -275,18 +282,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                     if (resp.ok) {
                         const data = await resp.json();
+
+                        setStore({
+                            user: {
+                                ...store.user,
+                                candidates: store.user.candidates.filter(candidate => candidate.id !== offer_id)
+                            }
+                        });
+
                         console.log('Desinscripción exitosa', data);
                         return { msg: "Desinscripción realizada con éxito.", type: "success" };
                     } else {
                         const errorData = await resp.json();
-                        console.log("Error al desinscribirse: ", errorData.msg);
                         return { msg: errorData.msg, type: 'warning' };
                     }
                 } catch (error) {
-                    console.log("Error en la solicitud de desinscripción.");
                     return { msg: "Error en la solicitud de desinscripción.", type: 'error' };
                 }
             },
+
 
             addBookmark: async (developer_id, company_id, offer_id) => {
                 const store = getStore();

@@ -19,7 +19,7 @@ export const ProfileOptionLinks = () => {
                         <Link className="nav-link active" to="/myjobapplies">Candidaturas</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link active" to="/profiledeveloper">Perfil</Link>
+                        <Link className="nav-link active" to={`/profiledeveloper/${store.user.id}`}>Perfil</Link>
                     </li>
                 </>
             )}
@@ -37,7 +37,7 @@ export const ProfileOptionLinks = () => {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link active" to="/profilecompany">Perfil</Link>
+                        <Link className="nav-link active" to={`/profilecompany/${store.user.id}`}>Perfil</Link>
                     </li>
                 </>
             )}
