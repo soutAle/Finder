@@ -137,6 +137,32 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
+            updateProfile: async (updatedData) => {
+                try {
+                    const token = localStorage.getItem('token');
+                    const response = await fetch(`${process.env.BACKEND_URL}/api/profile`, {
+                        methods: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+
+                        },
+                        body: JSON.stringify(updatedData)
+                    });
+
+                    if (response.ok) {
+                        const updateUSer = await response.json();
+                        setStore({ user: updateUSer })
+                        alert('Perfil actualizado correctamente')
+                    } else {
+                        console.error("Error al actualizar perfil");
+                    }
+                } catch (error) {
+                    console.error(error)
+                }
+
+            },
+
             getAllUsers: async () => {
                 try {
                     const resp = await fetch(`${process.env.BACKEND_URL}/api/users`, {

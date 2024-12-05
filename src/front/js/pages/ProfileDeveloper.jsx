@@ -41,7 +41,7 @@ export const ProfileDeveloper = () => {
 						</div>
 						<div className="card-body">
 							<div className="description-dev">
-								<p className="text-description">{current.description}</p>
+								<p className="text-description">Descripcion{current.description}</p>
 							</div>
 						</div>
 					</div>
