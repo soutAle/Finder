@@ -1,17 +1,67 @@
 .card-offer-container {
-    max-width: 50rem;
+    width: 50vw;
     background-color: rgba(255, 255, 255, 0.777);
     border: 1px solid #939393df;
     border-radius: 5px;
     cursor: pointer;
+    overflow: hidden;
 
 }
+
+.img-offer-container {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    transition: transform 0.5s, box-shadow 0.3s, color 0.3s;
+    overflow: hidden;
+}
+
+.img-offer-box {
+    width: 100%;
+    overflow: hidden;
+}
+
+.img-offer {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(138, 138, 138, 0.5);
+    transition: transform 0.5s ease;
+}
+
+
+.card-offer-container:hover .img-offer {
+    transform: scale(1.08);
+}
+
 
 .card-offer-container:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.304);
 }
 
+.row-header {
+    position: relative;
+    bottom: 15px;
+}
+
+.card-details-title {
+    font-weight: lighter;
+}
+
+.card-details-subtitle {
+    position: relative;
+    bottom: 5px;
+
+}
+
+.card-details-subtitle:hover {
+    text-decoration: underline;
+    color: rgb(88, 88, 250);
+}
+
 .card-details-description {
+    height: 80px;
     color: #4f4f4f;
     font-size: 0.8rem;
     display: -webkit-box;
@@ -23,22 +73,59 @@
 
 
 .details-list {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
 }
 
-.details-list-item {
-    padding: 5px;
-    border: 1px solid gray;
-    font-size: 0.6rem;
-    border-radius: 35%;
+.details-list-item:hover {
+    text-decoration: underline;
+    color: rgb(88, 88, 250);
+}
+
+.btn-view-offer {
+    background-color: #004875;
+    color: white;
+
+}
+
+.btn-view-offer:hover {
+    background-color: #00487556;
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 4px 8px rgba(40, 40, 40, 0.562);
+
+}
+
+.btn-applied {
+    background-color: #004875;
+    color: white;
+}
+
+
+.btn-applied:hover {
+    background-color: #00487556;
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 4px 8px rgba(40, 40, 40, 0.562);
+}
+
+
+.btn-unapplied {
+    background-color: rgb(160, 0, 0);
+    color: white;
+
+}
+
+.btn-unapplied:hover {
+    background-color: rgb(194, 91, 91);
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 4px 8px rgba(40, 40, 40, 0.562);
 }
 
 .btn-view-offer,
 .btn-saved,
 .btn-unsaved,
+.btn-apply,
 .btn-applied,
 .btn-unapplied {
-    border: 1px solid;
+    border: gray 1px solid;
     font-size: 0.6rem;
     border-radius: 25px;
 }

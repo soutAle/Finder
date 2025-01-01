@@ -1,6 +1,6 @@
 import React from "react";
 import { useLoadOffers } from "../../../hooks/useLoadOffers.jsx";
-import { OfferCardPremiumLogic } from "./LogicPremiumCard.jsx";
+import { OfferCardPremiumLogic } from "./OfferCardPremiumLogic.jsx";
 import "../../../../styles/index.css";
 import { Spinner } from "../../Spinner.jsx";
 
@@ -12,11 +12,13 @@ export const CardListOffers = () => {
 
     return (
         <>
-            {offers.map((offer) => (
-                <div key={offer.id} className="m-3">
-                    <OfferCardPremiumLogic offer={offer} />
-                </div>
-            ))}
+            <div className="mt-5">
+                {offers.map((offer) => (
+                    <div key={offer.id} className="m-3">
+                        <OfferCardPremiumLogic offer={offer} />
+                    </div>
+                ))}
+            </div>
         </>
 
     );
