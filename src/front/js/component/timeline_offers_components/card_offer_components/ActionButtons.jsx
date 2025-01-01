@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export const ActionButtons = ({ offer_id }) => {
     const { store, actions } = useContext(Context);
-    const [isSubscribed, setIsSubscribed] = useState(false);
+    const [isSubscribed, setIsSubscribed] = useState(null);
 
     useEffect(() => {
         const checkSubscription = store.user?.candidates?.some((candidate) => candidate.id === offer_id);
@@ -28,15 +28,15 @@ export const ActionButtons = ({ offer_id }) => {
     };
 
     return (
-        <div className="list-unstyled d-flex">
-            <Link to={`/singleoffer/${offer_id}`} className="btn btn-view-offer">
+        <div className="d-flex">
+            <Link to={`/singleoffer/${offer_id}`} className="btn btn-view-offer mx-2">
                 Ver Oferta
             </Link>
 
             {store.user?.profile_developer && (
                 <>
                     <button
-                        className={`btn ${isSubscribed ? 'btn-applied' : 'btn-unapplied'}`}
+                        className={`btn ${isSubscribed ? 'btn-unapplied' : 'btn-applied'}`}
                         onClick={handleSubscription}
                     >
                         {isSubscribed ? 'Desinscribirse' : 'Inscribirse'}
