@@ -15,7 +15,7 @@ export const AboutUsSection = () => {
                             ¡Descubre más sobre nosotros y únete a la comunidad!
                         </p>
                     </div>
-                    <Link to="/About" className="btn btn-no-testimonial btn-lg rounded-pill">
+                    <Link to="/about" className="btn btn-no-testimonial btn-lg rounded-pill">
                         ¡Conócenos!
                     </Link>
                 </div>
