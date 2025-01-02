@@ -10,7 +10,7 @@ import { GoSearch } from "react-icons/go";
 export const Navbar = () => {
 	return (
 		<nav className="navbar custom-navbar">
-			<div className="container-fluid">
+			<div className="container-fluid mt-4">
 				<Link className="navbar-brand ms-3 text-white" to="/">Finder <GoSearch /></Link>
 				<div className="d-none d-md-flex pe-5">
 					<ul className="navbar-nav-text d-flex justify-content-end align-items-end flex-grow-1 pe-5 list-unstyled mb-0">

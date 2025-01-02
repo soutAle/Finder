@@ -329,7 +329,7 @@ def add_bookmark():
     db.session.add(new_bookmark)
     db.session.commit()
 
-    return jsonify({"success": True, "data": new_bookmark.serialize()}), 20
+    return jsonify({"success": True, "data": new_bookmark.serialize()}), 200
 
 @api.route('/user/<int:user_id>/bookmarks', methods=['GET'])
 def get_user_bookmarks(user_id):
