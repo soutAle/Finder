@@ -138,10 +138,8 @@
 
 /* CTA Section */
 .cta-section {
-  margin: 50px 0px 100px 0px;
   box-shadow: 1px 13px 70px 0px #434343;
   background-color: #002237e2;
-  padding: 60px 0;
 }
 
 .cta-section h2 {
