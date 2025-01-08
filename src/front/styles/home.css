@@ -28,7 +28,8 @@
 
 /* Highlights Section */
 .highlight-cards {
-  width: 25rem;
+  width: 100%;
+  min-height: 350px;
   border-radius: 5px;
   transition: transform 0.5s, box-shadow 0.3s, color 0.3s;
   overflow: hidden;
@@ -67,7 +68,7 @@
 }
 
 .highlights-section p {
-  font-size: 1rem;
+  font-size: rem;
   color: inherit;
 }
 
