@@ -5,7 +5,7 @@ import "../../../styles/home.css"
 
 export const HighlightSection = () => {
     return (
-        <section className="highlights-section d-flex justify-content-center">
+        <section className="highlights-section">
             <div className="row text-center">
                 <div className="col-lg-4 col-md-4 col-sm-12 mb-5">
                     <div className="card highlight-cards">
