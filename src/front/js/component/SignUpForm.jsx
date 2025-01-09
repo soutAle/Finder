@@ -154,6 +154,7 @@ export const SignUpForm = () => {
                                         value={formData.country}
                                         onChange={handleChange}
                                         placeholder="Ingresa tu país"
+                                        autoComplete="country"
                                         required
                                     />
                                 </div>
@@ -169,6 +170,7 @@ export const SignUpForm = () => {
                                         value={formData.password}
                                         onChange={handleChange}
                                         placeholder="Ingresa tu contraseña"
+                                        autoComplete="current-password"
                                         required
                                     />
                                 </div>
