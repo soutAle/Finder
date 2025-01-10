@@ -24,16 +24,18 @@ export const LogIn = () => {
     return (
         <div className="container-fluid mt-5 login-view-container">
             <div className="row ms-5">
-                <div className="col-md-4">
-                    <div className="card shadow">
-                        <div className="card-body card-login">
-                            <LoginForm
-                                onSubmit={handleLogin}
-                                handleChange={handleChange}
-                                credentials={credentials}
-                                error={error}
-                            />
+                <div className="col">
+                    <div className="card card-login">
+                        <div className="title-login text-center">
+                            <h2 className="display-5">Finder</h2>
+                            <h3 className="my-4 fw-light">Aqui empieza todo, inicia sesión y abrete las puertas al mundo</h3>
                         </div>
+                        <LoginForm
+                            onSubmit={handleLogin}
+                            handleChange={handleChange}
+                            credentials={credentials}
+                            error={error}
+                        />
                     </div>
                 </div>
             </div>
