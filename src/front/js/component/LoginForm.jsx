@@ -6,7 +6,7 @@ export const LoginForm = ({ onSubmit, handleChange, credentials, error }) => {
     return (
         <form onSubmit={onSubmit} className="login-form-box">
             <div className="form-group mb-3">
-                <label htmlFor="email" className="form-label">
+                <label htmlFor="email" className="form-label fw-bold">
                     Correo electrónico
                 </label>
                 <input
@@ -22,7 +22,7 @@ export const LoginForm = ({ onSubmit, handleChange, credentials, error }) => {
                 />
             </div>
             <div className="form-group mb-3">
-                <label htmlFor="password" className="form-label">
+                <label htmlFor="password" className="form-label fw-bold">
                     Contraseña
                 </label>
                 <input
@@ -38,7 +38,7 @@ export const LoginForm = ({ onSubmit, handleChange, credentials, error }) => {
                 />
             </div>
             {error && <p className="text-danger text-center">{error}</p>}
-            <div className="d-grid justify-content-center">
+            <div className="d-grid justify-content-center mt-5">
                 <button type="submit" className="btn btn-login">
                     Iniciar sesión
                 </button>
