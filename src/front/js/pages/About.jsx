@@ -1,6 +1,7 @@
 import React from "react";
-import '../../styles/about.css' // Asegúrate de tener un archivo CSS para estilos personalizados
+import '../../styles/about.css'
 import { HeroSectionAbout } from "../component/about_components/HeroSectionAbout.jsx";
+import { WhyUsAbout } from "../component/about_components/WhyUsAbout.jsx";
 
 export const About = () => {
     return (
