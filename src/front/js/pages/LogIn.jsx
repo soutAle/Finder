@@ -22,9 +22,9 @@ export const LogIn = () => {
     };
 
     return (
-        <div className="container-fluid mt-5 login-view-container">
+        <div className="container-fluid login-view-container">
             <div className="row ms-5">
-                <div className="col">
+                <div className="col mt-5">
                     <div className="card card-login">
                         <div className="title-login text-center">
                             <h2 className="display-5">Finder</h2>

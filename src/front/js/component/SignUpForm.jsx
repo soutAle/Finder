@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
+import "../../styles/signup.css";
 
 export const SignUpForm = () => {
     const { actions, store } = useContext(Context);
@@ -48,10 +49,10 @@ export const SignUpForm = () => {
     };
 
     return (
-        <div className="container mt-5">
-            <div className="row justify-content-center">
+        <div className="container my-5">
+            <div className="row">
                 <div className="col-md-6">
-                    <div className="card shadow">
+                    <div className="card shadow card-singup">
                         <div className="card-body">
                             {successMessage && <p className="alert alert-success text-success text-center">{successMessage}</p>}
                             <form onSubmit={handleSubmit}>
