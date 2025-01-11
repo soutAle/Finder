@@ -4,7 +4,7 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export const Footer = () => (
-	<footer className="footer py-2 mt-5">
+	<footer className="footer py-2">
 		<div className="container-fluid">
 			<div className="row text-center text-md-start">
 				<div className="col-md-6 mb-3 mb-md-0">

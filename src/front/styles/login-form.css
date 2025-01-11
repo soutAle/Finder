@@ -1,5 +1,5 @@
 .login-view-container {
-    height: 81vh;
+    height: 100vh;
 
 }
 
@@ -10,11 +10,14 @@
     padding: 1rem;
     border-radius: 1rem;
     box-shadow: 0px 4px 8px rgba(179, 179, 179, 0.612);
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    color: rgb(64, 87, 106);
 }
 
 .btn-login {
     width: 14rem;
-    background-color: #7ea5d9ab;
+    background-color: #003a87ab;
     border: 1px solid rgb(137, 137, 137);
     border-radius: 50px;
     transition: transform 0.6s, box-shadow 0.3s, color 0.3s;
