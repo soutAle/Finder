@@ -47,6 +47,14 @@
 
 .card-details-title {
     font-weight: lighter;
+    font-size: 1.8rem;
+}
+
+.bookmark-icon {
+    position: relative;
+    font-size: 1.8rem;
+    left: 20px;
+
 }
 
 .card-details-subtitle {
