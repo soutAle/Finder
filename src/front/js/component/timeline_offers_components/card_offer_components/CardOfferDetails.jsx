@@ -1,6 +1,8 @@
 import React from 'react';
 import '../../../../styles/card-offer.css';
 import { ActionButtons } from './ActionButtons.jsx';
+import { CiBookmark } from "react-icons/ci";
+
 
 export const CardOfferDetails = ({ title, description, location, modality, salary, minimun_experience, id }) => {
     return (
@@ -13,12 +15,14 @@ export const CardOfferDetails = ({ title, description, location, modality, salar
                         alt={title}
                     />
                 </div>
-
             </div>
             <div className="col-9">
                 <div className="card-body">
                     <div className="row-header">
-                        <h2 className="card-details-title">{title}</h2>
+                        <div className="card-details-title d-flex justify-content-between">
+                            <h2>{title}</h2>
+                            <CiBookmark className='bookmark-icon' />
+                        </div>
                         <span className="card-details-subtitle">Company name - {location}</span>
                     </div>
                     <div className="card-details-description">
