@@ -60,5 +60,11 @@ Finder is more than just a job board—it's a space where talent meets opportuni
 > 🚧⚠️ Some functionalities are still in progress, as I am taking the time to dig deeper into the details of the project. I am working to gain a more solid understanding and make sure everything is done right. thank you for your comprehension and you will hear from me soon!
 > ***I hope you liked it*** 😊
 
+<p align="center">
+<a href="https://www.linkedin.com/in/alevalencia/"><img src="https://img.shields.io/badge/-alevalencia-0077B5?style=flat&logo=Linkedin&logoColor=white"/></a>
+<a href="mailto:alevalencigiraldol@gmail.com"><img src="https://img.shields.io/badge/-alevalenci@gmail.com-D14836?style=flat&logo=Gmail&logoColor=white"/></a>
+<a href="https://www.instagram.com/alecvalenc/"><img src="https://img.shields.io/badge/-alecvalenc-E4405F?style=flat&logo=Instagram&logoColor=white"/></a>
+</p>
+
 
 
