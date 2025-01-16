@@ -1,4 +1,4 @@
-<h1 class='text-center'>Welcome to Finder</h1> 
+<h1 className='text-center'>Welcome to Finder</h1> 
 
 Build web applications using React.js for the front end and python/flask for your backend API.
 
