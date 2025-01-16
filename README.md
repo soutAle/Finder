@@ -1,4 +1,4 @@
-<h1>WebApp boilerplate with React JS and Flask API</h1> 
+<p>WebApp boilerplate with React JS and Flask API</p> 
 
 Build web applications using React.js for the front end and python/flask for your backend API.
 
