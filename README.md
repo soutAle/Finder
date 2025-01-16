@@ -1,5 +1,5 @@
- # Finder: Building Bridges in the Tech World. </br> 
- ### Full Stack Web Application Project
+ # 🔍 Finder: Building Bridges in the Tech World. 
+ ### 🌐 Full Stack Web Application Project
 
  **What is Finder?**
 
@@ -44,8 +44,6 @@ Finder is more than just a job board—it's a space where talent meets opportuni
 - Tool for efficiently testing and documenting endpoints.
 - Validation of HTTP responses and backend functionality tests.
 
-> 🚧⚠️ Some functionalities are still in progress, as I am taking the time to dig deeper into the details of the project. I am working to gain a more solid understanding and make sure everything is done right. thank you for your comprehension and you will hear from me soon!
-
 > ## 🛠️ Installation:
 > If you use Github Codespaces (recommended) or Gitpod this template will already come with Python, Node and the Posgres Database installed. If you are working locally make sure to install Python 3.10, Node
 > 
@@ -58,6 +56,9 @@ Finder is more than just a job board—it's a space where talent meets opportuni
 > - Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
 > 1. Install the packages: `$ npm install`
 > 2. Start coding! start the webpack dev server `$ npm run start`
+
+> 🚧⚠️ Some functionalities are still in progress, as I am taking the time to dig deeper into the details of the project. I am working to gain a more solid understanding and make sure everything is done right. thank you for your comprehension and you will hear from me soon!
+> ***I hope you liked it*** 😊
 
 
 
