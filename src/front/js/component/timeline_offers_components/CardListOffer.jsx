@@ -1,8 +1,8 @@
 import React from "react";
-import { useLoadOffers } from "../../../hooks/useLoadOffers.jsx";
-import { OfferCardPremiumLogic } from "./OfferCardPremiumLogic.jsx";
-import "../../../../styles/index.css";
-import { Spinner } from "../../Spinner.jsx";
+import { useLoadOffers } from "../../hooks/useLoadOffers.jsx";
+import "../../../styles/index.css";
+import { Spinner } from "../Spinner.jsx";
+import { CardOffer } from "./CardOffer.jsx";
 
 export const CardListOffers = () => {
     const { offers, loading } = useLoadOffers();
@@ -14,7 +14,7 @@ export const CardListOffers = () => {
         <>
             {
                 offers.map((offer) => (
-                    <OfferCardPremiumLogic offer={offer} />
+                    <CardOffer title={offer.name} id={offer.id} />
                 ))
             }
         </>
