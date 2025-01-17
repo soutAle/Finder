@@ -6,17 +6,16 @@ import { CiBookmark } from "react-icons/ci";
 
 export const CardOfferDetails = ({ title, description, location, modality, salary, minimun_experience, id }) => {
     return (
-        <>
-            <div className="col-md-3 img-offer-container">
-                <div className="img-offer-box">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfiwNZOWWU_5snwjBWULhLyjSjuVLyJw1SQg&s"
-                        className="img-fluid img-offer"
-                        alt={title}
-                    />
-                </div>
+        <div className="row justify-content-center">
+            <div className="col-md-3 img-offer-container" style={{ padding: 0 }}>
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfiwNZOWWU_5snwjBWULhLyjSjuVLyJw1SQg&s"
+                    className="img-fluid img-offer"
+                    alt={title}
+                />
+
             </div>
-            <div className="col-9">
+            <div className="col-md-9">
                 <div className="card-body">
                     <div className="row-header">
                         <div className="card-details-title d-flex justify-content-between">
@@ -38,6 +37,6 @@ export const CardOfferDetails = ({ title, description, location, modality, salar
                     <ActionButtons offer_id={id} />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
