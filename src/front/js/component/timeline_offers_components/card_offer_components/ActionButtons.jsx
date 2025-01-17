@@ -31,15 +31,15 @@ export const ActionButtons = ({ offer_id }) => {
     };
 
     return (
-        <div className="d-flex">
-            <Link to={`/singleoffer/${offer_id}`} className="btn btn-view-offer mx-2">
+        <div className="container-buttons d-flex">
+            <Link to={`/singleoffer/${offer_id}`} className="btn btn-sm btn-view-offer mx-2">
                 Ver Oferta
             </Link>
 
             {store.user?.profile_developer && (
                 <>
                     <button
-                        className={`btn ${isSubscribed ? 'btn-unapplied' : 'btn-applied'}`}
+                        className={`btn btn-sm ${isSubscribed ? 'btn-unapplied' : 'btn-applied'}`}
                         onClick={handleSubscription}
                     >
                         {isSubscribed ? 'Desinscribirse' : 'Inscribirse'}
