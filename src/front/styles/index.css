@@ -2,7 +2,7 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 body {
-    background-image: url('https://i.pinimg.com/originals/6e/32/87/6e32878542a4a6b86e640204d951fbff.jpg');
+    background-image: url("https://images.unsplash.com/photo-1464618663641-bbdd760ae84a?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Zm9uZG8lMjBhenVsfGVufDB8fDB8fHww");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
