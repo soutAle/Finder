@@ -8,8 +8,7 @@
 
 
 /* Hero Section */
-.greeting-user-home,
-.title-container {
+.greeting-user-home {
   animation: myAnim 2s ease 0s 1 normal forwards;
 }
 
@@ -31,7 +30,7 @@
   width: 90%;
   max-height: 450px;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.3);
+  background: #5d5d5e29;
   backdrop-filter: blur(10px);
   transition: transform 0.5s, box-shadow 0.3s, color 0.3s;
   overflow: hidden;

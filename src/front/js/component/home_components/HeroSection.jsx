@@ -6,22 +6,25 @@ export const HeroSection = () => {
     const { store } = useContext(Context);
 
     return (
-        <section className="hero-section d-flex flex-column justify-content-center text-center my-5">
+        <section className="hero-section d-flex flex-column justify-content-between text-center my-5">
+            <div className="greeting-user-home text-center mb-5">
+                {store?.user ? (
+                    <h1 className="display-4">Bienvenido de nuevo {store?.user?.name}</h1>
+                ) : (
+                    <>
+                        <h1 className="display-4">¡Bienvenido a Finder!</h1>
+                        <h2 className="display-6">Conectamos empresas con desarrolladores, impulsamos carreras y empresas.</h2>
+                    </>
+                )}
 
-            {store?.user ? (
-                <>
-                    <h1 className="greeting-user-home display-4 mb-5">Bienvenido de nuevo {store?.user?.name}</h1>
-                </>
-            ) : (
-                <>
-                    <h1 className="greeting-user-home display-4 mb-5">¡Bienvenido a Finder!</h1>
-                </>
-            )}
+                {store?.user?.profile_developer && (
+                    <h2 className="display-5">Tenemos las ofertas que llevar tu carrera al siguiente nivel</h2>
+                )}
 
-            <div className="title-container text-center mb-5">
-                <h2 className="first-title-home display-5">Conecta Desarrolladores con Empresas</h2>
-                <h3 className="lead mb-5">Encuentra tu próximo proyecto o el talento ideal para tu equipo</h3>
-                <Link to="/signup" className="btn btn-hero btn-lg mt-3 rounded-pill">
+                {store?.user?.profile_company && (
+                    <h2 className="display-5">Encuentra a la persona que mejor se adapte a tus proyecto</h2>
+                )}
+                <Link to="/signup" className="btn btn-hero btn-lg rounded-pill my-5">
                     ¡Comienza Ahora!
                 </Link>
             </div>
