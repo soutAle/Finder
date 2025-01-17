@@ -10,7 +10,7 @@ export const CardOffer = ({ id }) => {
     if (!offer) return <div>Oferta no encontrada</div>;
 
     return (
-        <div className="card-offer-container d-flex p-2">
+        <div className="card-offer-container p-2 my-2">
             <CardOfferDetails
                 image={offer.image}
                 title={offer.title}

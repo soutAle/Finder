@@ -12,13 +12,11 @@ export const CardListOffers = () => {
 
     return (
         <>
-            <div className="mt-5 h-100">
-                {offers.map((offer) => (
-                    <div key={offer.id} className="m-3">
-                        <OfferCardPremiumLogic offer={offer} />
-                    </div>
-                ))}
-            </div>
+            {
+                offers.map((offer) => (
+                    <OfferCardPremiumLogic offer={offer} />
+                ))
+            }
         </>
 
     );
