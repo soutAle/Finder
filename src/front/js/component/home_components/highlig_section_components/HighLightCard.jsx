@@ -2,7 +2,7 @@ import React from "react";
 
 const HighLightCard = ({ img, title, description }) => {
     return (
-        <div className="container-fluid highlight-section d-flex justify-content-center">
+        <div className="col-md-4 container-fluid highlight-section d-flex justify-content-center">
             <div className="card highlight-cards mt-4">
                 <div className="card-img-container">
                     <img src={img} alt={title} className="card-img-top-highlight" />
