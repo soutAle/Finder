@@ -23,14 +23,16 @@ const highlightCardsData = [
 const HighLightSection = () => {
     return (
         <div className="container-fluid highlight-section d-flex justify-content-center">
-            {highlightCardsData.map((card, index) => (
-                <HighLightCard
-                    key={index}
-                    img={card.img}
-                    title={card.title}
-                    description={card.description}
-                />
-            ))}
+            <div className="row">
+                {highlightCardsData.map((card, index) => (
+                    <HighLightCard
+                        key={index}
+                        img={card.img}
+                        title={card.title}
+                        description={card.description}
+                    />
+                ))}
+            </div>
         </div>
     );
 };
