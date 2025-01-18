@@ -367,7 +367,7 @@ def remove_bookmark():
     try:
         bookmark = Bookmark.query.filter_by(
             developer_id=data['developer_id'],
-            company_id=data['compay_id'],
+            company_id=data['company_id'],
             offer_id=data['offer_id']
         ).first()
 

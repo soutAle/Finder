@@ -1,6 +1,7 @@
 .card-user-container {
-    width: 80%;
-    max-width: 300px;
+    width: 20rem;
+    max-width: 400px;
+    max-height: 400px;
     border: 1px solid rgb(148, 148, 148);
     border-radius: 10px;
     background-color: rgba(240, 248, 255, 0.462);
