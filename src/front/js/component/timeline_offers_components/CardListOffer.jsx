@@ -14,7 +14,7 @@ export const CardListOffers = () => {
         <>
             {
                 offers.map((offer) => (
-                    <CardOffer title={offer.name} id={offer.id} />
+                    <CardOffer key={offer.id} title={offer.name} id={offer.id} />
                 ))
             }
         </>
