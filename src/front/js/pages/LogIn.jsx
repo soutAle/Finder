@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { LoginForm } from "../component/LoginForm.jsx";
 import { useLoginForm } from "../hooks/useLoginForm.jsx";
-import { Context } from "../store/appContext.js";
 import "../../styles/login-form.css"
 
 export const LogIn = () => {
