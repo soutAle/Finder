@@ -1,43 +1,30 @@
 import React from "react";
 import "../../styles/login-form.css"
 import { Link } from "react-router-dom";
+import { useLoginForm } from "../hooks/useLoginForm.jsx";
 
-export const LoginForm = ({ onSubmit, handleChange, credentials, error }) => {
+
+
+export const LoginForm = () => {
+    const { register, handleSubmit, errors } = useLoginForm();
+
     return (
-        <form onSubmit={onSubmit} className="login-form-box">
+        <form onSubmit={handleSubmit} className="login-form-box">
             <div className="form-group mb-3">
                 <label htmlFor="email" className="form-label fw-bold">
                     Correo electrónico
                 </label>
-                <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    name="email"
-                    value={credentials.email}
-                    onChange={handleChange}
-                    placeholder="Ingresa tu correo electrónico"
-                    required
-                    autoComplete="username"
-                />
+                <input {...register('email', { required: true })} className="form-control bg-transparent" placeholder="Email" />
+                {errors.email && <span>Este campo es requerido</span>}
             </div>
             <div className="form-group mb-3">
                 <label htmlFor="password" className="form-label fw-bold">
                     Contraseña
                 </label>
-                <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    name="password"
-                    value={credentials.password}
-                    onChange={handleChange}
-                    placeholder="Ingresa tu contraseña"
-                    required
-                    autoComplete="current-password"
-                />
+                <input {...register('password', { required: true })} className="form-control bg-transparent" placeholder="Contraseña" type="password" />
+                {errors.password && <span>Este campo es requerido</span>}
             </div>
-            {error && <p className="text-danger text-center">{error}</p>}
+            {errors && <p className="text-danger text-center">{errors.message}</p>}
             <div className="d-grid justify-content-center mt-5">
                 <button type="submit" className="btn btn-login">
                     Iniciar sesión

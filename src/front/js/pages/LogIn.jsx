@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { LoginForm } from "../component/LoginForm.jsx";
 import { useLoginForm } from "../hooks/useLoginForm.jsx";
-import "../../styles/login-form.css"
+import "../../styles/login-form.css";
 
 export const LogIn = () => {
-    const { credentials, error, handleLogin, handleChange } = useLoginForm();
+    const { register, handleSubmit, errors } = useLoginForm();
 
     return (
         <div className="container-fluid login-view-container">
@@ -16,10 +16,9 @@ export const LogIn = () => {
                             <h3 className="my-4 fw-light">Aqui empieza todo, inicia sesión y abrete las puertas al mundo</h3>
                         </div>
                         <LoginForm
-                            onSubmit={handleLogin}
-                            handleChange={handleChange}
-                            credentials={credentials}
-                            error={error}
+                            register={register}
+                            handleSubmit={handleSubmit}
+                            errors={errors}
                         />
                     </div>
                 </div>
