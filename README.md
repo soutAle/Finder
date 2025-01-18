@@ -24,23 +24,23 @@ Finder is more than just a job board—it's a space where talent meets opportuni
 - **SQLAlchemy:** ORM for managing the database securely and efficiently.
 
 ## 📚 Applied Knowledge
-### 📡 Global State Management with Context API (Flux)
+### Global State Management with Context API (Flux)
 - Implementation of a centralized system to manage the application's state.
 - Improved consistency and data flow between components.
-### ⛵ React Router for Navigation
+### React Router for Navigation
 - Usage of React Router to implement dynamic routes and secure access based on user state.
-### 🔐 bcrypt for Encryption
+### bcrypt for Encryption
 - Robust security for storing passwords through encryption.
 - Enhanced protection for sensitive data.
-### ⚙️ Usage of Hooks and Custom Hooks
+### Usage of Hooks and Custom Hooks
 - Leveraging hooks like useState, useEffect, and useContext.
 - Creation of custom hooks to encapsulate reusable logic.
-### 🧩 Application of SOLID Principles:
+### Application of SOLID Principles:
 - Adoption of software design principles to ensure code maintainability and scalability.
-### 🔑 JWT (JSON Web Tokens):
+### JWT (JSON Web Tokens):
 - Secure authentication using tokens.
 - Middleware implementation to protect sensitive routes.
-### 📬 Postman:
+### Postman:
 - Tool for efficiently testing and documenting endpoints.
 - Validation of HTTP responses and backend functionality tests.
 
