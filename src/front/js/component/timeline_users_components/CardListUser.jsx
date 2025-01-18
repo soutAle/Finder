@@ -1,6 +1,6 @@
 import React from "react";
 import { useLoadUsers } from "../../hooks/useLoadUsers.jsx";
-import { CardUserPremiumLogic } from "../timeline_users_components/CardUserPremiumLogic.jsx";
+import { CardUser } from "../timeline_users_components/CardUser.jsx";
 import { Spinner } from "../Spinner.jsx";
 
 export const CardListUser = () => {
@@ -15,7 +15,7 @@ export const CardListUser = () => {
                 {users.map((user) => (
                     <div className="d-flex" >
                         <div className="w-100" key={user.id}>
-                            <CardUserPremiumLogic user={user} />
+                            <CardUser key={user.id} user={user} />
                         </div>
                     </div>
                 ))}
