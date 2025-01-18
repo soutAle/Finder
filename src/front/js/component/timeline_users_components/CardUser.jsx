@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../../store/appContext";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../../../styles/card-user.css"
 import { CiLocationOn } from "react-icons/ci";
 import { MdAlternateEmail } from "react-icons/md";

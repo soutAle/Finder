@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/form-offer.css";
-import { useFormOffer } from "../hooks/useOfferForm.jsx";
+import { useFormOffer } from "../hooks/useFormOffer.jsx";
 
 export const FormOffer = () => {
     const { register, handleSubmit, onSubmit, errors } = useFormOffer();
