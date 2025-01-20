@@ -5,10 +5,8 @@ import { CardListUser } from "../component/timeline_users_components/CardListUse
 
 export const Users = () => {
 
-
-
     return (
-        <div className="container mt-5">
+        <div className="container-fluid my-5">
             <CardListUser />
         </div>
     );

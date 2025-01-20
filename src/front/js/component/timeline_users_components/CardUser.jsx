@@ -17,10 +17,10 @@ export const CardUser = ({ user }) => {
                 <h3 className="card-user-role">{user.role}</h3>
                 <span className="card-user-email"><MdAlternateEmail /> {user.email}</span>
                 <p className="card-user-text">{user.description}</p>
-                <ul class="list-group ">
-                    <li class="list-group-user">Languages</li>
-                    <li class="list-group-user">Last project/work</li>
-                    <li class="list-group-user">experience</li>
+                <ul className="list-group ">
+                    <li className="list-group-user">Languages</li>
+                    <li className="list-group-user">Last project/work</li>
+                    <li className="list-group-user">experience</li>
                 </ul>
                 <Link to={`/profiledeveloper/${user.id}`} className="btn btn-sm btn-primary m-1 mt-2">
                     Ver Perfil

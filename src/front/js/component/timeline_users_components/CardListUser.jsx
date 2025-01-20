@@ -10,16 +10,14 @@ export const CardListUser = () => {
     if (!users.length) return <p className="no-users-section text-center text-secondary shadow-lg">No hay usuarios disponibles</p>;
 
     return (
-        <div className="container my-4">
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-3">
-                {users.map((user) => (
-                    <div className="d-flex" >
-                        <div className="w-100" key={user.id}>
-                            <CardUser key={user.id} user={user} />
-                        </div>
-                    </div>
-                ))}
-            </div>
+
+        <div className="row g-2 mt-5">
+            {users.map((user) => (
+                <div className="d-flex col-md-3" key={user.id} >
+                    <CardUser user={user} />
+                </div>
+            ))}
         </div>
+
     );
 };
