@@ -1,15 +1,16 @@
 import React from "react";
+import "../../../styles/about.css"
 
 export const WhyUsAbout = ({ title, subtitle, listPhrases }) => {
     return (
-        <section className="about-page">
-            <div className="col-4 col-md-6 col-sm-12 p-4">
-                <div className="title-box text-center">
-                    <h1 className="title-hero fw-lighter">{title}</h1>
-                    <h2 className="subtitle-hero fw-lighter">{subtitle}</h2>
+        <section className="why-us-container">
+            <div className="about-hero">
+                <div className="title-why-box text-center">
+                    <h1 className="title-why-hero fw-lighter">{title}</h1>
+                    <h2 className="subtitle-why-hero fw-lighter">{subtitle}</h2>
                 </div>
-                <div className="text-container mt-4">
-                    <ul className="list-circle">
+                <div className="text-why-container mt-4">
+                    <ul className="list-unstyled">
                         {listPhrases.map((phrase, index) => (
                             <li key={index}>{phrase}</li>
                         ))}
